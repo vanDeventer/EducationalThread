@@ -1,0 +1,183 @@
+{
+  "@context": [
+    "https://www.w3.org/ns/credentials/v2",
+    "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+  ],
+  "type": [
+    "VerifiablePresentation"
+  ],
+  "holder": "did:example:applicant-a-52be",
+  "termsOfUse": [
+    {
+      "type": "HolderPolicy",
+      "id": "urn:example:policy:applicant-a-admission",
+      "permission": [
+        {
+          "assigner": "did:example:applicant-a-52be",
+          "assignee": "https://data.example.edu/org/admissions-office",
+          "action": [
+            "read"
+          ],
+          "constraint": [
+            {
+              "leftOperand": "purpose",
+              "operator": "eq",
+              "rightOperand": "admission assessment"
+            },
+            {
+              "leftOperand": "dateTime",
+              "operator": "lteq",
+              "rightOperand": "2027-01-31"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "verifiableCredential": [
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:applicant-a:1",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://data.example.org/org/other-university",
+        "type": [
+          "Profile"
+        ],
+        "name": "Other University"
+      },
+      "validFrom": "2025-12-18T00:00:00Z",
+      "name": "Differentiate and integrate functions of one variable",
+      "credentialSubject": {
+        "id": "did:example:applicant-a-52be",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://data.example.org/outcome/MA101-LO1",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Differentiate and integrate functions of one variable",
+          "criteria": {
+            "narrative": "Learning outcome assessed and passed at Other University."
+          }
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:applicant-a:2",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://data.example.org/org/other-university",
+        "type": [
+          "Profile"
+        ],
+        "name": "Other University"
+      },
+      "validFrom": "2025-12-18T00:00:00Z",
+      "name": "Solve linear systems and compute eigenvalues",
+      "credentialSubject": {
+        "id": "did:example:applicant-a-52be",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://data.example.org/outcome/MA101-LO2",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Solve linear systems and compute eigenvalues",
+          "criteria": {
+            "narrative": "Learning outcome assessed and passed at Other University."
+          }
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:applicant-a:3",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://data.example.org/org/other-university",
+        "type": [
+          "Profile"
+        ],
+        "name": "Other University"
+      },
+      "validFrom": "2026-06-12T00:00:00Z",
+      "name": "Solve separable and linear first-order ODEs",
+      "credentialSubject": {
+        "id": "did:example:applicant-a-52be",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://data.example.org/outcome/MA201-LO1",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Solve separable and linear first-order ODEs",
+          "criteria": {
+            "narrative": "Learning outcome assessed and passed at Other University."
+          }
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:applicant-a:4",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://data.example.org/org/other-university",
+        "type": [
+          "Profile"
+        ],
+        "name": "Other University"
+      },
+      "validFrom": "2026-06-12T00:00:00Z",
+      "name": "Solve second-order linear ODEs with constant coefficients",
+      "credentialSubject": {
+        "id": "did:example:applicant-a-52be",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://data.example.org/outcome/MA201-LO2",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Solve second-order linear ODEs with constant coefficients",
+          "criteria": {
+            "narrative": "Learning outcome assessed and passed at Other University."
+          }
+        }
+      }
+    }
+  ]
+}

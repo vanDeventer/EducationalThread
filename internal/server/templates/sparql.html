@@ -1,0 +1,11 @@
+{{define "content"}}
+<h1>Expert SPARQL</h1>
+<p class="about">Read-only SELECT or ASK queries against the public curriculum graph (with RDFS-Plus inference).
+  No learner data is stored here. Federated <code>SERVICE</code> calls are disabled.</p>
+<form class="card" method="post" action="/sparql">
+  <textarea name="query" rows="16" spellcheck="false">{{.Text}}</textarea>
+  <button type="submit">Run</button>
+</form>
+{{if .Error}}<p class="notice error">{{.Error}}</p>{{end}}
+{{with .Results}}{{template "table" .}}{{end}}
+{{end}}

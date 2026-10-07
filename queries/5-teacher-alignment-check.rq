@@ -1,0 +1,44 @@
+# title: Are there design problems in my course?
+# role: teacher
+# about: Flags units taught before the units they depend on, and outcomes that are never assessed although later courses build on them.
+# param: instance instance
+PREFIX et:     <https://w3id.org/edthread#>
+PREFIX schema: <https://schema.org/>
+PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos:   <http://www.w3.org/2004/02/skos/core#>
+PREFIX c:      <https://data.example.edu/course/>
+PREFIX ci:     <https://data.example.edu/course-instance/>
+
+SELECT ?issue ?detail
+WHERE {
+  VALUES ?instance { ci:M0010-2026HT }
+  ?instance et:instanceOf ?course .
+  {
+    # A unit is delivered before a unit whose outcomes it requires.
+    ?instance et:hasDelivery ?d1, ?d2 .
+    ?d1 et:deliversUnit ?u1 ; et:week ?w1 .
+    ?d2 et:deliversUnit ?u2 ; et:week ?w2 .
+    FILTER (?w1 < ?w2)
+    ?u1 et:hasOutcome ?o1 ; rdfs:label ?l1 .
+    ?u2 et:hasOutcome ?o2 ; rdfs:label ?l2 .
+    ?o1 et:requires ?o2 .
+    ?o2 rdfs:label ?ol2 .
+    BIND ("sequence" AS ?issue)
+    BIND (CONCAT("'", ?l1, "' (week ", STR(?w1), ") requires '", ?ol2,
+                 "', which is only taught in '", ?l2, "' (week ", STR(?w2), ")") AS ?detail)
+  }
+  UNION
+  {
+    # An outcome is never assessed, although later outcomes build on it.
+    ?course et:hasUnit/et:hasOutcome ?o .
+    ?o rdfs:label ?ol .
+    FILTER NOT EXISTS { ?anyAssessment et:assesses ?o }
+    {
+      SELECT ?o (COUNT(DISTINCT ?later) AS ?n) WHERE { ?later et:buildsOn ?o . }
+      GROUP BY ?o
+    }
+    BIND ("not assessed" AS ?issue)
+    BIND (CONCAT("'", ?ol, "' has no linked assessment, but ", STR(?n), " outcome(s) build on it") AS ?detail)
+  }
+}
+ORDER BY ?issue

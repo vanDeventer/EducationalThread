@@ -1,0 +1,22 @@
+# title: What does my course cover, and in what order?
+# role: teacher
+# about: Units of a course instance in the order they are delivered, with topics, outcomes, Bloom levels and assessments.
+# param: instance instance
+PREFIX et:     <https://w3id.org/edthread#>
+PREFIX schema: <https://schema.org/>
+PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos:   <http://www.w3.org/2004/02/skos/core#>
+PREFIX c:      <https://data.example.edu/course/>
+PREFIX ci:     <https://data.example.edu/course-instance/>
+
+SELECT ?week ?unit ?topic ?hours ?outcome ?bloom (GROUP_CONCAT(DISTINCT STR(?assessment); separator=", ") AS ?assessedBy)
+WHERE {
+  VALUES ?instance { ci:M0010-2026HT }
+  ?instance et:hasDelivery ?d .
+  ?d et:week ?week ; et:deliversUnit ?u .
+  ?u rdfs:label ?unit ; et:workloadHours ?hours ; et:about/skos:prefLabel ?topic ; et:hasOutcome ?o .
+  ?o rdfs:label ?outcome ; et:bloomLevel/skos:prefLabel ?bloom .
+  OPTIONAL { ?a et:assesses ?o ; rdfs:label ?assessment . }
+}
+GROUP BY ?week ?unit ?topic ?hours ?outcome ?bloom
+ORDER BY ?week ?outcome

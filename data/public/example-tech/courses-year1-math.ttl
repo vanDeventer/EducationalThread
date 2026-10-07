@@ -1,0 +1,90 @@
+# Year-1 mathematics courses that the ODE course builds on.
+
+@prefix et:     <https://w3id.org/edthread#> .
+@prefix schema: <https://schema.org/> .
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix org:    <https://data.example.edu/org/> .
+@prefix c:      <https://data.example.edu/course/> .
+@prefix u:      <https://data.example.edu/unit/> .
+@prefix lo:     <https://data.example.edu/outcome/> .
+@prefix asm:    <https://data.example.edu/assessment/> .
+@prefix subj:   <https://w3id.org/edthread/subject/> .
+@prefix tp:     <https://w3id.org/edthread/topic/> .
+
+# --- M0001 Calculus ---------------------------------------------------------
+
+c:M0001 a et:Course ;
+    schema:courseCode "M0001" ;
+    et:subject subj:mathematics ;
+    schema:name "Calculus"@en ;
+    et:credits 7.5 ;
+    schema:provider org:example-tech ;
+    et:hasUnit u:M0001-U1, u:M0001-U2 .
+
+u:M0001-U1 a et:LearningUnit ;
+    rdfs:label "Differentiation"@en ;
+    et:sequenceIndex 1 ; et:about tp:differentiation ; et:workloadHours 100 ;
+    et:hasOutcome lo:M0001-LO1 ;
+    et:hasActivity [ a et:LearningActivity ; et:activityType et:lecture ] ,
+                   [ a et:LearningActivity ; et:activityType et:exercise ] ;
+    et:hasAssessment asm:M0001-exam .
+
+u:M0001-U2 a et:LearningUnit ;
+    rdfs:label "Integration"@en ;
+    et:sequenceIndex 2 ; et:about tp:integration ; et:workloadHours 100 ;
+    et:hasOutcome lo:M0001-LO2 ;
+    et:hasActivity [ a et:LearningActivity ; et:activityType et:lecture ] ,
+                   [ a et:LearningActivity ; et:activityType et:exercise ] ;
+    et:hasAssessment asm:M0001-exam .
+
+lo:M0001-LO1 a et:LearningOutcome ;
+    rdfs:label "Differentiate elementary functions using product and chain rules"@en ;
+    et:bloomLevel et:apply .
+
+lo:M0001-LO2 a et:LearningOutcome ;
+    rdfs:label "Evaluate integrals by substitution and integration by parts"@en ;
+    et:bloomLevel et:apply ;
+    et:requires lo:M0001-LO1 .
+
+asm:M0001-exam a et:Assessment ;
+    rdfs:label "Calculus written exam"@en ;
+    et:assessmentType et:writtenExam ;
+    et:assesses lo:M0001-LO1, lo:M0001-LO2 .
+
+# --- M0002 Linear Algebra ---------------------------------------------------
+
+c:M0002 a et:Course ;
+    schema:courseCode "M0002" ;
+    et:subject subj:mathematics ;
+    schema:name "Linear Algebra"@en ;
+    et:credits 7.5 ;
+    schema:provider org:example-tech ;
+    et:hasUnit u:M0002-U1, u:M0002-U2 .
+
+u:M0002-U1 a et:LearningUnit ;
+    rdfs:label "Matrices and linear systems"@en ;
+    et:sequenceIndex 1 ; et:about tp:linear-systems-of-equations ; et:workloadHours 90 ;
+    et:hasOutcome lo:M0002-LO1 ;
+    et:hasActivity [ a et:LearningActivity ; et:activityType et:lecture ] ;
+    et:hasAssessment asm:M0002-exam .
+
+u:M0002-U2 a et:LearningUnit ;
+    rdfs:label "Eigenvalues and diagonalisation"@en ;
+    et:sequenceIndex 2 ; et:about tp:eigenvalues ; et:workloadHours 110 ;
+    et:hasOutcome lo:M0002-LO2 ;
+    et:hasActivity [ a et:LearningActivity ; et:activityType et:lecture ] ;
+    et:hasAssessment asm:M0002-exam .
+
+lo:M0002-LO1 a et:LearningOutcome ;
+    rdfs:label "Solve linear systems by Gaussian elimination"@en ;
+    et:bloomLevel et:apply .
+
+lo:M0002-LO2 a et:LearningOutcome ;
+    rdfs:label "Compute eigenvalues and eigenvectors and diagonalise a matrix"@en ;
+    et:bloomLevel et:apply ;
+    et:requires lo:M0002-LO1 .
+
+asm:M0002-exam a et:Assessment ;
+    rdfs:label "Linear algebra written exam"@en ;
+    et:assessmentType et:writtenExam ;
+    et:assesses lo:M0002-LO1, lo:M0002-LO2 .

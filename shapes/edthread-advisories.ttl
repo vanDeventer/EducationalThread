@@ -1,0 +1,19 @@
+# Advisory SHACL shapes (severity sh:Warning): curriculum-design advice for
+# teachers, not a publishing contract. Checked by `python3 run.py validate`;
+# not loaded into GraphDB, which would reject data that triggers them.
+
+@prefix sh:  <http://www.w3.org/ns/shacl#> .
+@prefix et:  <https://w3id.org/edthread#> .
+@prefix ets: <https://w3id.org/edthread/shapes#> .
+
+ets:OutcomeAssessedAdvisory a sh:NodeShape ;
+    sh:targetClass et:LearningOutcome ;
+    sh:severity sh:Warning ;
+    sh:property [ sh:path [ sh:inversePath et:assesses ] ; sh:minCount 1 ; sh:severity sh:Warning ;
+                  sh:message "No assessment is linked to this learning outcome (constructive-alignment gap, or the syllabus does not say which module assesses it)." ] .
+
+ets:CourseOutcomesAdvisory a sh:NodeShape ;
+    sh:targetClass et:Course ;
+    sh:severity sh:Warning ;
+    sh:property [ sh:path [ sh:alternativePath ( et:hasOutcome ( et:hasUnit et:hasOutcome ) ) ] ; sh:minCount 1 ;
+                  sh:severity sh:Warning ; sh:message "Course has no learning outcomes." ] .

@@ -1,0 +1,41 @@
+# title: Is this student ready for a course?
+# role: advisor
+# about: Lists every prerequisite outcome of the target course, including indirect ones, and whether the student has demonstrated it. Needs the student's consent, given to the study advisors of the course's university.
+# param: target course
+# wallet: data/learners/student-s.json
+# requester-function: https://w3id.org/edthread#studyAdvising
+# requester-of: target
+# purpose: academic advising
+PREFIX et:     <https://w3id.org/edthread#>
+PREFIX schema: <https://schema.org/>
+PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos:   <http://www.w3.org/2004/02/skos/core#>
+PREFIX c:      <https://data.example.edu/course/>
+
+SELECT ?status ?taughtIn ?unit ?prerequisite
+WHERE {
+  VALUES ?target { c:E0020 }
+
+  # Everything the target course needs, transitively, outside the course itself.
+  {
+    SELECT DISTINCT ?target ?req WHERE {
+      ?target a et:Course ; et:hasUnit?/et:hasOutcome ?t .
+      ?t (et:requires|et:uses)/et:requires* ?req .
+      FILTER NOT EXISTS { ?target et:hasUnit?/et:hasOutcome ?req }
+    }
+  }
+
+  ?req rdfs:label ?prerequisite . FILTER (lang(?prerequisite) IN ("", "en"))
+  ?course a et:Course ; et:hasUnit?/et:hasOutcome ?req ; schema:name ?taughtIn .
+  FILTER (lang(?taughtIn) IN ("", "en"))
+  OPTIONAL { ?course et:hasUnit ?u . ?u et:hasOutcome ?req ; rdfs:label ?unitLabel . }
+  BIND (COALESCE(?unitLabel, "") AS ?unit)
+
+  # Filled in by the runner with the outcomes in the consented credentials.
+  OPTIONAL {
+    VALUES ?demonstrated { }
+    FILTER (?demonstrated = ?req)
+  }
+  BIND (IF(BOUND(?demonstrated), "met", "NOT MET") AS ?status)
+}
+ORDER BY DESC(?status) ?taughtIn ?unit ?prerequisite

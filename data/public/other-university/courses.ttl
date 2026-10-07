@@ -1,0 +1,75 @@
+# Other University (fictitious) publishes its own courses with the same profile.
+# This is where the applicant studied before applying.
+
+@prefix et:     <https://w3id.org/edthread#> .
+@prefix schema: <https://schema.org/> .
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix tp:     <https://w3id.org/edthread/topic/> .
+@prefix ouorg:  <https://data.example.org/org/> .
+@prefix ouc:    <https://data.example.org/course/> .
+@prefix ouu:    <https://data.example.org/unit/> .
+@prefix oulo:   <https://data.example.org/outcome/> .
+@prefix ouasm:  <https://data.example.org/assessment/> .
+
+ouorg:other-university a schema:CollegeOrUniversity ;
+    schema:name "Other University"@en .
+
+ouc:MA101 a et:Course ;
+    schema:courseCode "MA101" ;
+    schema:name "Engineering Mathematics I"@en ;
+    et:credits 15.0 ;
+    schema:provider ouorg:other-university ;
+    et:hasUnit ouu:MA101-U1, ouu:MA101-U2 .
+
+ouu:MA101-U1 a et:LearningUnit ;
+    rdfs:label "Single-variable calculus"@en ;
+    et:sequenceIndex 1 ; et:about tp:calculus ; et:workloadHours 200 ;
+    et:hasOutcome oulo:MA101-LO1 ;
+    et:hasAssessment ouasm:MA101-exam .
+
+ouu:MA101-U2 a et:LearningUnit ;
+    rdfs:label "Matrix algebra"@en ;
+    et:sequenceIndex 2 ; et:about tp:linear-algebra ; et:workloadHours 200 ;
+    et:hasOutcome oulo:MA101-LO2 ;
+    et:hasAssessment ouasm:MA101-exam .
+
+oulo:MA101-LO1 a et:LearningOutcome ;
+    rdfs:label "Differentiate and integrate functions of one variable"@en ;
+    et:bloomLevel et:apply .
+
+oulo:MA101-LO2 a et:LearningOutcome ;
+    rdfs:label "Solve linear systems and compute eigenvalues"@en ;
+    et:bloomLevel et:apply .
+
+ouasm:MA101-exam a et:Assessment ;
+    rdfs:label "Engineering Mathematics I exam"@en ;
+    et:assessmentType et:writtenExam ;
+    et:assesses oulo:MA101-LO1, oulo:MA101-LO2 .
+
+ouc:MA201 a et:Course ;
+    schema:courseCode "MA201" ;
+    schema:name "Engineering Mathematics II"@en ;
+    et:credits 7.5 ;
+    schema:provider ouorg:other-university ;
+    et:hasUnit ouu:MA201-U1 .
+
+ouu:MA201-U1 a et:LearningUnit ;
+    rdfs:label "Differential equations"@en ;
+    et:sequenceIndex 1 ; et:about tp:ode ; et:workloadHours 200 ;
+    et:hasOutcome oulo:MA201-LO1, oulo:MA201-LO2 ;
+    et:hasAssessment ouasm:MA201-exam .
+
+oulo:MA201-LO1 a et:LearningOutcome ;
+    rdfs:label "Solve separable and linear first-order ODEs"@en ;
+    et:bloomLevel et:apply ;
+    et:requires oulo:MA101-LO1 .
+
+oulo:MA201-LO2 a et:LearningOutcome ;
+    rdfs:label "Solve second-order linear ODEs with constant coefficients"@en ;
+    et:bloomLevel et:apply ;
+    et:requires oulo:MA101-LO1 .
+
+ouasm:MA201-exam a et:Assessment ;
+    rdfs:label "Engineering Mathematics II exam"@en ;
+    et:assessmentType et:writtenExam ;
+    et:assesses oulo:MA201-LO1, oulo:MA201-LO2 .

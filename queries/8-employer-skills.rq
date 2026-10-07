@@ -1,0 +1,51 @@
+# title: Which skills does this degree evidence, at what level?
+# role: employer
+# about: Occupational skills aligned to outcomes of the mandatory courses of a program or specialisation, the highest Bloom level recorded, how they are assessed, and which occupations need them.
+# param: pathway pathway
+PREFIX et:     <https://w3id.org/edthread#>
+PREFIX schema: <https://schema.org/>
+PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos:   <http://www.w3.org/2004/02/skos/core#>
+PREFIX c:      <https://data.example.edu/course/>
+PREFIX prog:   <https://data.example.edu/program/>
+
+SELECT ?skill ?highestLevel ?courses ?assessedBy ?occupations
+WHERE {
+  {
+    SELECT ?s (MAX(?rank) AS ?maxRank)
+           (GROUP_CONCAT(DISTINCT STR(?courseName); separator=", ") AS ?courses)
+           (GROUP_CONCAT(DISTINCT STR(?atype); separator=", ") AS ?assessedBy)
+    WHERE {
+      VALUES ?pathway { prog:bsc-icps }
+    {
+      SELECT DISTINCT ?pathway ?course WHERE {
+        {
+          ?pathway a et:Program ; et:includesCourse ?pc .
+          FILTER NOT EXISTS { ?pathway et:hasSpecialisation ?anySpecialisation }
+        } UNION {
+          ?program et:hasSpecialisation ?pathway ; et:includesCourse ?pc .
+          FILTER NOT EXISTS { ?pc et:inSpecialisation ?other . FILTER (?other != ?pathway) }
+        }
+        ?pc et:course ?course .
+        FILTER NOT EXISTS { ?pc et:status et:elective }
+      }
+    }
+      ?course schema:name ?courseName ; et:hasUnit?/et:hasOutcome ?o .
+      FILTER (lang(?courseName) IN ("", "en"))
+      ?o et:alignedToSkill ?s .
+      OPTIONAL { ?o et:bloomLevel/et:rank ?rank }
+      OPTIONAL { ?a et:assesses ?o ; et:assessmentType/skos:prefLabel ?atype . }
+    }
+    GROUP BY ?s
+  }
+  ?s skos:prefLabel ?skill .
+  # Filtering inside OPTIONAL (not joining on ?maxRank) so that an unrecorded level matches nothing.
+  OPTIONAL { ?level et:rank ?r ; skos:prefLabel ?levelLabel . FILTER (?r = ?maxRank) }
+  BIND (COALESCE(?levelLabel, "(not recorded)") AS ?highestLevel)
+  {
+    SELECT ?s (GROUP_CONCAT(DISTINCT STR(?occName); separator=", ") AS ?occupations)
+    WHERE { ?occ et:needsSkill ?s ; rdfs:label ?occName . }
+    GROUP BY ?s
+  }
+}
+ORDER BY DESC(?maxRank) ?skill

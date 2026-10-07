@@ -1,0 +1,25 @@
+# Recognition mapping: how Example Institute of Technology reads Other
+# University's outcomes. It is published by the receiving institution, not by
+# Other University, and it carries provenance so that admissions decisions can
+# be traced back to who asserted each equivalence and when.
+#
+# skos:exactMatch = interchangeable; skos:closeMatch = accepted for admission.
+
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix prov:    <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix org:     <https://data.example.edu/org/> .
+@prefix lo:      <https://data.example.edu/outcome/> .
+@prefix oulo:    <https://data.example.org/outcome/> .
+
+<https://data.example.edu/recognition/other-university>
+    a prov:Entity ;
+    dcterms:title "Recognition of Other University mathematics outcomes"@en ;
+    prov:wasAttributedTo org:admissions-office ;
+    prov:generatedAtTime "2026-05-20T10:00:00Z"^^xsd:dateTime .
+
+oulo:MA101-LO1 skos:closeMatch lo:M0001-LO1, lo:M0001-LO2 .
+oulo:MA101-LO2 skos:closeMatch lo:M0002-LO1, lo:M0002-LO2 .
+oulo:MA201-LO1 skos:exactMatch lo:M0010-LO1 .
+oulo:MA201-LO2 skos:closeMatch lo:M0010-LO3 .

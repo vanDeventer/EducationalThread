@@ -1,0 +1,52 @@
+# title: Do my syllabus's entry requirements fit the programme?
+# role: teacher
+# about: Checks the courses named in a syllabus's entry requirements against every program that includes the course (are they in the program, and scheduled earlier?), and lists outcomes no assessment is linked to.
+# param: course course
+PREFIX et:     <https://w3id.org/edthread#>
+PREFIX schema: <https://schema.org/>
+PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos:   <http://www.w3.org/2004/02/skos/core#>
+PREFIX c:      <https://data.example.edu/course/>
+PREFIX ltuc:   <https://w3id.org/edthread/ltu/course/>
+
+SELECT DISTINCT ?issue ?program ?detail
+WHERE {
+  VALUES ?course { ltuc:M0018M }
+  {
+    # A named course is not part of a program that includes this course.
+    ?course et:entryRequirementNames ?pre .
+    ?p et:includesCourse/et:course ?course ; schema:name ?program .
+    FILTER (lang(?program) IN ("", "en"))
+    FILTER NOT EXISTS { ?p et:includesCourse/et:course ?pre }
+    OPTIONAL { ?pre schema:name ?preName . FILTER (lang(?preName) IN ("", "en")) }
+    BIND ("named course not in programme" AS ?issue)
+    BIND (CONCAT(STRAFTER(STR(?pre), "/course/"), COALESCE(CONCAT(" ", ?preName), " (no such course in the data: retired code?)")) AS ?detail)
+  }
+  UNION
+  {
+    # A named course is scheduled in the same period or later.
+    ?course et:entryRequirementNames ?pre .
+    ?p schema:name ?program ; et:includesCourse ?pc1, ?pc2 .
+    FILTER (lang(?program) IN ("", "en"))
+    ?pc1 et:course ?course ; et:studyYear ?y1 ; et:studyPeriod ?p1 .
+    ?pc2 et:course ?pre ; et:studyYear ?y2 ; et:studyPeriod ?p2 .
+    OPTIONAL { ?pc1 et:inSpecialisation ?s1 }
+    OPTIONAL { ?pc2 et:inSpecialisation ?s2 }
+    FILTER (!BOUND(?s1) || !BOUND(?s2) || ?s1 = ?s2)
+    FILTER (?y2 * 10 + ?p2 >= ?y1 * 10 + ?p1)
+    ?pre schema:name ?preName . FILTER (lang(?preName) IN ("", "en"))
+    BIND ("named course scheduled later" AS ?issue)
+    BIND (CONCAT(STRAFTER(STR(?pre), "/course/"), " ", ?preName, " is in year ", STR(?y2), " period ", STR(?p2),
+                 "; this course is in year ", STR(?y1), " period ", STR(?p1)) AS ?detail)
+  }
+  UNION
+  {
+    ?course et:hasUnit?/et:hasOutcome ?o .
+    ?o rdfs:label ?ol . FILTER (lang(?ol) IN ("", "en"))
+    FILTER NOT EXISTS { ?anyAssessment et:assesses ?o }
+    BIND ("no assessment linked" AS ?issue)
+    BIND ("" AS ?program)
+    BIND (?ol AS ?detail)
+  }
+}
+ORDER BY ?issue ?program ?detail

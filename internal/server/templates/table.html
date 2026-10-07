@@ -1,0 +1,17 @@
+{{define "table"}}
+{{if .Boolean}}
+<p class="answer">Answer: <strong>{{if deref .Boolean}}yes{{else}}no{{end}}</strong></p>
+{{else if .Rows}}
+<div class="table-wrap">
+<table>
+  <thead><tr>{{range .Vars}}<th>{{heading .}}</th>{{end}}</tr></thead>
+  <tbody>
+    {{range .Rows}}<tr>{{range .}}<td>{{if eq . "NOT MET"}}<span class="bad">{{.}}</span>{{else if eq . "met"}}<span class="good">{{.}}</span>{{else}}{{.}}{{end}}</td>{{end}}</tr>{{end}}
+  </tbody>
+</table>
+</div>
+<p class="meta">{{len .Rows}} row(s){{if .Truncated}}, truncated{{end}}</p>
+{{else}}
+<p class="meta">No results.</p>
+{{end}}
+{{end}}

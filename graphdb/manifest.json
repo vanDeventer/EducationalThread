@@ -1,0 +1,68 @@
+{
+  "repository": {
+    "title": "Educational Thread",
+    "params": {
+      "ruleset": "rdfsplus-optimized",
+      "isShacl": "true",
+      "enableContextIndex": "true",
+      "queryTimeout": "30"
+    }
+  },
+  "graphs": [
+    {
+      "graph": "http://rdf4j.org/schema/rdf4j#SHACLShapeGraph",
+      "files": [
+        "shapes/edthread-shapes.ttl"
+      ]
+    },
+    {
+      "graph": "https://w3id.org/edthread",
+      "files": [
+        "ontology/edthread.ttl"
+      ]
+    },
+    {
+      "graph": "https://w3id.org/edthread/graph/vocab",
+      "files": [
+        "data/public/vocab/topics.ttl",
+        "data/public/vocab/skills-occupations.ttl",
+        "data/public/vocab/subjects.ttl"
+      ]
+    },
+    {
+      "graph": "https://data.example.org/graph/curriculum",
+      "files": [
+        "data/public/other-university/courses.ttl"
+      ]
+    },
+    {
+      "graph": "https://data.example.edu/graph/curriculum",
+      "files": [
+        "data/public/example-tech/institution.ttl",
+        "data/public/example-tech/courses-year1-math.ttl",
+        "data/public/example-tech/course-M0010-ode.ttl",
+        "data/public/example-tech/courses-year2-engineering.ttl",
+        "data/public/example-tech/course-instances.ttl"
+      ]
+    },
+    {
+      "graph": "https://data.example.edu/graph/recognition/other-university",
+      "files": [
+        "data/public/example-tech/recognition-other-university.ttl"
+      ]
+    },
+    {
+      "graph": "https://w3id.org/edthread/ltu/graph/courses",
+      "files": [
+        "data/public/ltu/courses.ttl",
+        "data/public/ltu/tctea-program.ttl"
+      ]
+    },
+    {
+      "graph": "https://w3id.org/edthread/ltu/graph/proposed-threads",
+      "files": [
+        "data/public/ltu/proposed-threads.ttl"
+      ]
+    }
+  ]
+}

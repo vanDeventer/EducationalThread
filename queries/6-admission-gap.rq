@@ -1,0 +1,47 @@
+# title: What must this applicant add to enter year 2?
+# role: admissions
+# about: Outcomes required by the courses from year 2 on that the applicant has not demonstrated, directly or through a recognised equivalence, grouped into bridging units or courses. Needs the applicant's consent, given to the admissions office of the program's university.
+# param: program program
+# wallet: data/learners/applicant-a.json
+# requester-function: https://w3id.org/edthread#admissionsFunction
+# requester-of: program
+# purpose: admission assessment
+PREFIX et:     <https://w3id.org/edthread#>
+PREFIX schema: <https://schema.org/>
+PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos:   <http://www.w3.org/2004/02/skos/core#>
+PREFIX c:      <https://data.example.edu/course/>
+PREFIX prog:   <https://data.example.edu/program/>
+
+SELECT ?course ?unit ?size (GROUP_CONCAT(DISTINCT STR(?missing); separator=" | ") AS ?missingOutcomes)
+WHERE {
+  VALUES ?program { prog:bsc-icps }
+  VALUES ?entryYear { 2 }
+
+  # Outcomes required (transitively) by the courses the applicant will take ...
+  ?program et:includesCourse ?pl .
+  ?pl et:course ?laterCourse ; et:studyYear ?ly .
+  FILTER (?ly >= ?entryYear)
+  ?laterCourse et:hasUnit?/et:hasOutcome ?lo .
+  ?lo et:requires+ ?needed .
+
+  # ... that are taught in the years being skipped ...
+  ?program et:includesCourse ?pe .
+  ?pe et:course ?earlierCourse ; et:studyYear ?ey .
+  FILTER (?ey < ?entryYear)
+  ?earlierCourse et:hasUnit?/et:hasOutcome ?needed ; schema:name ?course ; et:credits ?credits .
+  FILTER (lang(?course) IN ("", "en"))
+  OPTIONAL { ?earlierCourse et:hasUnit ?u . ?u et:hasOutcome ?needed ; rdfs:label ?unitLabel ; et:workloadHours ?h . }
+  BIND (COALESCE(?unitLabel, "(whole course)") AS ?unit)
+  BIND (IF(BOUND(?h), CONCAT(STR(?h), " h"), CONCAT(STR(?credits), " credits")) AS ?size)
+
+  # ... and not covered by the consented credentials (filled in by the runner),
+  # directly or through a recognised equivalence.
+  FILTER NOT EXISTS {
+    VALUES ?demonstrated { }
+    ?demonstrated (skos:exactMatch|skos:closeMatch|^skos:exactMatch|^skos:closeMatch)? ?needed .
+  }
+  ?needed rdfs:label ?missing . FILTER (lang(?missing) IN ("", "en"))
+}
+GROUP BY ?course ?unit ?size
+ORDER BY ?course ?unit

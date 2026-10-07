@@ -1,0 +1,70 @@
+# Topic taxonomy (SKOS). Each unit has one primary topic from this scheme.
+# Notations are MSC2020 codes where one applies. In a real deployment these
+# concepts would be MSC2020 / ACM CCS / Wikidata IRIs, or local concepts
+# linked to them with skos:exactMatch.
+
+@prefix tp:   <https://w3id.org/edthread/topic/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+tp:scheme a skos:ConceptScheme ;
+    skos:prefLabel "Educational Thread example topics"@en ;
+    skos:hasTopConcept tp:mathematics, tp:engineering-science .
+
+tp:mathematics a skos:Concept ; skos:topConceptOf tp:scheme ; skos:inScheme tp:scheme ;
+    skos:prefLabel "Mathematics"@en .
+tp:engineering-science a skos:Concept ; skos:topConceptOf tp:scheme ; skos:inScheme tp:scheme ;
+    skos:prefLabel "Engineering science"@en .
+
+# --- Areas ------------------------------------------------------------------
+
+tp:calculus a skos:Concept ; skos:inScheme tp:scheme ; skos:broader tp:mathematics ;
+    skos:prefLabel "Calculus"@en ; skos:notation "26" .
+tp:linear-algebra a skos:Concept ; skos:inScheme tp:scheme ; skos:broader tp:mathematics ;
+    skos:prefLabel "Linear algebra"@en ; skos:notation "15" .
+tp:ode a skos:Concept ; skos:inScheme tp:scheme ; skos:broader tp:mathematics ;
+    skos:prefLabel "Ordinary differential equations"@en ; skos:notation "34" .
+tp:control a skos:Concept ; skos:inScheme tp:scheme ; skos:broader tp:engineering-science ;
+    skos:prefLabel "Systems and control"@en ; skos:notation "93" .
+tp:fluid-mechanics a skos:Concept ; skos:inScheme tp:scheme ; skos:broader tp:engineering-science ;
+    skos:prefLabel "Fluid mechanics"@en ; skos:notation "76" .
+
+# --- Topics -----------------------------------------------------------------
+
+tp:differentiation a skos:Concept ; skos:inScheme tp:scheme ; skos:broader tp:calculus ;
+    skos:prefLabel "Differentiation"@en .
+tp:integration a skos:Concept ; skos:inScheme tp:scheme ; skos:broader tp:calculus ;
+    skos:prefLabel "Integration"@en .
+
+tp:linear-systems-of-equations a skos:Concept ; skos:inScheme tp:scheme ; skos:broader tp:linear-algebra ;
+    skos:prefLabel "Linear systems of equations"@en .
+tp:eigenvalues a skos:Concept ; skos:inScheme tp:scheme ; skos:broader tp:linear-algebra ;
+    skos:prefLabel "Eigenvalues and eigenvectors"@en .
+
+tp:first-order-ode a skos:Concept ; skos:inScheme tp:scheme ; skos:broader tp:ode ;
+    skos:prefLabel "First-order ODEs"@en .
+tp:second-order-linear-ode a skos:Concept ; skos:inScheme tp:scheme ; skos:broader tp:ode ;
+    skos:prefLabel "Second-order linear ODEs"@en .
+tp:linear-ode-systems a skos:Concept ; skos:inScheme tp:scheme ; skos:broader tp:ode ;
+    skos:prefLabel "Systems of linear ODEs"@en ; skos:notation "34A30" .
+tp:laplace-transform a skos:Concept ; skos:inScheme tp:scheme ; skos:broader tp:ode ;
+    skos:prefLabel "Laplace transform"@en ; skos:notation "44A10" .
+tp:ode-stability a skos:Concept ; skos:inScheme tp:scheme ; skos:broader tp:ode ;
+    skos:prefLabel "Stability and phase plane"@en ; skos:notation "34D20" .
+
+tp:system-modelling a skos:Concept ; skos:inScheme tp:scheme ; skos:broader tp:control ;
+    skos:prefLabel "Modelling of dynamic systems"@en .
+tp:transfer-functions a skos:Concept ; skos:inScheme tp:scheme ; skos:broader tp:control ;
+    skos:prefLabel "Transfer functions"@en .
+tp:feedback-stability a skos:Concept ; skos:inScheme tp:scheme ; skos:broader tp:control ;
+    skos:prefLabel "Feedback stability"@en .
+tp:state-space a skos:Concept ; skos:inScheme tp:scheme ; skos:broader tp:control ;
+    skos:prefLabel "State-space models"@en ; skos:notation "93C05" .
+tp:controller-design a skos:Concept ; skos:inScheme tp:scheme ; skos:broader tp:control ;
+    skos:prefLabel "Controller design"@en ; skos:notation "93B52" .
+
+tp:conservation-laws a skos:Concept ; skos:inScheme tp:scheme ; skos:broader tp:fluid-mechanics ;
+    skos:prefLabel "Conservation laws for control volumes"@en .
+tp:unsteady-tank-flow a skos:Concept ; skos:inScheme tp:scheme ; skos:broader tp:fluid-mechanics ;
+    skos:prefLabel "Unsteady tank flow"@en .
+tp:boundary-layers a skos:Concept ; skos:inScheme tp:scheme ; skos:broader tp:fluid-mechanics ;
+    skos:prefLabel "Boundary layers"@en ; skos:notation "76D10" .

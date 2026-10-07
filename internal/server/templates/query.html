@@ -1,0 +1,53 @@
+{{define "content"}}
+<p class="crumbs"><a href="/">Questions</a> / <span class="pill role-{{.Query.Role}}">{{roleName .Query.Role}}</span></p>
+<h1>{{.Query.Title}}</h1>
+<p class="about">{{.Query.About}}</p>
+
+<form class="card" {{if .Query.NeedsWallet}}method="post" enctype="multipart/form-data"{{else}}method="get"{{end}} action="/q/{{.Query.Name}}">
+  <div class="params">
+    {{range .Params}}
+    {{$sel := .Selected}}
+    <label>
+      <span>{{.Var}}</span>
+      <select name="{{.Var}}">
+        {{range .Groups}}
+        <optgroup label="{{.Label}}">
+          {{range .Options}}<option value="{{.Value}}"{{if eq .Value $sel}} selected{{end}}>{{.Label}}</option>{{end}}
+        </optgroup>
+        {{end}}
+      </select>
+    </label>
+    {{end}}
+  </div>
+
+  {{if .Query.NeedsWallet}}
+  {{$wsel := .WalletSelected}}
+  <fieldset class="wallet">
+    <legend>Learner credentials</legend>
+    <p>You are acting as <strong>{{.RequesterLabel}}</strong> for the purpose <strong>“{{.Query.Purpose}}”</strong>.
+      The learner presents their credentials; the server checks their consent and uses only the learning outcomes they contain.</p>
+    {{range .Wallets}}
+    <label class="radio"><input type="radio" name="wallet" value="{{.}}"{{if eq . $wsel}} checked{{end}}> sample presentation <code>{{.}}</code></label>
+    {{end}}
+    <label class="radio"><input type="radio" name="wallet" value="upload"{{if eq "upload" $wsel}} checked{{end}}> upload a presentation
+      <input type="file" name="walletfile" accept="application/json,.json"></label>
+  </fieldset>
+  <button type="submit">Present credentials and ask</button>
+  {{else}}
+  <button type="submit">Ask</button>
+  {{end}}
+</form>
+
+{{if .Consent}}<p class="notice ok">{{.Consent}}</p>{{end}}
+{{if .Refusal}}<p class="notice refused">Refused. {{.Refusal}}</p>{{end}}
+{{if .Error}}<p class="notice error">{{.Error}}</p>{{end}}
+
+{{with .Results}}{{template "table" .}}{{end}}
+
+{{if .SPARQL}}
+<details class="sparql">
+  <summary>Show the SPARQL query</summary>
+  <pre>{{.SPARQL}}</pre>
+</details>
+{{end}}
+{{end}}

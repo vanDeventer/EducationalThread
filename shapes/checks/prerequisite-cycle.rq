@@ -1,0 +1,9 @@
+# Integrity check: an outcome must not (indirectly) require itself.
+# Every row returned is a violation.
+PREFIX et: <https://w3id.org/edthread#>
+
+SELECT ?focus ?message
+WHERE {
+  ?focus et:requires+ ?focus .
+  BIND ("Prerequisite cycle: this outcome (indirectly) requires itself." AS ?message)
+}

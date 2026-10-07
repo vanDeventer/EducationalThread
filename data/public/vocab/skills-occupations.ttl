@@ -1,0 +1,29 @@
+# Skills and occupations.
+# PLACEHOLDERS for ESCO (https://esco.ec.europa.eu): in a real deployment these
+# would be ESCO skill / occupation IRIs, or local concepts with skos:exactMatch
+# to them. Keep the structure; swap the IRIs.
+
+@prefix et:   <https://w3id.org/edthread#> .
+@prefix sk:   <https://w3id.org/edthread/skill/> .
+@prefix occ:  <https://w3id.org/edthread/occupation/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+sk:scheme a skos:ConceptScheme ; skos:prefLabel "Example skills (ESCO placeholders)"@en .
+
+sk:mathematical-modelling a skos:Concept ; skos:inScheme sk:scheme ;
+    skos:prefLabel "build mathematical models of physical systems"@en .
+sk:simulate-dynamic-systems a skos:Concept ; skos:inScheme sk:scheme ;
+    skos:prefLabel "simulate dynamic systems"@en .
+sk:control-systems-design a skos:Concept ; skos:inScheme sk:scheme ;
+    skos:prefLabel "design control systems"@en .
+sk:fluid-flow-analysis a skos:Concept ; skos:inScheme sk:scheme ;
+    skos:prefLabel "analyse fluid flow"@en .
+
+occ:control-engineer a et:Occupation ;
+    rdfs:label "Control engineer"@en ;
+    et:needsSkill sk:mathematical-modelling, sk:simulate-dynamic-systems, sk:control-systems-design .
+
+occ:process-engineer a et:Occupation ;
+    rdfs:label "Process engineer"@en ;
+    et:needsSkill sk:mathematical-modelling, sk:fluid-flow-analysis .

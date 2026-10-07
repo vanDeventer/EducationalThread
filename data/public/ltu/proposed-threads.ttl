@@ -1,0 +1,89 @@
+# PROPOSED outcome-to-outcome links for LTU programme TCTEA — a draft for
+# teachers to confirm, correct or reject. Not LTU data.
+#
+# The syllabi state outcomes per course and name prerequisite courses, but not
+# which outcome builds on which. The links below were drafted (AI-assisted) from
+# the syllabus texts; the reason for each is given in a comment. They are kept
+# in their own named graph so they can be reviewed, replaced, or left out of a
+# query, and so that every answer that depends on them can be traced to this
+# draft. Outcome numbers refer to the generated courses.ttl.
+#
+# Thread covered: calculus -> linear analysis -> circuits, signals, modelling
+# and control -> automatic control -> advanced control / dynamic systems.
+
+@prefix et:      <https://w3id.org/edthread#> .
+@prefix prov:    <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix lo:      <https://w3id.org/edthread/ltu/outcome/> .
+@prefix sk:      <https://w3id.org/edthread/skill/> .
+
+<https://w3id.org/edthread/ltu/graph/proposed-threads>
+    a prov:Entity ;
+    dcterms:title "Proposed outcome links for TCTEA (draft, unreviewed)"@en ;
+    dcterms:description "AI-assisted draft derived from LTU course syllabi; to be reviewed by the course teachers."@en ;
+    prov:wasDerivedFrom <https://w3id.org/edthread/ltu/graph/courses> ;
+    prov:generatedAtTime "2026-10-07T12:00:00Z"^^xsd:dateTime ;
+    dcterms:status "draft" .
+
+# --- Calculus ----------------------------------------------------------------
+
+# Integral calculus (M0066M) builds on differential calculus (M0065M); M0066M
+# names M0065M in its entry requirements.
+lo:M0066M-4 et:requires lo:M0065M-5 .
+# Solving first-order ODEs needs integration.
+lo:M0066M-7 et:requires lo:M0066M-4 .
+
+# --- Linear analysis (M0018M, year 2) ----------------------------------------
+
+# Laplace/Fourier transforms are integrals, and complex exponentials appear in them.
+lo:M0018M-4 et:requires lo:M0066M-4, lo:M0066M-6 .
+lo:M0018M-5 et:requires lo:M0018M-4 .
+# Solving ODEs with transforms and the eigenvalue method extends the ODE skills of
+# M0066M and uses matrix algebra from M0067M.
+lo:M0018M-7 et:requires lo:M0066M-7, lo:M0018M-4, lo:M0067M-3 .
+lo:M0018M-3 et:requires lo:M0018M-7 .
+
+# --- Circuit theory (E0003E, year 2) ------------------------------------------
+# Entry requirements: "linear algebra, ordinary linear differential equations,
+# complex numbers" (naming the retired course M0049M). Mapped to today's courses:
+lo:E0003E-1 et:requires lo:M0066M-6, lo:M0066M-7, lo:M0067M-2 .
+
+# --- Signal analysis (S0001E, year 3) -----------------------------------------
+# Entry requirements name M0018M Linear analysis; frequency analysis is Fourier analysis.
+lo:S0001E-1 et:requires lo:M0018M-4 .
+lo:S0001E-2 et:requires lo:M0018M-4, lo:M0018M-5 .
+
+# --- Modelling and control (R0004E, year 3-4) ----------------------------------
+# Entry requirements: "Basic knowledge about the Laplace transform, for example as
+# acquired in M0018M Linear Analysis" and physics as in F0004T Physics 1.
+lo:R0004E-4 et:requires lo:M0018M-4 .
+lo:R0004E-3 et:requires lo:M0066M-7 ;
+            et:uses lo:F0004T-3 .
+lo:R0004E-5 et:requires lo:R0004E-4 .
+lo:R0004E-3 et:alignedToSkill sk:mathematical-modelling, sk:simulate-dynamic-systems .
+lo:R0004E-5 et:alignedToSkill sk:control-systems-design .
+
+# --- Automatic control (R7003E, year 4) ---------------------------------------
+# Entry requirements name R0004E; state-space methods use the matrix exponential
+# and systems of ODEs from M0018M.
+lo:R7003E-2 et:requires lo:R0004E-4, lo:M0018M-7 .
+lo:R7003E-3 et:requires lo:R0004E-5 .
+lo:R7003E-3 et:alignedToSkill sk:control-systems-design .
+
+# --- Advanced control design (R7014E, year 4) ---------------------------------
+# Entry requirements name R7003E.
+lo:R7014E-2 et:requires lo:R7003E-2 .
+lo:R7014E-5 et:requires lo:R7003E-3 .
+lo:R7014E-8 et:requires lo:R7003E-2 .
+lo:R7014E-5 et:alignedToSkill sk:control-systems-design .
+
+# --- Dynamic systems (R7016E, elective) ---------------------------------------
+# Entry requirements: mechanics (F0004T), differential equations and the Laplace
+# transform (M0018M or a basic control course).
+lo:R7016E-1 et:revisits lo:R0004E-3 ;
+            et:uses lo:F0004T-3 .
+lo:R7016E-3 et:requires lo:M0018M-7 .
+lo:R7016E-4 et:requires lo:M0066M-7 .
+lo:R7016E-1 et:alignedToSkill sk:mathematical-modelling .
+lo:R7016E-4 et:alignedToSkill sk:simulate-dynamic-systems .

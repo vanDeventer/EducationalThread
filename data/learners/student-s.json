@@ -1,0 +1,291 @@
+{
+  "@context": [
+    "https://www.w3.org/ns/credentials/v2",
+    "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+  ],
+  "type": [
+    "VerifiablePresentation"
+  ],
+  "holder": "did:example:student-s-3a91",
+  "termsOfUse": [
+    {
+      "type": "HolderPolicy",
+      "id": "urn:example:policy:student-s-advising",
+      "permission": [
+        {
+          "assigner": "did:example:student-s-3a91",
+          "assignee": "https://data.example.edu/org/study-advisor-office",
+          "action": [
+            "read"
+          ],
+          "constraint": [
+            {
+              "leftOperand": "purpose",
+              "operator": "eq",
+              "rightOperand": "academic advising"
+            },
+            {
+              "leftOperand": "dateTime",
+              "operator": "lteq",
+              "rightOperand": "2027-06-30"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "verifiableCredential": [
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:student-s:1",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://data.example.edu/org/example-tech",
+        "type": [
+          "Profile"
+        ],
+        "name": "Example Institute of Technology"
+      },
+      "validFrom": "2025-10-30T00:00:00Z",
+      "name": "Differentiate elementary functions using product and chain rules",
+      "credentialSubject": {
+        "id": "did:example:student-s-3a91",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://data.example.edu/outcome/M0001-LO1",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Differentiate elementary functions using product and chain rules",
+          "criteria": {
+            "narrative": "Learning outcome assessed and passed at Example Institute of Technology."
+          }
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:student-s:2",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://data.example.edu/org/example-tech",
+        "type": [
+          "Profile"
+        ],
+        "name": "Example Institute of Technology"
+      },
+      "validFrom": "2025-10-30T00:00:00Z",
+      "name": "Evaluate integrals by substitution and integration by parts",
+      "credentialSubject": {
+        "id": "did:example:student-s-3a91",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://data.example.edu/outcome/M0001-LO2",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Evaluate integrals by substitution and integration by parts",
+          "criteria": {
+            "narrative": "Learning outcome assessed and passed at Example Institute of Technology."
+          }
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:student-s:3",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://data.example.edu/org/example-tech",
+        "type": [
+          "Profile"
+        ],
+        "name": "Example Institute of Technology"
+      },
+      "validFrom": "2026-01-15T00:00:00Z",
+      "name": "Solve linear systems by Gaussian elimination",
+      "credentialSubject": {
+        "id": "did:example:student-s-3a91",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://data.example.edu/outcome/M0002-LO1",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Solve linear systems by Gaussian elimination",
+          "criteria": {
+            "narrative": "Learning outcome assessed and passed at Example Institute of Technology."
+          }
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:student-s:4",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://data.example.edu/org/example-tech",
+        "type": [
+          "Profile"
+        ],
+        "name": "Example Institute of Technology"
+      },
+      "validFrom": "2026-01-15T00:00:00Z",
+      "name": "Compute eigenvalues and eigenvectors and diagonalise a matrix",
+      "credentialSubject": {
+        "id": "did:example:student-s-3a91",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://data.example.edu/outcome/M0002-LO2",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Compute eigenvalues and eigenvectors and diagonalise a matrix",
+          "criteria": {
+            "narrative": "Learning outcome assessed and passed at Example Institute of Technology."
+          }
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:student-s:5",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://data.example.edu/org/example-tech",
+        "type": [
+          "Profile"
+        ],
+        "name": "Example Institute of Technology"
+      },
+      "validFrom": "2026-03-20T00:00:00Z",
+      "name": "Solve separable and linear first-order ODEs",
+      "credentialSubject": {
+        "id": "did:example:student-s-3a91",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://data.example.edu/outcome/M0010-LO1",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Solve separable and linear first-order ODEs",
+          "criteria": {
+            "narrative": "Learning outcome assessed and passed at Example Institute of Technology."
+          }
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:student-s:6",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://data.example.edu/org/example-tech",
+        "type": [
+          "Profile"
+        ],
+        "name": "Example Institute of Technology"
+      },
+      "validFrom": "2026-03-20T00:00:00Z",
+      "name": "Formulate first-order ODE models from rate-of-change descriptions",
+      "credentialSubject": {
+        "id": "did:example:student-s-3a91",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://data.example.edu/outcome/M0010-LO2",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Formulate first-order ODE models from rate-of-change descriptions",
+          "criteria": {
+            "narrative": "Learning outcome assessed and passed at Example Institute of Technology."
+          }
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:student-s:7",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://data.example.edu/org/example-tech",
+        "type": [
+          "Profile"
+        ],
+        "name": "Example Institute of Technology"
+      },
+      "validFrom": "2026-03-20T00:00:00Z",
+      "name": "Solve constant-coefficient second-order ODEs and interpret damping",
+      "credentialSubject": {
+        "id": "did:example:student-s-3a91",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://data.example.edu/outcome/M0010-LO3",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Solve constant-coefficient second-order ODEs and interpret damping",
+          "criteria": {
+            "narrative": "Learning outcome assessed and passed at Example Institute of Technology."
+          }
+        }
+      }
+    }
+  ]
+}

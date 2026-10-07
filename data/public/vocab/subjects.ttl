@@ -1,0 +1,57 @@
+# Main subjects (Swedish "ämne") as used in Swedish course syllabi, with English
+# names (our translation). Courses point here with et:subject; the employer view
+# sums credits per subject, as programme descriptions do.
+
+@prefix subj: <https://w3id.org/edthread/subject/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+subj:scheme a skos:ConceptScheme ;
+    skos:prefLabel "Main subjects of study"@en, "Huvudämnen"@sv .
+
+subj:mathematics a skos:Concept ; skos:inScheme subj:scheme ;
+    skos:prefLabel "Mathematics"@en, "Matematik"@sv .
+
+subj:mathematical-statistics a skos:Concept ; skos:inScheme subj:scheme ;
+    skos:prefLabel "Mathematical Statistics"@en, "Matematisk statistik"@sv .
+
+subj:scientific-computing a skos:Concept ; skos:inScheme subj:scheme ;
+    skos:prefLabel "Scientific Computing"@en, "Teknisk- vetenskapliga beräkningar"@sv .
+
+subj:physics a skos:Concept ; skos:inScheme subj:scheme ;
+    skos:prefLabel "Physics"@en, "Fysik"@sv .
+
+subj:engineering-mechanics a skos:Concept ; skos:inScheme subj:scheme ;
+    skos:prefLabel "Engineering Mechanics"@en, "Teknisk mekanik"@sv .
+
+subj:fluid-mechanics a skos:Concept ; skos:inScheme subj:scheme ;
+    skos:prefLabel "Fluid Mechanics"@en, "Strömningslära"@sv .
+
+subj:experimental-mechanics a skos:Concept ; skos:inScheme subj:scheme ;
+    skos:prefLabel "Experimental Mechanics"@en, "Experimentell mekanik"@sv .
+
+subj:solid-mechanics a skos:Concept ; skos:inScheme subj:scheme ;
+    skos:prefLabel "Solid Mechanics"@en, "Hållfasthetslära"@sv .
+
+subj:machine-elements a skos:Concept ; skos:inScheme subj:scheme ;
+    skos:prefLabel "Machine Elements"@en, "Maskinelement"@sv .
+
+subj:electrical-engineering a skos:Concept ; skos:inScheme subj:scheme ;
+    skos:prefLabel "Electrical Engineering"@en, "Elektroteknik"@sv .
+
+subj:embedded-systems a skos:Concept ; skos:inScheme subj:scheme ;
+    skos:prefLabel "Embedded Systems"@en, "Inbyggda system"@sv .
+
+subj:automatic-control a skos:Concept ; skos:inScheme subj:scheme ;
+    skos:prefLabel "Automatic Control"@en, "Reglerteknik"@sv .
+
+subj:signal-processing a skos:Concept ; skos:inScheme subj:scheme ;
+    skos:prefLabel "Signal Processing"@en, "Signalbehandling"@sv .
+
+subj:computer-engineering a skos:Concept ; skos:inScheme subj:scheme ;
+    skos:prefLabel "Computer Engineering"@en, "Datateknik"@sv .
+
+subj:computer-science a skos:Concept ; skos:inScheme subj:scheme ;
+    skos:prefLabel "Computer Science"@en, "Datalogi"@sv .
+
+subj:industrial-economics a skos:Concept ; skos:inScheme subj:scheme ;
+    skos:prefLabel "Industrial Economics"@en, "Industriell ekonomi"@sv .

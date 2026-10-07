@@ -1,0 +1,24 @@
+{{define "content"}}
+<section class="intro">
+  <h1>Follow the thread through education</h1>
+  <p>The learning outcomes in course syllabi are linked across courses, programs, institutions and
+    occupations. Pick a role and a question.</p>
+</section>
+<div class="roles">
+  {{range .Roles}}
+  <section class="role role-{{.ID}}">
+    <h2><span class="pill">{{.Name}}</span></h2>
+    <p class="role-question">“{{.Question}}”</p>
+    <ul>
+      {{range .Queries}}
+      <li>
+        <a href="/q/{{.Name}}">{{.Title}}</a>
+        {{if .NeedsWallet}}<span class="tag">needs consent</span>{{end}}
+        <p>{{.About}}</p>
+      </li>
+      {{end}}
+    </ul>
+  </section>
+  {{end}}
+</div>
+{{end}}

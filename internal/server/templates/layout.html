@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{.Title}} · Educational Thread</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header class="top">
+    <a class="brand" href="/">Educational Thread</a>
+    <nav>
+      <a href="/">Questions</a>
+      <a href="/sparql">Expert SPARQL</a>
+    </nav>
+  </header>
+  <main>
+    {{template "content" .}}
+  </main>
+  <footer>
+    Prototype. Example Institute of Technology and Other University are fictitious. LTU data is derived from LTU’s public study plan and syllabi (links on each course); outcome links marked as proposed are an unreviewed draft. Not an LTU service. Learner credentials are unsigned samples.
+  </footer>
+</body>
+</html>

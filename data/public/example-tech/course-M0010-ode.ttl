@@ -1,0 +1,110 @@
+# M0010 Ordinary Differential Equations — the course at the centre of the example.
+
+@prefix et:     <https://w3id.org/edthread#> .
+@prefix schema: <https://schema.org/> .
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix org:    <https://data.example.edu/org/> .
+@prefix c:      <https://data.example.edu/course/> .
+@prefix u:      <https://data.example.edu/unit/> .
+@prefix lo:     <https://data.example.edu/outcome/> .
+@prefix asm:    <https://data.example.edu/assessment/> .
+@prefix subj:   <https://w3id.org/edthread/subject/> .
+@prefix tp:     <https://w3id.org/edthread/topic/> .
+@prefix sk:     <https://w3id.org/edthread/skill/> .
+
+c:M0010 a et:Course ;
+    schema:courseCode "M0010" ;
+    et:subject subj:mathematics ;
+    schema:name "Ordinary Differential Equations"@en ;
+    et:credits 7.5 ;
+    schema:provider org:example-tech ;
+    et:hasUnit u:M0010-U1, u:M0010-U2, u:M0010-U3, u:M0010-U4, u:M0010-U5 .
+
+# --- Units ------------------------------------------------------------------
+
+u:M0010-U1 a et:LearningUnit ;
+    rdfs:label "First-order ODEs"@en ;
+    et:sequenceIndex 1 ; et:about tp:first-order-ode ; et:workloadHours 40 ;
+    et:hasOutcome lo:M0010-LO1, lo:M0010-LO2 ;
+    et:hasActivity [ a et:LearningActivity ; et:activityType et:lecture ] ,
+                   [ a et:LearningActivity ; et:activityType et:exercise ;
+                     rdfs:label "Modelling workshop: mixing tanks and cooling"@en ] ;
+    et:hasAssessment asm:M0010-exam .
+
+u:M0010-U2 a et:LearningUnit ;
+    rdfs:label "Second-order linear ODEs"@en ;
+    et:sequenceIndex 2 ; et:about tp:second-order-linear-ode ; et:workloadHours 40 ;
+    et:hasOutcome lo:M0010-LO3 ;
+    et:hasActivity [ a et:LearningActivity ; et:activityType et:lecture ] ;
+    et:hasAssessment asm:M0010-exam .
+
+u:M0010-U3 a et:LearningUnit ;
+    rdfs:label "Systems of linear ODEs"@en ;
+    et:sequenceIndex 3 ; et:about tp:linear-ode-systems ; et:workloadHours 45 ;
+    et:hasOutcome lo:M0010-LO4 ;
+    et:hasActivity [ a et:LearningActivity ; et:activityType et:lecture ] ;
+    et:hasAssessment asm:M0010-exam .
+
+u:M0010-U4 a et:LearningUnit ;
+    rdfs:label "Laplace transform"@en ;
+    et:sequenceIndex 4 ; et:about tp:laplace-transform ; et:workloadHours 40 ;
+    et:hasOutcome lo:M0010-LO5 ;
+    et:hasActivity [ a et:LearningActivity ; et:activityType et:lecture ] ,
+                   [ a et:LearningActivity ; et:activityType et:lab ] ;
+    et:hasAssessment asm:M0010-exam, asm:M0010-lab .
+
+u:M0010-U5 a et:LearningUnit ;
+    rdfs:label "Stability and phase plane"@en ;
+    et:sequenceIndex 5 ; et:about tp:ode-stability ; et:workloadHours 35 ;
+    et:hasOutcome lo:M0010-LO6 ;
+    et:hasActivity [ a et:LearningActivity ; et:activityType et:lecture ] ,
+                   [ a et:LearningActivity ; et:activityType et:lab ] ;
+    et:hasAssessment asm:M0010-exam, asm:M0010-lab .
+
+# --- Outcomes ---------------------------------------------------------------
+
+lo:M0010-LO1 a et:LearningOutcome ;
+    rdfs:label "Solve separable and linear first-order ODEs"@en ;
+    et:bloomLevel et:apply ;
+    et:requires lo:M0001-LO2 .
+
+# Practised in a workshop but never assessed: the SHACL warning and the
+# teacher's alignment check both surface this.
+lo:M0010-LO2 a et:LearningOutcome ;
+    rdfs:label "Formulate first-order ODE models from rate-of-change descriptions"@en ;
+    et:bloomLevel et:apply ;
+    et:requires lo:M0010-LO1 ;
+    et:alignedToSkill sk:mathematical-modelling .
+
+lo:M0010-LO3 a et:LearningOutcome ;
+    rdfs:label "Solve constant-coefficient second-order ODEs and interpret damping"@en ;
+    et:bloomLevel et:apply ;
+    et:requires lo:M0001-LO1 .
+
+lo:M0010-LO4 a et:LearningOutcome ;
+    rdfs:label "Solve x' = Ax using eigenvalues and eigenvectors"@en ;
+    et:bloomLevel et:apply ;
+    et:requires lo:M0002-LO2 ;
+    et:revisits lo:M0010-LO3 .
+
+lo:M0010-LO5 a et:LearningOutcome ;
+    rdfs:label "Solve initial-value problems with the Laplace transform"@en ;
+    et:bloomLevel et:apply ;
+    et:requires lo:M0001-LO2 .
+
+lo:M0010-LO6 a et:LearningOutcome ;
+    rdfs:label "Classify equilibria of planar linear systems and sketch phase portraits"@en ;
+    et:bloomLevel et:analyze ;
+    et:requires lo:M0010-LO4 .
+
+# --- Assessments ------------------------------------------------------------
+
+asm:M0010-exam a et:Assessment ;
+    rdfs:label "ODE written exam"@en ;
+    et:assessmentType et:writtenExam ;
+    et:assesses lo:M0010-LO1, lo:M0010-LO3, lo:M0010-LO4, lo:M0010-LO5, lo:M0010-LO6 .
+
+asm:M0010-lab a et:Assessment ;
+    rdfs:label "Laplace and stability computer lab"@en ;
+    et:assessmentType et:labReport ;
+    et:assesses lo:M0010-LO5, lo:M0010-LO6 .

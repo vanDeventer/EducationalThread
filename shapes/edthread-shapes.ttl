@@ -1,0 +1,108 @@
+# SHACL shapes for the Educational Thread profile: the contract that published
+# curriculum data must meet. GraphDB enforces these on every write (any
+# result, even a warning, rejects the transaction), so curriculum-design
+# advice lives separately in edthread-advisories.ttl, and graph-wide integrity
+# checks that need SPARQL (which GraphDB's SHACL engine does not evaluate)
+# live in checks/*.rq.
+
+@prefix sh:     <http://www.w3.org/ns/shacl#> .
+@prefix et:     <https://w3id.org/edthread#> .
+@prefix ets:    <https://w3id.org/edthread/shapes#> .
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:   <http://www.w3.org/2004/02/skos/core#> .
+@prefix schema: <https://schema.org/> .
+
+# --- Curriculum layer -------------------------------------------------------
+
+ets:CourseShape a sh:NodeShape ;
+    sh:targetClass et:Course ;
+    sh:property [ sh:path schema:courseCode ; sh:datatype xsd:string ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path schema:name ; sh:minCount 1 ] ;
+    sh:property [ sh:path et:credits ; sh:datatype xsd:decimal ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path schema:provider ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path et:hasUnit ; sh:class et:LearningUnit ] ;
+    sh:property [ sh:path et:hasOutcome ; sh:class et:LearningOutcome ] ;
+    sh:property [ sh:path et:hasAssessment ; sh:class et:Assessment ] ;
+    sh:property [ sh:path et:subject ; sh:class skos:Concept ; sh:maxCount 1 ] ;
+    sh:property [ sh:path et:cycle ; sh:in ( et:firstCycle et:secondCycle ) ; sh:maxCount 1 ] ;
+    sh:property [ sh:path et:entryRequirementNames ; sh:nodeKind sh:IRI ] ;
+    sh:property [ sh:path et:syllabusDecisionDate ; sh:datatype xsd:date ; sh:maxCount 1 ] .
+
+ets:LearningUnitShape a sh:NodeShape ;
+    sh:targetClass et:LearningUnit ;
+    sh:property [ sh:path rdfs:label ; sh:minCount 1 ] ;
+    sh:property [ sh:path et:sequenceIndex ; sh:datatype xsd:integer ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path et:about ; sh:class skos:Concept ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path et:workloadHours ; sh:datatype xsd:integer ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path et:hasOutcome ; sh:class et:LearningOutcome ; sh:minCount 1 ] ;
+    sh:property [ sh:path et:hasActivity ; sh:class et:LearningActivity ] ;
+    sh:property [ sh:path et:hasAssessment ; sh:class et:Assessment ; sh:minCount 1 ] ;
+    sh:property [ sh:path [ sh:inversePath et:hasUnit ] ; sh:minCount 1 ; sh:maxCount 1 ;
+                  sh:message "A learning unit belongs to exactly one course." ] .
+
+ets:LearningOutcomeShape a sh:NodeShape ;
+    sh:targetClass et:LearningOutcome ;
+    sh:property [ sh:path rdfs:label ; sh:minCount 1 ] ;
+    sh:property [ sh:path et:bloomLevel ; sh:class et:BloomLevel ; sh:maxCount 1 ] ;
+    sh:property [ sh:path et:outcomeCategory ;
+                  sh:in ( et:knowledgeAndUnderstanding et:skillsAndAbilities et:judgementAndApproach ) ; sh:maxCount 1 ] ;
+    sh:property [ sh:path et:requires ; sh:class et:LearningOutcome ] ;
+    sh:property [ sh:path et:uses ; sh:class et:LearningOutcome ] ;
+    sh:property [ sh:path et:revisits ; sh:class et:LearningOutcome ] ;
+    sh:property [ sh:path et:alignedToSkill ; sh:class skos:Concept ] .
+
+ets:LearningActivityShape a sh:NodeShape ;
+    sh:targetClass et:LearningActivity ;
+    sh:property [ sh:path et:activityType ; sh:class et:ActivityType ; sh:minCount 1 ; sh:maxCount 1 ] .
+
+ets:AssessmentShape a sh:NodeShape ;
+    sh:targetClass et:Assessment ;
+    sh:property [ sh:path rdfs:label ; sh:minCount 1 ] ;
+    sh:property [ sh:path et:assessmentType ; sh:class et:AssessmentType ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path et:assesses ; sh:class et:LearningOutcome ] ;
+    sh:property [ sh:path et:credits ; sh:datatype xsd:decimal ; sh:maxCount 1 ] .
+
+ets:CourseInstanceShape a sh:NodeShape ;
+    sh:targetClass et:CourseInstance ;
+    sh:property [ sh:path et:instanceOf ; sh:class et:Course ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path schema:instructor ; sh:class schema:Person ; sh:minCount 1 ] ;
+    sh:property [ sh:path et:academicTerm ; sh:datatype xsd:string ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path et:hasDelivery ; sh:class et:UnitDelivery ; sh:minCount 1 ] .
+
+ets:UnitDeliveryShape a sh:NodeShape ;
+    sh:targetClass et:UnitDelivery ;
+    sh:property [ sh:path et:deliversUnit ; sh:class et:LearningUnit ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path et:week ; sh:datatype xsd:integer ; sh:minCount 1 ; sh:maxCount 1 ] .
+
+ets:ProgramShape a sh:NodeShape ;
+    sh:targetClass et:Program ;
+    sh:property [ sh:path schema:name ; sh:minCount 1 ] ;
+    sh:property [ sh:path et:includesCourse ; sh:class et:ProgramCourse ; sh:minCount 1 ] ;
+    sh:property [ sh:path et:hasSpecialisation ; sh:class et:Specialisation ] ;
+    sh:property [ sh:path schema:educationalCredentialAwarded ; sh:class et:Qualification ; sh:minCount 1 ] .
+
+ets:ProgramCourseShape a sh:NodeShape ;
+    sh:targetClass et:ProgramCourse ;
+    sh:property [ sh:path et:course ; sh:class et:Course ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path et:studyYear ; sh:datatype xsd:integer ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path et:studyPeriod ; sh:datatype xsd:integer ; sh:maxCount 1 ] ;
+    sh:property [ sh:path et:studyPeriodEnd ; sh:datatype xsd:integer ; sh:maxCount 1 ] ;
+    sh:property [ sh:path et:inSpecialisation ; sh:class et:Specialisation ; sh:maxCount 1 ] ;
+    sh:property [ sh:path et:status ; sh:in ( et:mandatory et:elective ) ; sh:maxCount 1 ] .
+
+ets:SpecialisationShape a sh:NodeShape ;
+    sh:targetClass et:Specialisation ;
+    sh:property [ sh:path schema:name ; sh:minCount 1 ] ;
+    sh:property [ sh:path [ sh:inversePath et:hasSpecialisation ] ; sh:minCount 1 ; sh:maxCount 1 ;
+                  sh:message "A specialisation belongs to exactly one program." ] .
+
+ets:QualificationShape a sh:NodeShape ;
+    sh:targetClass et:Qualification ;
+    sh:property [ sh:path et:eqfLevel ; sh:datatype xsd:integer ; sh:minCount 1 ; sh:maxCount 1 ;
+                  sh:minInclusive 1 ; sh:maxInclusive 8 ] .
+
+ets:OccupationShape a sh:NodeShape ;
+    sh:targetClass et:Occupation ;
+    sh:property [ sh:path rdfs:label ; sh:minCount 1 ] ;
+    sh:property [ sh:path et:needsSkill ; sh:class skos:Concept ; sh:minCount 1 ] .

@@ -1,0 +1,48 @@
+# Example Institute of Technology (fictitious): organisation, teachers,
+# program and qualification.
+
+@prefix et:     <https://w3id.org/edthread#> .
+@prefix schema: <https://schema.org/> .
+@prefix org:    <https://data.example.edu/org/> .
+@prefix person: <https://data.example.edu/person/> .
+@prefix prog:   <https://data.example.edu/program/> .
+@prefix qual:   <https://data.example.edu/qualification/> .
+@prefix c:      <https://data.example.edu/course/> .
+
+org:example-tech a schema:CollegeOrUniversity ;
+    schema:name "Example Institute of Technology"@en .
+
+org:admissions-office a schema:Organization ;
+    schema:name "Admissions office"@en ;
+    schema:parentOrganization org:example-tech ;
+    et:servesFunction et:admissionsFunction .
+
+org:study-advisor-office a schema:Organization ;
+    schema:name "Study advisors"@en ;
+    schema:parentOrganization org:example-tech ;
+    et:servesFunction et:studyAdvising .
+
+# Teachers act in a public role; their names are part of the course offering.
+person:teacher-ode a schema:Person ;
+    schema:name "Dr. Ada Example" ;
+    schema:worksFor org:example-tech .
+
+person:teacher-control a schema:Person ;
+    schema:name "Dr. Bo Example" ;
+    schema:worksFor org:example-tech .
+
+# A program with a flashy name. Only five of its courses are modelled here.
+prog:bsc-icps a et:Program ;
+    schema:name "BSc in Intelligent Cyber-Physical Systems Engineering"@en ;
+    schema:provider org:example-tech ;
+    schema:educationalCredentialAwarded qual:bsc-icps ;
+    et:includesCourse
+        [ a et:ProgramCourse ; et:course c:M0001 ; et:studyYear 1 ; et:studyPeriod 1 ] ,
+        [ a et:ProgramCourse ; et:course c:M0002 ; et:studyYear 1 ; et:studyPeriod 2 ] ,
+        [ a et:ProgramCourse ; et:course c:M0010 ; et:studyYear 1 ; et:studyPeriod 3 ] ,
+        [ a et:ProgramCourse ; et:course c:E0020 ; et:studyYear 2 ; et:studyPeriod 1 ] ,
+        [ a et:ProgramCourse ; et:course c:E0030 ; et:studyYear 2 ; et:studyPeriod 2 ] .
+
+qual:bsc-icps a et:Qualification ;
+    schema:name "Bachelor of Science in Engineering"@en ;
+    et:eqfLevel 6 .

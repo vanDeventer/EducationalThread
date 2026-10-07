@@ -1,0 +1,26 @@
+# title: Which occupations does this course lead to?
+# role: student
+# about: Follows the thread from the course's outcomes, through later courses, to skills and the occupations that need them.
+# param: course course
+PREFIX et:     <https://w3id.org/edthread#>
+PREFIX schema: <https://schema.org/>
+PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos:   <http://www.w3.org/2004/02/skos/core#>
+PREFIX c:      <https://data.example.edu/course/>
+
+SELECT ?occupation ?skill (GROUP_CONCAT(DISTINCT STR(?viaCourse); separator=", ") AS ?via)
+WHERE {
+  VALUES ?course { c:M0010 }
+  ?course et:hasUnit?/et:hasOutcome ?o .
+
+  # Any chain of later outcomes that build on an outcome of the course (including itself).
+  ?later et:buildsOn* ?o .
+  ?later et:alignedToSkill ?s .
+  ?viaCourse_ a et:Course ; et:hasUnit?/et:hasOutcome ?later ; schema:name ?viaCourse .
+  FILTER (lang(?viaCourse) IN ("", "en"))
+
+  ?s skos:prefLabel ?skill .
+  ?occ et:needsSkill ?s ; rdfs:label ?occupation .
+}
+GROUP BY ?occupation ?skill
+ORDER BY ?occupation ?skill

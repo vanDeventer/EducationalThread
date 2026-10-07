@@ -1,0 +1,10 @@
+# Integrity check: a course instance may only deliver units of its own course.
+# Every row returned is a violation.
+PREFIX et: <https://w3id.org/edthread#>
+
+SELECT ?focus ?message
+WHERE {
+  ?focus et:instanceOf ?course ; et:hasDelivery/et:deliversUnit ?unit .
+  FILTER NOT EXISTS { ?course et:hasUnit ?unit }
+  BIND (CONCAT("Course instance delivers a unit of another course: ", STR(?unit)) AS ?message)
+}

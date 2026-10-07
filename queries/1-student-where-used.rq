@@ -1,0 +1,28 @@
+# title: Where is what I learn in this course used later?
+# role: student
+# about: Follows the thread forward: which outcomes in later courses build on this course's outcomes, and how.
+# param: course course
+PREFIX et:     <https://w3id.org/edthread#>
+PREFIX schema: <https://schema.org/>
+PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos:   <http://www.w3.org/2004/02/skos/core#>
+PREFIX c:      <https://data.example.edu/course/>
+
+SELECT ?myOutcome ?relation ?laterCourse (MIN(?y) AS ?year) ?laterOutcome
+WHERE {
+  VALUES ?course { c:M0010 }
+  # Outcomes hang off the course (syllabus) or off its learning units.
+  ?course et:hasUnit?/et:hasOutcome ?o .
+  ?o rdfs:label ?myOutcome . FILTER (lang(?myOutcome) IN ("", "en"))
+
+  ?later ?rel ?o .
+  ?rel rdfs:subPropertyOf et:buildsOn ; rdfs:label ?relation .
+  FILTER (?rel != et:buildsOn)
+  ?later rdfs:label ?laterOutcome . FILTER (lang(?laterOutcome) IN ("", "en"))
+
+  ?lc a et:Course ; et:hasUnit?/et:hasOutcome ?later ; schema:name ?laterCourse .
+  FILTER (lang(?laterCourse) IN ("", "en") && ?lc != ?course)
+  OPTIONAL { ?pc et:course ?lc ; et:studyYear ?y . }
+}
+GROUP BY ?myOutcome ?relation ?laterCourse ?laterOutcome
+ORDER BY ?myOutcome ?year ?laterCourse

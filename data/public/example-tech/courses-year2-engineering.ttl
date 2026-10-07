@@ -1,0 +1,166 @@
+# Year-2 engineering courses that build on the ODE course.
+
+@prefix et:     <https://w3id.org/edthread#> .
+@prefix schema: <https://schema.org/> .
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix org:    <https://data.example.edu/org/> .
+@prefix c:      <https://data.example.edu/course/> .
+@prefix u:      <https://data.example.edu/unit/> .
+@prefix lo:     <https://data.example.edu/outcome/> .
+@prefix asm:    <https://data.example.edu/assessment/> .
+@prefix subj:   <https://w3id.org/edthread/subject/> .
+@prefix tp:     <https://w3id.org/edthread/topic/> .
+@prefix sk:     <https://w3id.org/edthread/skill/> .
+
+# --- E0020 Control Engineering ----------------------------------------------
+
+c:E0020 a et:Course ;
+    schema:courseCode "E0020" ;
+    et:subject subj:automatic-control ;
+    schema:name "Control Engineering"@en ;
+    et:credits 7.5 ;
+    schema:provider org:example-tech ;
+    et:hasUnit u:E0020-U1, u:E0020-U2, u:E0020-U3, u:E0020-U4, u:E0020-U5 .
+
+u:E0020-U1 a et:LearningUnit ;
+    rdfs:label "Modelling dynamic systems"@en ;
+    et:sequenceIndex 1 ; et:about tp:system-modelling ; et:workloadHours 40 ;
+    et:hasOutcome lo:E0020-LO1 ;
+    et:hasActivity [ a et:LearningActivity ; et:activityType et:lecture ] ,
+                   [ a et:LearningActivity ; et:activityType et:lab ] ;
+    et:hasAssessment asm:E0020-exam, asm:E0020-lab .
+
+u:E0020-U2 a et:LearningUnit ;
+    rdfs:label "Transfer functions"@en ;
+    et:sequenceIndex 2 ; et:about tp:transfer-functions ; et:workloadHours 40 ;
+    et:hasOutcome lo:E0020-LO2 ;
+    et:hasActivity [ a et:LearningActivity ; et:activityType et:lecture ] ;
+    et:hasAssessment asm:E0020-exam .
+
+u:E0020-U3 a et:LearningUnit ;
+    rdfs:label "Feedback and stability"@en ;
+    et:sequenceIndex 3 ; et:about tp:feedback-stability ; et:workloadHours 40 ;
+    et:hasOutcome lo:E0020-LO3 ;
+    et:hasActivity [ a et:LearningActivity ; et:activityType et:lecture ] ;
+    et:hasAssessment asm:E0020-exam .
+
+u:E0020-U4 a et:LearningUnit ;
+    rdfs:label "State-space models"@en ;
+    et:sequenceIndex 4 ; et:about tp:state-space ; et:workloadHours 40 ;
+    et:hasOutcome lo:E0020-LO4 ;
+    et:hasActivity [ a et:LearningActivity ; et:activityType et:lecture ] ,
+                   [ a et:LearningActivity ; et:activityType et:lab ] ;
+    et:hasAssessment asm:E0020-exam, asm:E0020-lab .
+
+u:E0020-U5 a et:LearningUnit ;
+    rdfs:label "PID controller design project"@en ;
+    et:sequenceIndex 5 ; et:about tp:controller-design ; et:workloadHours 40 ;
+    et:hasOutcome lo:E0020-LO5 ;
+    et:hasActivity [ a et:LearningActivity ; et:activityType et:project ] ;
+    et:hasAssessment asm:E0020-project .
+
+lo:E0020-LO1 a et:LearningOutcome ;
+    rdfs:label "Derive ODE models of mechanical and electrical systems"@en ;
+    et:bloomLevel et:apply ;
+    et:requires lo:M0010-LO2, lo:M0010-LO3 ;
+    et:alignedToSkill sk:mathematical-modelling, sk:simulate-dynamic-systems .
+
+lo:E0020-LO2 a et:LearningOutcome ;
+    rdfs:label "Derive transfer functions and compute step responses"@en ;
+    et:bloomLevel et:apply ;
+    et:requires lo:M0010-LO5, lo:E0020-LO1 .
+
+lo:E0020-LO3 a et:LearningOutcome ;
+    rdfs:label "Determine closed-loop stability from pole locations"@en ;
+    et:bloomLevel et:analyze ;
+    et:requires lo:E0020-LO2 ;
+    et:uses lo:M0010-LO6 ;
+    et:alignedToSkill sk:control-systems-design .
+
+lo:E0020-LO4 a et:LearningOutcome ;
+    rdfs:label "Represent systems in state-space form and relate eigenvalues to modes"@en ;
+    et:bloomLevel et:analyze ;
+    et:requires lo:M0010-LO4, lo:M0002-LO2 ;
+    et:alignedToSkill sk:control-systems-design .
+
+lo:E0020-LO5 a et:LearningOutcome ;
+    rdfs:label "Design and tune a PID controller to meet specifications"@en ;
+    et:bloomLevel et:create ;
+    et:requires lo:E0020-LO3 ;
+    et:alignedToSkill sk:control-systems-design, sk:simulate-dynamic-systems .
+
+asm:E0020-exam a et:Assessment ;
+    rdfs:label "Control written exam"@en ;
+    et:assessmentType et:writtenExam ;
+    et:assesses lo:E0020-LO1, lo:E0020-LO2, lo:E0020-LO3, lo:E0020-LO4 .
+
+asm:E0020-lab a et:Assessment ;
+    rdfs:label "Modelling and state-space lab"@en ;
+    et:assessmentType et:labReport ;
+    et:assesses lo:E0020-LO1, lo:E0020-LO4 .
+
+asm:E0020-project a et:Assessment ;
+    rdfs:label "PID design project report"@en ;
+    et:assessmentType et:projectWork ;
+    et:assesses lo:E0020-LO5 .
+
+# --- E0030 Fluid Mechanics --------------------------------------------------
+
+c:E0030 a et:Course ;
+    schema:courseCode "E0030" ;
+    et:subject subj:fluid-mechanics ;
+    schema:name "Fluid Mechanics"@en ;
+    et:credits 7.5 ;
+    schema:provider org:example-tech ;
+    et:hasUnit u:E0030-U1, u:E0030-U2, u:E0030-U3 .
+
+u:E0030-U1 a et:LearningUnit ;
+    rdfs:label "Conservation laws"@en ;
+    et:sequenceIndex 1 ; et:about tp:conservation-laws ; et:workloadHours 80 ;
+    et:hasOutcome lo:E0030-LO1 ;
+    et:hasActivity [ a et:LearningActivity ; et:activityType et:lecture ] ;
+    et:hasAssessment asm:E0030-exam .
+
+u:E0030-U2 a et:LearningUnit ;
+    rdfs:label "Unsteady tank flow"@en ;
+    et:sequenceIndex 2 ; et:about tp:unsteady-tank-flow ; et:workloadHours 50 ;
+    et:hasOutcome lo:E0030-LO2 ;
+    et:hasActivity [ a et:LearningActivity ; et:activityType et:lab ] ;
+    et:hasAssessment asm:E0030-lab .
+
+u:E0030-U3 a et:LearningUnit ;
+    rdfs:label "Boundary layers"@en ;
+    et:sequenceIndex 3 ; et:about tp:boundary-layers ; et:workloadHours 70 ;
+    et:hasOutcome lo:E0030-LO3 ;
+    et:hasActivity [ a et:LearningActivity ; et:activityType et:lecture ] ;
+    et:hasAssessment asm:E0030-exam .
+
+lo:E0030-LO1 a et:LearningOutcome ;
+    rdfs:label "Apply mass and momentum conservation to control volumes"@en ;
+    et:bloomLevel et:apply ;
+    et:requires lo:M0001-LO2 ;
+    et:alignedToSkill sk:fluid-flow-analysis .
+
+lo:E0030-LO2 a et:LearningOutcome ;
+    rdfs:label "Model tank draining and filling as a first-order ODE and solve it"@en ;
+    et:bloomLevel et:apply ;
+    et:requires lo:M0010-LO1, lo:E0030-LO1 ;
+    et:revisits lo:M0010-LO2 ;
+    et:alignedToSkill sk:mathematical-modelling .
+
+lo:E0030-LO3 a et:LearningOutcome ;
+    rdfs:label "Reduce boundary-layer equations to an ODE by similarity and interpret its solution"@en ;
+    et:bloomLevel et:understand ;
+    et:requires lo:E0030-LO1 ;
+    et:uses lo:M0010-LO1 ;
+    et:alignedToSkill sk:fluid-flow-analysis .
+
+asm:E0030-exam a et:Assessment ;
+    rdfs:label "Fluid mechanics written exam"@en ;
+    et:assessmentType et:writtenExam ;
+    et:assesses lo:E0030-LO1, lo:E0030-LO3 .
+
+asm:E0030-lab a et:Assessment ;
+    rdfs:label "Tank draining lab"@en ;
+    et:assessmentType et:labReport ;
+    et:assesses lo:E0030-LO2 .

@@ -1,0 +1,52 @@
+# title: What does this degree actually cover?
+# role: employer
+# about: Credits per main subject over the mandatory courses of a program or specialisation (elective and freely chosen courses come on top).
+# param: pathway pathway
+PREFIX et:     <https://w3id.org/edthread#>
+PREFIX schema: <https://schema.org/>
+PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos:   <http://www.w3.org/2004/02/skos/core#>
+PREFIX c:      <https://data.example.edu/course/>
+PREFIX prog:   <https://data.example.edu/program/>
+
+SELECT ?subject (SUM(?credits) AS ?totalCredits) (ROUND(1000 * SUM(?credits) / ?all) / 10 AS ?percent)
+WHERE {
+  VALUES ?pathway { prog:bsc-icps }
+  {
+    SELECT ?pathway (SUM(?c) AS ?all) WHERE {
+    {
+      SELECT DISTINCT ?pathway ?course WHERE {
+        {
+          ?pathway a et:Program ; et:includesCourse ?pc .
+          FILTER NOT EXISTS { ?pathway et:hasSpecialisation ?anySpecialisation }
+        } UNION {
+          ?program et:hasSpecialisation ?pathway ; et:includesCourse ?pc .
+          FILTER NOT EXISTS { ?pc et:inSpecialisation ?other . FILTER (?other != ?pathway) }
+        }
+        ?pc et:course ?course .
+        FILTER NOT EXISTS { ?pc et:status et:elective }
+      }
+    }
+      ?course et:credits ?c .
+    }
+    GROUP BY ?pathway
+  }
+  {
+      SELECT DISTINCT ?pathway ?course WHERE {
+        {
+          ?pathway a et:Program ; et:includesCourse ?pc .
+          FILTER NOT EXISTS { ?pathway et:hasSpecialisation ?anySpecialisation }
+        } UNION {
+          ?program et:hasSpecialisation ?pathway ; et:includesCourse ?pc .
+          FILTER NOT EXISTS { ?pc et:inSpecialisation ?other . FILTER (?other != ?pathway) }
+        }
+        ?pc et:course ?course .
+        FILTER NOT EXISTS { ?pc et:status et:elective }
+      }
+    }
+  ?course et:credits ?credits .
+  OPTIONAL { ?course et:subject/skos:prefLabel ?s . FILTER (lang(?s) IN ("", "en")) }
+  BIND (COALESCE(?s, "(no subject)") AS ?subject)
+}
+GROUP BY ?subject ?all
+ORDER BY DESC(?totalCredits) ?subject

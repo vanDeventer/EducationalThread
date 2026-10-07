@@ -1,0 +1,39 @@
+# Course instances (kurstillfällen).
+# In autumn 2026 the new ODE teacher moved 'Stability and phase plane' ahead of
+# 'Systems of linear ODEs'. The teacher's alignment check flags this, because
+# the stability outcome requires the systems outcome.
+
+@prefix et:     <https://w3id.org/edthread#> .
+@prefix schema: <https://schema.org/> .
+@prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
+@prefix org:    <https://data.example.edu/org/> .
+@prefix person: <https://data.example.edu/person/> .
+@prefix c:      <https://data.example.edu/course/> .
+@prefix u:      <https://data.example.edu/unit/> .
+@prefix ci:     <https://data.example.edu/course-instance/> .
+
+ci:M0010-2026HT a et:CourseInstance ;
+    et:instanceOf c:M0010 ;
+    et:academicTerm "2026-HT" ;
+    schema:startDate "2026-11-02"^^xsd:date ;
+    schema:instructor person:teacher-ode ;
+    schema:location org:example-tech ;
+    et:hasDelivery
+        [ a et:UnitDelivery ; et:deliversUnit u:M0010-U1 ; et:week 1 ] ,
+        [ a et:UnitDelivery ; et:deliversUnit u:M0010-U2 ; et:week 3 ] ,
+        [ a et:UnitDelivery ; et:deliversUnit u:M0010-U4 ; et:week 4 ] ,
+        [ a et:UnitDelivery ; et:deliversUnit u:M0010-U5 ; et:week 6 ] ,
+        [ a et:UnitDelivery ; et:deliversUnit u:M0010-U3 ; et:week 7 ] .
+
+ci:E0020-2027VT a et:CourseInstance ;
+    et:instanceOf c:E0020 ;
+    et:academicTerm "2027-VT" ;
+    schema:startDate "2027-01-18"^^xsd:date ;
+    schema:instructor person:teacher-control ;
+    schema:location org:example-tech ;
+    et:hasDelivery
+        [ a et:UnitDelivery ; et:deliversUnit u:E0020-U1 ; et:week 1 ] ,
+        [ a et:UnitDelivery ; et:deliversUnit u:E0020-U2 ; et:week 2 ] ,
+        [ a et:UnitDelivery ; et:deliversUnit u:E0020-U3 ; et:week 4 ] ,
+        [ a et:UnitDelivery ; et:deliversUnit u:E0020-U4 ; et:week 5 ] ,
+        [ a et:UnitDelivery ; et:deliversUnit u:E0020-U5 ; et:week 6 ] .

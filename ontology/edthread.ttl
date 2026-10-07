@@ -1,0 +1,318 @@
+# Educational Thread (et:) — a thin application profile.
+#
+# It does not try to be a new education ontology. It names the few classes and
+# relations needed to thread courses together and points (skos:closeMatch /
+# rdfs:subClassOf) to the established vocabularies they correspond to:
+#   schema.org  — public course descriptions (Course, CourseInstance, ...)
+#   ELM         — Europass Learning Model v3 (EU)
+#   ESCO        — EU skills / occupations
+#   SKOS        — topic and skill taxonomies
+#   1EdTech CASE — competency associations (isPrerequisiteOf, precedes, ...)
+#
+# Two layers are kept apart on purpose:
+#   * the curriculum graph (public, nothing personal) and
+#   * the learner layer (et:Achievement), held by the learner and only
+#     disclosed with consent. Personal data points INTO the curriculum graph;
+#     the curriculum graph never points to a person.
+
+@prefix et:      <https://w3id.org/edthread#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix schema:  <https://schema.org/> .
+@prefix elm:     <http://data.europa.eu/snb/model/elm/> .
+@prefix esco:    <http://data.europa.eu/esco/model#> .
+
+<https://w3id.org/edthread>
+    a owl:Ontology ;
+    dcterms:title "Educational Thread application profile"@en ;
+    dcterms:description "Classes and relations for threading learning outcomes across courses, programs, credentials and occupations."@en ;
+    dcterms:creator "Jan van Deventer" ;
+    owl:versionInfo "0.2.0" .
+
+# ---------------------------------------------------------------------------
+# Curriculum layer (public)
+# ---------------------------------------------------------------------------
+
+et:Course a owl:Class ;
+    rdfs:label "Course"@en ;
+    rdfs:comment "A course as specified by its syllabus (Swedish: kursplan). Stable across offerings."@en ;
+    rdfs:subClassOf schema:Course ;
+    skos:closeMatch elm:LearningAchievementSpecification .
+
+et:LearningUnit a owl:Class ;
+    rdfs:label "Learning unit"@en ;
+    rdfs:comment "A block of a course about one topic, with intended learning outcomes, learning activities and assessments (Biggs' constructive alignment). Called 'knowledge unit' in the ACM/IEEE curricula."@en ;
+    skos:closeMatch elm:LearningAchievementSpecification .
+
+et:LearningOutcome a owl:Class ;
+    rdfs:label "Learning outcome"@en ;
+    rdfs:comment "What a learner can do after a unit. Outcomes, not units, are what get linked across courses and institutions."@en ;
+    skos:closeMatch elm:LearningOutcome .
+
+et:LearningActivity a owl:Class ;
+    rdfs:label "Learning activity"@en ;
+    skos:closeMatch elm:LearningActivitySpecification .
+
+et:Assessment a owl:Class ;
+    rdfs:label "Assessment"@en ;
+    skos:closeMatch elm:LearningAssessmentSpecification .
+
+et:CourseInstance a owl:Class ;
+    rdfs:label "Course instance"@en ;
+    rdfs:comment "One offering of a course (Swedish: kurstillfälle): term, teacher, and the order in which units are actually delivered."@en ;
+    rdfs:subClassOf schema:CourseInstance .
+
+et:UnitDelivery a owl:Class ;
+    rdfs:label "Unit delivery"@en ;
+    rdfs:comment "When a learning unit is delivered within a course instance."@en .
+
+et:Program a owl:Class ;
+    rdfs:label "Program"@en ;
+    rdfs:subClassOf schema:EducationalOccupationalProgram .
+
+et:ProgramCourse a owl:Class ;
+    rdfs:label "Program course"@en ;
+    rdfs:comment "The placement of a course in a program (study year and period)."@en .
+
+et:Qualification a owl:Class ;
+    rdfs:label "Qualification"@en ;
+    rdfs:subClassOf schema:EducationalOccupationalCredential ;
+    skos:closeMatch elm:Qualification .
+
+et:Occupation a owl:Class ;
+    rdfs:label "Occupation"@en ;
+    rdfs:subClassOf schema:Occupation ;
+    skos:closeMatch esco:Occupation .
+
+et:BloomLevel a owl:Class ;
+    rdfs:label "Bloom level"@en ;
+    rdfs:comment "Cognitive level of an outcome (revised Bloom taxonomy)."@en ;
+    rdfs:subClassOf skos:Concept .
+
+et:Specialisation a owl:Class ;
+    rdfs:label "Specialisation"@en ;
+    rdfs:comment "A track within a program (Swedish: inriktning) with its own mandatory and elective courses."@en .
+
+et:AssessmentType a owl:Class ; rdfs:subClassOf skos:Concept ; rdfs:label "Assessment type"@en .
+et:ActivityType   a owl:Class ; rdfs:subClassOf skos:Concept ; rdfs:label "Activity type"@en .
+
+# ---------------------------------------------------------------------------
+# Learner layer (private, held by the learner)
+# ---------------------------------------------------------------------------
+
+et:Achievement a owl:Class ;
+    rdfs:label "Achievement"@en ;
+    rdfs:comment "Evidence that a learner has demonstrated a learning outcome. In production this is a W3C Verifiable Credential (Open Badges 3.0 / CLR 2.0 / European Digital Credential) in the learner's wallet."@en ;
+    skos:closeMatch elm:LearningAchievement .
+
+# ---------------------------------------------------------------------------
+# Structure
+# ---------------------------------------------------------------------------
+
+et:hasUnit a owl:ObjectProperty ;
+    rdfs:label "has unit"@en ;
+    rdfs:domain et:Course ; rdfs:range et:LearningUnit ;
+    skos:closeMatch schema:syllabusSections .
+
+et:sequenceIndex a owl:DatatypeProperty ;
+    rdfs:label "sequence index"@en ;
+    rdfs:comment "Nominal position of a unit in the syllabus."@en ;
+    rdfs:domain et:LearningUnit ; rdfs:range xsd:integer .
+
+et:about a owl:ObjectProperty ;
+    rdfs:label "about"@en ;
+    rdfs:comment "The primary topic of a unit, a SKOS concept (e.g. from MSC2020, ACM CCS or Wikidata)."@en ;
+    rdfs:domain et:LearningUnit ; rdfs:range skos:Concept ;
+    skos:closeMatch schema:about .
+
+et:hasOutcome a owl:ObjectProperty ;
+    rdfs:label "has outcome"@en ;
+    rdfs:comment "Links a course (as in a syllabus) or a learning unit (a teacher's breakdown) to an intended learning outcome. No rdfs:domain: it is used on both."@en ;
+    rdfs:range et:LearningOutcome ;
+    skos:closeMatch schema:teaches .
+
+et:hasActivity a owl:ObjectProperty ;
+    rdfs:domain et:LearningUnit ; rdfs:range et:LearningActivity .
+
+et:hasAssessment a owl:ObjectProperty ;
+    rdfs:comment "Assessment of a course (an examination module in the syllabus) or of a learning unit."@en ;
+    rdfs:range et:Assessment .
+
+et:assesses a owl:ObjectProperty ;
+    rdfs:label "assesses"@en ;
+    rdfs:domain et:Assessment ; rdfs:range et:LearningOutcome ;
+    skos:closeMatch schema:assesses .
+
+et:assessmentType a owl:ObjectProperty ; rdfs:domain et:Assessment ; rdfs:range et:AssessmentType .
+et:activityType   a owl:ObjectProperty ; rdfs:domain et:LearningActivity ; rdfs:range et:ActivityType .
+
+et:workloadHours a owl:DatatypeProperty ;
+    rdfs:label "workload hours"@en ;
+    rdfs:comment "Nominal student workload of a unit (1 ECTS credit is 25-30 h)."@en ;
+    rdfs:domain et:LearningUnit ; rdfs:range xsd:integer .
+
+et:credits a owl:DatatypeProperty ;
+    rdfs:label "credits (ECTS)"@en ;
+    rdfs:comment "Credits of a course or of an examination module (1 hp = 1 ECTS credit)."@en ;
+    rdfs:range xsd:decimal .
+
+et:bloomLevel a owl:ObjectProperty ;
+    rdfs:domain et:LearningOutcome ; rdfs:range et:BloomLevel .
+
+et:rank a owl:DatatypeProperty ;
+    rdfs:comment "Ordinal rank of a Bloom level (1 = remember ... 6 = create)."@en ;
+    rdfs:range xsd:integer .
+
+# ---------------------------------------------------------------------------
+# The thread: dependencies between outcomes (later outcome -> earlier outcome)
+# Inverse of CASE 'isPrerequisiteOf'.
+# ---------------------------------------------------------------------------
+
+et:buildsOn a owl:ObjectProperty ;
+    rdfs:label "builds on"@en ;
+    rdfs:comment "The subject outcome depends in some way on the object outcome."@en ;
+    rdfs:domain et:LearningOutcome ; rdfs:range et:LearningOutcome .
+
+et:requires a owl:ObjectProperty ;
+    rdfs:label "requires"@en ;
+    rdfs:comment "Hard prerequisite: the subject outcome cannot be reached without the object outcome. Used by admissions and advising."@en ;
+    rdfs:subPropertyOf et:buildsOn .
+
+et:uses a owl:ObjectProperty ;
+    rdfs:label "uses"@en ;
+    rdfs:comment "Applies the object outcome without strictly requiring mastery. Useful for showing students where their effort pays off."@en ;
+    rdfs:subPropertyOf et:buildsOn .
+
+et:revisits a owl:ObjectProperty ;
+    rdfs:label "revisits"@en ;
+    rdfs:comment "Returns to and deepens the object outcome."@en ;
+    rdfs:subPropertyOf et:buildsOn .
+
+et:alignedToSkill a owl:ObjectProperty ;
+    rdfs:label "aligned to skill"@en ;
+    rdfs:comment "Links an outcome to a skill in an occupational taxonomy (ESCO, O*NET)."@en ;
+    rdfs:domain et:LearningOutcome ; rdfs:range skos:Concept .
+
+et:needsSkill a owl:ObjectProperty ;
+    rdfs:label "needs skill"@en ;
+    rdfs:domain et:Occupation ; rdfs:range skos:Concept ;
+    skos:closeMatch esco:relatedEssentialSkill .
+
+# ---------------------------------------------------------------------------
+# Offerings and programs
+# ---------------------------------------------------------------------------
+
+et:instanceOf a owl:ObjectProperty ;
+    rdfs:domain et:CourseInstance ; rdfs:range et:Course ;
+    owl:inverseOf schema:hasCourseInstance .
+
+et:academicTerm a owl:DatatypeProperty ; rdfs:domain et:CourseInstance ; rdfs:range xsd:string .
+et:hasDelivery  a owl:ObjectProperty ; rdfs:domain et:CourseInstance ; rdfs:range et:UnitDelivery .
+et:deliversUnit a owl:ObjectProperty ; rdfs:domain et:UnitDelivery ; rdfs:range et:LearningUnit .
+et:week         a owl:DatatypeProperty ; rdfs:domain et:UnitDelivery ; rdfs:range xsd:integer ;
+    rdfs:comment "Week of the course instance in which delivery of the unit starts."@en .
+
+et:includesCourse a owl:ObjectProperty ; rdfs:domain et:Program ; rdfs:range et:ProgramCourse .
+et:course         a owl:ObjectProperty ; rdfs:domain et:ProgramCourse ; rdfs:range et:Course .
+et:studyYear      a owl:DatatypeProperty ; rdfs:domain et:ProgramCourse ; rdfs:range xsd:integer .
+et:studyPeriod    a owl:DatatypeProperty ; rdfs:domain et:ProgramCourse ; rdfs:range xsd:integer .
+et:eqfLevel       a owl:DatatypeProperty ; rdfs:domain et:Qualification ; rdfs:range xsd:integer ;
+    rdfs:comment "European Qualifications Framework level (1-8)."@en .
+
+et:hasSpecialisation a owl:ObjectProperty ; rdfs:domain et:Program ; rdfs:range et:Specialisation .
+et:inSpecialisation  a owl:ObjectProperty ; rdfs:domain et:ProgramCourse ; rdfs:range et:Specialisation ;
+    rdfs:comment "The placement belongs to this specialisation; placements without it belong to the program's common core."@en .
+et:status            a owl:ObjectProperty ; rdfs:domain et:ProgramCourse ;
+    rdfs:comment "et:mandatory or et:elective. Absent means mandatory."@en .
+et:courseGroup       a owl:DatatypeProperty ; rdfs:domain et:ProgramCourse ;
+    rdfs:comment "The group the course is listed under in the study plan (e.g. Baskurser, Kärnkurser, an elective group)."@en .
+et:studyPeriodEnd    a owl:DatatypeProperty ; rdfs:domain et:ProgramCourse ; rdfs:range xsd:integer ;
+    rdfs:comment "Last study period, for courses spanning several periods."@en .
+et:freeElectiveCredits a owl:DatatypeProperty ; rdfs:range xsd:decimal ;
+    rdfs:comment "Credits of freely chosen courses (valfritt utrymme)."@en .
+et:studyPlanDecisionDate a owl:DatatypeProperty ; rdfs:domain et:Program ; rdfs:range xsd:date .
+
+et:mandatory a skos:Concept ; skos:prefLabel "mandatory"@en, "obligatorisk"@sv .
+et:elective  a skos:Concept ; skos:prefLabel "elective"@en, "valbar"@sv .
+
+# ---------------------------------------------------------------------------
+# Syllabus facts
+# ---------------------------------------------------------------------------
+
+et:cycle a owl:ObjectProperty ; rdfs:domain et:Course ;
+    rdfs:comment "Bologna cycle of the course: et:firstCycle (grundnivå) or et:secondCycle (avancerad nivå)."@en .
+et:firstCycle  a skos:Concept ; skos:prefLabel "first cycle"@en, "grundnivå"@sv .
+et:secondCycle a skos:Concept ; skos:prefLabel "second cycle"@en, "avancerad nivå"@sv .
+
+et:subject a owl:ObjectProperty ; rdfs:domain et:Course ; rdfs:range skos:Concept ;
+    rdfs:comment "Main subject of the course (Swedish: ämne)."@en .
+
+et:entryRequirementNames a owl:ObjectProperty ; rdfs:domain et:Course ;
+    rdfs:comment "A course named in this course's entry requirements (often as 'X or equivalent'). The full text is in schema:coursePrerequisites. The named course may be retired or belong to another program."@en .
+
+et:syllabusDecisionDate a owl:DatatypeProperty ; rdfs:domain et:Course ; rdfs:range xsd:date .
+
+et:outcomeCategory a owl:ObjectProperty ; rdfs:domain et:LearningOutcome ;
+    rdfs:comment "Outcome category of the Swedish Higher Education Ordinance."@en .
+et:knowledgeAndUnderstanding a skos:Concept ; skos:prefLabel "knowledge and understanding"@en, "kunskap och förståelse"@sv .
+et:skillsAndAbilities        a skos:Concept ; skos:prefLabel "skills and abilities"@en, "färdighet och förmåga"@sv .
+et:judgementAndApproach      a skos:Concept ; skos:prefLabel "judgement and approach"@en, "värderingsförmåga och förhållningssätt"@sv .
+
+et:moduleCode  a owl:DatatypeProperty ; rdfs:domain et:Assessment ;
+    rdfs:comment "Code of the examination module (Swedish: provkod) in the syllabus."@en .
+et:gradeScale  a owl:DatatypeProperty ; rdfs:domain et:Assessment .
+
+# ---------------------------------------------------------------------------
+# Offices: who may ask a learner for consent
+# ---------------------------------------------------------------------------
+
+et:servesFunction a owl:ObjectProperty ;
+    rdfs:comment "The function an office of an institution serves; used to find which office of a course's or program's provider a learner consents to."@en .
+et:studyAdvising     a skos:Concept ; skos:prefLabel "study advising"@en, "studievägledning"@sv .
+et:admissionsFunction a skos:Concept ; skos:prefLabel "admissions"@en, "antagning"@sv .
+
+# ---------------------------------------------------------------------------
+# Learner layer properties
+# ---------------------------------------------------------------------------
+
+et:learner a owl:ObjectProperty ;
+    rdfs:comment "The (pseudonymous, e.g. DID) identifier of the learner."@en ;
+    rdfs:domain et:Achievement .
+
+et:demonstrates a owl:ObjectProperty ;
+    rdfs:domain et:Achievement ; rdfs:range et:LearningOutcome .
+
+et:issuedBy  a owl:ObjectProperty ;   rdfs:domain et:Achievement .
+et:awardedOn a owl:DatatypeProperty ; rdfs:domain et:Achievement ; rdfs:range xsd:date .
+
+# ---------------------------------------------------------------------------
+# Controlled vocabularies
+# ---------------------------------------------------------------------------
+
+et:bloomScheme a skos:ConceptScheme ; skos:prefLabel "Revised Bloom taxonomy"@en .
+et:remember   a et:BloomLevel ; skos:inScheme et:bloomScheme ; skos:prefLabel "remember"@en   ; et:rank 1 .
+et:understand a et:BloomLevel ; skos:inScheme et:bloomScheme ; skos:prefLabel "understand"@en ; et:rank 2 .
+et:apply      a et:BloomLevel ; skos:inScheme et:bloomScheme ; skos:prefLabel "apply"@en      ; et:rank 3 .
+et:analyze    a et:BloomLevel ; skos:inScheme et:bloomScheme ; skos:prefLabel "analyze"@en    ; et:rank 4 .
+et:evaluate   a et:BloomLevel ; skos:inScheme et:bloomScheme ; skos:prefLabel "evaluate"@en   ; et:rank 5 .
+et:create     a et:BloomLevel ; skos:inScheme et:bloomScheme ; skos:prefLabel "create"@en     ; et:rank 6 .
+
+et:assessmentTypes a skos:ConceptScheme .
+et:writtenExam a et:AssessmentType ; skos:inScheme et:assessmentTypes ; skos:prefLabel "written exam"@en .
+et:labReport   a et:AssessmentType ; skos:inScheme et:assessmentTypes ; skos:prefLabel "lab report"@en .
+et:projectWork a et:AssessmentType ; skos:inScheme et:assessmentTypes ; skos:prefLabel "project"@en .
+et:quiz        a et:AssessmentType ; skos:inScheme et:assessmentTypes ; skos:prefLabel "quiz"@en .
+et:labWork     a et:AssessmentType ; skos:inScheme et:assessmentTypes ; skos:prefLabel "laboratory work"@en .
+et:assignment  a et:AssessmentType ; skos:inScheme et:assessmentTypes ; skos:prefLabel "assignment"@en .
+et:oralExam    a et:AssessmentType ; skos:inScheme et:assessmentTypes ; skos:prefLabel "oral examination"@en .
+et:report      a et:AssessmentType ; skos:inScheme et:assessmentTypes ; skos:prefLabel "report"@en .
+et:otherAssessment a et:AssessmentType ; skos:inScheme et:assessmentTypes ; skos:prefLabel "other"@en .
+
+et:activityTypes a skos:ConceptScheme .
+et:lecture  a et:ActivityType ; skos:inScheme et:activityTypes ; skos:prefLabel "lecture"@en .
+et:exercise a et:ActivityType ; skos:inScheme et:activityTypes ; skos:prefLabel "exercise session"@en .
+et:lab      a et:ActivityType ; skos:inScheme et:activityTypes ; skos:prefLabel "lab"@en .
+et:project  a et:ActivityType ; skos:inScheme et:activityTypes ; skos:prefLabel "project"@en .
