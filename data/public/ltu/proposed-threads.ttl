@@ -17,6 +17,7 @@
 @prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
 @prefix lo:      <https://w3id.org/edthread/ltu/outcome/> .
 @prefix sk:      <https://w3id.org/edthread/skill/> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
 
 <https://w3id.org/edthread/ltu/graph/proposed-threads>
     a prov:Entity ;
@@ -87,3 +88,15 @@ lo:R7016E-3 et:requires lo:M0018M-7 .
 lo:R7016E-4 et:requires lo:M0066M-7 .
 lo:R7016E-1 et:alignedToSkill sk:mathematical-modelling .
 lo:R7016E-4 et:alignedToSkill sk:simulate-dynamic-systems .
+
+# --- Equivalent outcomes between programmes ------------------------------------
+# S0004E Signals and systems (TCDAA) and S0001E Signal analysis (TCTEA) state the
+# same five learning outcomes, word for word. Proposed as equivalent (closeMatch,
+# accepted in place of each other); whether this grants credit is the teachers'
+# and the university's decision. Identical wording alone is not enough: the degree
+# projects of different specialisations share template outcomes too.
+lo:S0004E-1 skos:closeMatch lo:S0001E-2 .   # how an LTI system affects input signals in time and frequency
+lo:S0004E-2 skos:closeMatch lo:S0001E-3 .   # implement and simulate LTI systems
+lo:S0004E-3 skos:closeMatch lo:S0001E-1 .   # frequency content of a signal
+lo:S0004E-4 skos:closeMatch lo:S0001E-4 .   # poles and zeros, in time and frequency
+lo:S0004E-5 skos:closeMatch lo:S0001E-5 .   # sampling without loss of information

@@ -11,11 +11,14 @@ Every course has **learning outcomes**, as stated in its syllabus. A teacher may
 | Teacher | What does my course cover, in what order, and how is it assessed? | [4](queries/4-teacher-sequence.rq) |
 | Teacher | Are there sequencing or constructive-alignment problems? | [5](queries/5-teacher-alignment-check.rq) |
 | Teacher | Do my syllabus's entry requirements fit the programme? | [9](queries/9-teacher-syllabus-check.rq) |
+| Study advisor | Which courses carry over between two programmes? | [10](queries/10-advisor-shared-courses.rq) |
+| Study advisor | What would switching programme mean for this student? | [11](queries/11-advisor-programme-switch.rq) *(consent)* |
+| Teacher | Which other courses state the same outcomes as mine? | [12](queries/12-teacher-same-outcomes.rq) |
 | Admissions | Which units is this applicant missing to join year 2? | [6](queries/6-admission-gap.rq) *(consent)* |
 | Employer | What does this degree with a flashy name actually cover? | [7](queries/7-employer-topic-profile.rq), [8](queries/8-employer-skills.rq) |
 
 The repository holds two datasets that the same queries run on:
-- **A real programme:** Luleå University of Technology's *Civilingenjör teknisk fysik och elektroteknik* (TCTEA, 300 credits, three specialisations, 65 courses, 470 syllabus outcomes), imported from LTU's public study plan and course syllabi. See [A real programme](#a-real-programme-ltu-tctea).
+- **Two real programmes** at Luleå University of Technology, imported from LTU's public study plans and course syllabi: *Civilingenjör teknisk fysik och elektroteknik* (TCTEA) and *Civilingenjör datateknik* (TCDAA). Each is 300 credits with three specialisations; together they have 103 distinct courses (18 in both programmes) and 715 syllabus outcomes. See [Real programmes](#real-programmes-ltu-tctea-and-tcdaa).
 - **A small fictitious example** (Example Institute of Technology, Other University) that has what syllabi lack: learning units, course instances, Bloom levels and a teacher's week plan.
 
 ## Running it
@@ -68,12 +71,13 @@ shapes/edthread-advisories.ttl SHACL warnings with curriculum-design advice (che
 shapes/checks/*.rq             graph-wide integrity checks GraphDB's SHACL cannot express (cycles, ...)
 data/public/                   the curriculum graph (no personal data)
   vocab/                       topics (MSC2020-based), main subjects (ämnen), skills and occupations (ESCO placeholders)
-  ltu/                         LTU programme TCTEA: generated courses.ttl and tctea-program.ttl,
-                               plus the hand-written proposed-threads.ttl (draft outcome links)
+  ltu/                         LTU programmes: generated institution.ttl, courses.ttl (shared by both
+                               programmes), tctea-program.ttl and tcdaa-program.ttl, plus the
+                               hand-written proposed-threads.ttl (draft outcome links)
   example-tech/                Example Institute of Technology: program, 5 courses, course instances,
                                recognition mapping of another university's outcomes
   other-university/            a second institution publishing its courses with the same profile
-tools/ltu/import_tctea.py      importer: LTU study plan + syllabi (PDF) -> Turtle, with provenance
+tools/ltu/import_ltu.py        importer: LTU study plans + syllabi (PDF) -> Turtle, with provenance
 data/learners/*.json           sample learner wallets: Verifiable Presentations of Open Badges 3.0
                                credentials with an ODRL-style holder policy (consent)
 queries/*.rq                   one SPARQL query per role question, with parameter headers
@@ -115,35 +119,38 @@ Design choices:
 - **Course vs course instance.** The syllabus (kursplan) is stable. The instance (kurstillfälle) records term, teacher and the order in which units are actually delivered.
 - **Reuse before invention.** Classes are subclasses of schema.org types or are mapped with `skos:closeMatch` to the Europass Learning Model (ELM v3) and ESCO. `requires` is the inverse of CASE `isPrerequisiteOf`.
 
-## A real programme: LTU TCTEA
+## Real programmes: LTU TCTEA and TCDAA
 
-`python3 tools/ltu/import_tctea.py` (needs `pip install -r tools/ltu/requirements.txt`):
-1. downloads the TCTEA study plan (intake autumn 2026) and every course syllabus in Swedish and English, caching the extracted text in `.cache/ltu/`;
-2. writes `data/public/ltu/tctea-program.ttl` and `data/public/ltu/courses.ttl`.
+`python3 tools/ltu/import_ltu.py` (needs `pip install -r tools/ltu/requirements.txt`):
+1. downloads the study plans of the programmes listed in its `PROGRAMS` table (intake autumn 2026), and every course syllabus in Swedish and English, caching the extracted text in `.cache/ltu/`;
+2. writes `data/public/ltu/courses.ttl` with every course once, so a course in both programmes (Calculus, Physics 1, Modelling and Control, ...) is one resource that both programmes point to, and one `<code>-program.ttl` per programme.
 
-Re-run it when LTU revises a syllabus.
+Re-run it when LTU revises a syllabus. To add another LTU programme, add its code, page and English names to `PROGRAMS`.
 
 **Taken from LTU's documents (factual):**
-- the programme: core courses, the three specialisations, elective groups, free-elective credits, and each course's planned year and study period;
+- each programme: core courses, specialisations, elective groups, free-elective credits, and each course's planned year and study period (two TCDAA electives that the study plan lists but does not schedule are included without a year);
 - per course: English and Swedish name, credits, cycle, main subject, decision date, and the entry-requirement text plus the course codes it names;
 - learning outcomes, verbatim, with the Higher Education Ordinance category where the syllabus gives one;
 - examination modules with credits.
 
 Every course links to its syllabus page (`schema:url`) and the exact PDFs it came from (`prov:wasDerivedFrom`). The IRIs are minted in this project's namespace; they are not LTU identifiers.
 
-**Proposed (interpretation, needs review):** the syllabi say which *courses* a course requires, but not which *outcome* builds on which. [`proposed-threads.ttl`](data/public/ltu/proposed-threads.ttl) holds a draft of about 30 outcome links and skill alignments along the calculus → linear analysis → circuits / signals → modelling and control → automatic control thread. It was drafted with AI assistance from the syllabus texts, with the reason for each link in a comment. It is its own named graph, marked as a draft with provenance, so teachers can confirm, correct or reject it, and every answer that depends on it can be traced back.
+**Proposed (interpretation, needs review):** the syllabi say which *courses* a course requires, but not which *outcome* builds on which. [`proposed-threads.ttl`](data/public/ltu/proposed-threads.ttl) holds a draft of about 30 outcome links, one proposed course equivalence, and skill alignments along the calculus → linear analysis → circuits / signals → modelling and control → automatic control thread. It was drafted with AI assistance from the syllabus texts, with the reason for each link in a comment. It is its own named graph, marked as a draft with provenance, so teachers can confirm, correct or reject it, and every answer that depends on it can be traced back.
 
 **What the real data already shows:**
 - *Student:* the differential-equations outcome of Single Variable Calculus 2 (M0066M) is required by Linear Analysis, Circuit Theory, Modelling and Control, and Dynamic Systems.
 - *Advisor:* the sample LTU student ([`ltu-student-k.json`](data/learners/ltu-student-k.json), consent given to LTU's study advising) is ready for Modelling and Control (R0004E) except for one outcome: the transforms of Linear Analysis (M0018M). That matches R0004E's own entry requirement, "basic knowledge about the Laplace transform, for example as acquired in M0018M".
-- *Teacher:* several entry requirements still name **retired course codes**. Linear Analysis names M0047M, M0048M and M0049M; Circuit Theory names M0049M; Modelling and Control names S0004E. None of these are in the programme, and the syllabus check lists them.
+- *Teacher:* several entry requirements still name **retired course codes**. Linear Analysis names M0047M, M0048M and M0049M; Circuit Theory names M0049M. Modelling and Control names S0004E Signals and systems, which is not in TCTEA but is a TCDAA course; with both programmes loaded, the syllabus check shows it by name instead of as a possibly retired code.
+- *Advisor:* the two programmes share 18 courses but schedule several of them differently. For example, Calculus 1 is in year 1 period 1 in TCTEA but period 3 in TCDAA, while Introduction to Programming comes first in TCDAA. That matters to a student who switches programme. For one such student, the sample [`ltu-student-third-year.json`](data/learners/ltu-student-third-year.json) (TCTEA, halfway through year 3), the switch question shows that 7 mandatory TCDAA courses (52.5 credits) carry over, 1 is covered by equivalent outcomes, and 15 (120 credits) remain before year 4.
+- *Teacher:* Signal analysis (S0001E, TCTEA) and Signals and systems (S0004E, TCDAA) state the same five outcomes word for word; the "same outcomes" question finds such pairs. The draft graph proposes them as equivalent (`skos:closeMatch`), which is why the switch question shows Signals and systems as covered rather than to take, labelled as such. Identical wording is a hint, not a decision: the degree projects of different specialisations share template outcomes too.
 - *Employer:* credits per main subject for each specialisation's mandatory courses.
 
 **Known limits:**
-- *Outcome parsing.* Outcomes are split from PDF text by heuristics, because syllabi format them differently (bullets, numbered lists, prose). For 15 courses the English and Swedish lists differ in length, so only the English texts are kept (the importer reports which).
+- *Outcome parsing.* Outcomes are split from PDF text by heuristics, because syllabi format them differently (bullets, numbered lists, prose). For 25 of the 103 courses the English and Swedish lists differ in length, so only the English texts are kept (the importer reports which).
 - *Assessment links.* Only single-module courses link their exam to all outcomes. Other syllabi do not say which module assesses which outcome, so the advisories flag those outcomes.
 - *Bloom levels.* No Bloom levels are recorded.
-- *Translations.* The English names of the programme and specialisations are our translations.
+- *Translations.* The English names of the programmes and specialisations are our translations.
+- *Proposed links.* The draft outcome links cover the control thread shared by both programmes, not yet TCDAA's computing courses.
 
 ## GraphDB setup
 
@@ -161,7 +168,7 @@ It then loads each named graph from [graphdb/manifest.json](graphdb/manifest.jso
 | `https://data.example.edu/graph/curriculum` | Example Institute of Technology |
 | `https://data.example.org/graph/curriculum` | Other University |
 | `https://data.example.edu/graph/recognition/other-university` | how Example Tech recognises Other University's outcomes |
-| `https://w3id.org/edthread/ltu/graph/courses` | LTU TCTEA programme and syllabi (generated) |
+| `https://w3id.org/edthread/ltu/graph/courses` | LTU programmes TCTEA and TCDAA and their syllabi (generated) |
 | `https://w3id.org/edthread/ltu/graph/proposed-threads` | proposed outcome links for TCTEA (draft) |
 
 One graph per publisher keeps provenance explicit, and lets each publisher replace its own graph.

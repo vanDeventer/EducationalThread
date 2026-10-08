@@ -54,8 +54,10 @@
     {
       "graph": "https://w3id.org/edthread/ltu/graph/courses",
       "files": [
+        "data/public/ltu/institution.ttl",
         "data/public/ltu/courses.ttl",
-        "data/public/ltu/tctea-program.ttl"
+        "data/public/ltu/tctea-program.ttl",
+        "data/public/ltu/tcdaa-program.ttl"
       ]
     },
     {

@@ -411,7 +411,7 @@ func offered(groups []OptGroup, value string) bool {
 }
 
 // requester finds the office that serves function at the provider of the
-// chosen course or program, with its English name. Both IRIs are trusted:
+// chosen course, program or specialisation (through its program), with its English name. Both IRIs are trusted:
 // function comes from a query file and subject was checked against the options.
 func (s *Server) requester(ctx context.Context, function, subject string) (iri, label string, err error) {
 	if !query.ValidIRI(function) || !query.ValidIRI(subject) {
@@ -419,7 +419,7 @@ func (s *Server) requester(ctx context.Context, function, subject string) (iri, 
 	}
 	res, err := s.db.Query(ctx, optionPrefixes+`
 SELECT ?office ?name WHERE {
-  <`+subject+`> schema:provider ?org .
+  <`+subject+`> (^et:hasSpecialisation)?/schema:provider ?org .
   ?office schema:parentOrganization ?org ; et:servesFunction <`+function+`> .
   OPTIONAL { ?office schema:name ?name . FILTER (lang(?name) IN ("", "en")) }
 } LIMIT 1`)

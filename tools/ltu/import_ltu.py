@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
-"""Import LTU's programme TCTEA (Civilingenjör teknisk fysik och elektroteknik)
-from its public study plan and course syllabi into Educational Thread Turtle.
+"""Import LTU programmes from their public study plans and course syllabi into
+Educational Thread Turtle.
 
     pip install -r tools/ltu/requirements.txt
-    python3 tools/ltu/import_tctea.py            # uses .cache/ltu, downloads what is missing
-    python3 tools/ltu/import_tctea.py --refresh  # download everything again
+    python3 tools/ltu/import_ltu.py              # all programmes in PROGRAMS; uses .cache/ltu
+    python3 tools/ltu/import_ltu.py --refresh    # download everything again
 
-Writes data/public/ltu/tctea-program.ttl and data/public/ltu/courses.ttl.
+Writes data/public/ltu/institution.ttl, data/public/ltu/courses.ttl (every
+course of every programme, once: courses shared by programmes are one
+resource) and data/public/ltu/<code>-program.ttl per programme.
 Everything in those files is taken from LTU's documents (verbatim outcome
 texts, credits, modules, entry requirements); each resource links to its source.
 Interpretations (outcome-to-outcome links, skill alignment) are NOT produced
@@ -30,24 +32,45 @@ CACHE = ROOT / ".cache" / "ltu"
 OUT = ROOT / "data" / "public" / "ltu"
 SUBJECTS = ROOT / "data" / "public" / "vocab" / "subjects.ttl"
 
-PROGRAM = "TCTEA"
 INTAKE = "H26"
-STUDY_PLAN_URL = ("https://epok.ltu.se/epok/dynpdf/public/utbildningsplan/downloadPublicUtbildningsplan.pdf"
-                  f"?prgKod={PROGRAM}&antagTermin={INTAKE}&continuous=true&locale=sv")
-PROGRAM_PAGE = "https://www.ltu.se/utbildning/program/tctea-civilingenjor-teknisk-fysik-och-elektroteknik"
 SYLLABUS_PAGE = "https://www.ltu.se/utbildning/utbildningsplan-och-kursplan/kursplan?id={code}"
 UA = {"User-Agent": "EducationalThread research prototype (github.com/vanDeventer/EducationalThread)"}
 
 NS = "https://w3id.org/edthread/ltu/"
 CODE = re.compile(r"\b([A-Z]\d{4}[A-Z])\b")
 
-# English names of the specialisations (our translation; the study plan is in Swedish).
-SPECIALISATIONS = {
-    "Beräkningsteknik och fysik": ("computational-engineering-physics", "Computational Engineering and Physics"),
-    "Elektroniksystem och reglerteknik": ("electronic-systems-control", "Electronic Systems and Automatic Control"),
-    "Fysikaliska mätmetoder och sensorsystem": ("physical-measurement-sensor-systems",
-                                                "Physical Measurement Methods and Sensor Systems"),
+# Programmes to import. Swedish names come from the study plans; the English
+# names of programmes and specialisations are our translations.
+PROGRAMS = {
+    "TCTEA": {
+        "page": "https://www.ltu.se/utbildning/program/tctea-civilingenjor-teknisk-fysik-och-elektroteknik",
+        "name_en": "MSc in Engineering, Engineering Physics and Electrical Engineering",
+        "degree_en": "Degree of Master of Science in Engineering, Engineering Physics and Electrical Engineering",
+        "specialisations": {
+            "Beräkningsteknik och fysik": ("computational-engineering-physics", "Computational Engineering and Physics"),
+            "Elektroniksystem och reglerteknik": ("electronic-systems-control", "Electronic Systems and Automatic Control"),
+            "Fysikaliska mätmetoder och sensorsystem": ("physical-measurement-sensor-systems",
+                                                        "Physical Measurement Methods and Sensor Systems"),
+        },
+    },
+    "TCDAA": {
+        "page": "https://www.ltu.se/utbildning/program/tcdaa-civilingenjor-datateknik",
+        "name_en": "MSc in Engineering, Computer Science and Engineering",
+        "degree_en": "Degree of Master of Science in Engineering, Computer Science and Engineering",
+        "specialisations": {
+            "Industriella datorsystem": ("industrial-computer-systems", "Industrial Computer Systems"),
+            "Informations- och kommunikationsteknik": ("information-communication-technology",
+                                                       "Information and Communication Technology"),
+            "Interaktiva system": ("interactive-systems", "Interactive Systems"),
+        },
+    },
 }
+
+
+def study_plan_url(program):
+    return ("https://epok.ltu.se/epok/dynpdf/public/utbildningsplan/downloadPublicUtbildningsplan.pdf"
+            f"?prgKod={program}&antagTermin={INTAKE}&continuous=true&locale=sv")
+
 
 OUTCOME_CATEGORIES = [
     (re.compile(r"knowledge and understanding|kunskap och förståelse", re.I), "knowledgeAndUnderstanding"),
@@ -66,9 +89,9 @@ MODULE_TYPES = [
 ]
 
 FOOTER = re.compile(r"^(Document Education|Dokument Utbildning|Syllabus .* cr |Kursplan .* hp |Utskriftsdatum|"
-                    r"=== PAGE|Utbildningsplan $|Läsåret \d{4}/\d{4}$|Civilingenjör teknisk fysik och $|"
-                    r"elektroteknik$|Höst 2026 2024-|Luleå (tekniska universitet|University of Technology)|"
-                    r"Telefon 0920|Phone: \+46)")
+                    r"=== PAGE|Luleå (tekniska universitet|University of Technology)|Telefon 0920|Phone: \+46)")
+# Study-plan page footer: "Utbildningsplan" / "Läsåret 2026/2027" / <programme name, may wrap> ... "2 (13)"
+PLAN_FOOTER_END = re.compile(r"\d{4}-\d\d-\d\d LTU-\d+-\d{4} \d+ \(\d+\)$")
 
 
 # ---------------------------------------------------------------------------
@@ -117,14 +140,45 @@ def clean_lines(text):
 # Study plan
 # ---------------------------------------------------------------------------
 
-def parse_study_plan(text):
-    lines = clean_lines(text)
-    plan = {"decision": None, "diarienummer": None, "requirements": [], "order": [], "free": {}}
+def strip_plan_footers(lines):
+    out, skipping = [], False
     for i, ln in enumerate(lines):
-        if ln == "BESLUTSDATUM":
+        s = ln.strip()
+        if s == "Utbildningsplan" and i + 1 < len(lines) and lines[i + 1].strip().startswith("Läsåret"):
+            skipping = True
+        if not skipping:
+            out.append(ln)
+        elif PLAN_FOOTER_END.search(s):
+            skipping = False
+    return out
+
+
+def parse_study_plan(text):
+    lines = strip_plan_footers(clean_lines(text))
+    plan = {"decision": None, "diarienummer": None, "requirements": [], "order": [], "free": {},
+            "name_sv": None, "degree_sv": None, "prerequisites": None, "specialisations": []}
+    for i, ln in enumerate(lines):
+        s = ln.strip()
+        if s == "BESLUTSDATUM":
             plan["decision"] = lines[i + 1].strip()
-        if ln == "DIARIENUMMER":
+        if s == "DIARIENUMMER":
             plan["diarienummer"] = lines[i + 1].strip()
+        if s.startswith("LÄSÅRET") and plan["name_sv"] is None:
+            name = []
+            for nxt in lines[i + 1:]:
+                if nxt.strip().startswith("Antagna"):
+                    break
+                name.append(nxt.strip())
+            plan["name_sv"] = " ".join(name)
+        if s == "Examen" and plan["degree_sv"] is None:
+            plan["degree_sv"] = lines[i + 1].strip()
+        if s == "Förkunskapskrav" and plan["prerequisites"] is None:
+            req = []
+            for nxt in lines[i + 1:]:
+                if nxt.strip() == "Urval":
+                    break
+                req.append(nxt.strip())
+            plan["prerequisites"] = re.sub(r"\s+", " ", " ".join(req)).strip()
 
     part, spec, group, year, rec = "requirements", None, None, None, None
     for ln in lines:
@@ -134,6 +188,8 @@ def parse_study_plan(text):
             continue
         if s.startswith("Inriktning: "):
             spec, group, rec = s.removeprefix("Inriktning: ").strip(), None, None
+            if spec not in plan["specialisations"]:
+                plan["specialisations"].append(spec)
             continue
         if part == "requirements":
             m = re.match(r"^(.+?) (\d+(?:,\d+)?) högskolepoäng$", s)
@@ -376,7 +432,7 @@ def subject_iris():
 
 def write_courses(courses, warn):
     subjects = subject_iris()
-    out = [f"# GENERATED by tools/ltu/import_tctea.py from LTU's public course syllabi — do not edit.\n"
+    out = [f"# GENERATED by tools/ltu/import_ltu.py from LTU's public course syllabi — do not edit.\n"
            f"# Outcome texts are verbatim from the syllabi; each course links to its source document.\n",
            HEADER]
     for c in courses:
@@ -431,10 +487,7 @@ def write_courses(courses, warn):
     (OUT / "courses.ttl").write_text("\n".join(out))
 
 
-def write_program(plan, courses_by_code, warn):
-    o = ["# GENERATED by tools/ltu/import_tctea.py from LTU's public study plan — do not edit.\n", HEADER,
-         "@prefix skos:   <http://www.w3.org/2004/02/skos/core#> .\n",
-         """ltu:org-ltu a schema:CollegeOrUniversity ;
+INSTITUTION = """ltu:org-ltu a schema:CollegeOrUniversity ;
     schema:name "Luleå University of Technology"@en, "Luleå tekniska universitet"@sv ;
     schema:url <https://www.ltu.se> .
 
@@ -448,82 +501,125 @@ ltu:org-ltu-admissions a schema:Organization ;
     schema:name "Admissions, LTU"@en, "Antagning, LTU"@sv ;
     schema:parentOrganization ltu:org-ltu ;
     et:servesFunction et:admissionsFunction .
-""",
-         f"""ltu:program-{PROGRAM} a et:Program ;
-    schema:name "MSc in Engineering, Engineering Physics and Electrical Engineering"@en,
-                "Civilingenjör teknisk fysik och elektroteknik"@sv ;
-    schema:programPrerequisites "Grundläggande behörighet + Fysik 2, Kemi 1, Matematik 4 eller Matematik E."@sv ;
+"""
+
+
+def write_institution():
+    (OUT / "institution.ttl").write_text(
+        "# GENERATED by tools/ltu/import_ltu.py — do not edit.\n" + HEADER + "\n" + INSTITUTION)
+
+
+def write_program(code, cfg, plan, source, courses_by_code, warn):
+    specs = cfg["specialisations"]
+    for sv_name in plan["specialisations"]:
+        if sv_name not in specs:
+            warn(f"{code}: no English name for specialisation '{sv_name}'")
+            specs[sv_name] = (re.sub(r"[^a-z0-9]+", "-", sv_name.lower()).strip("-"), sv_name)
+    prog = f"ltu:program-{code}"
+    o = [f"# GENERATED by tools/ltu/import_ltu.py from LTU's public study plan for {code} — do not edit.\n",
+         HEADER,
+         f"""{prog} a et:Program ;
+    schema:name {lit(cfg['name_en'], 'en')},
+                {lit(plan['name_sv'], 'sv')} ;
+    schema:programPrerequisites {lit(plan['prerequisites'] or '', 'sv')} ;
     schema:provider ltu:org-ltu ;
-    schema:url <{PROGRAM_PAGE}> ;
+    schema:url <{cfg['page']}> ;
     et:studyPlanDecisionDate "{plan['decision']}"^^xsd:date ;
     schema:identifier "{plan['diarienummer']}" ;
-    prov:wasDerivedFrom <{STUDY_PLAN_URL}> ;
-    schema:educationalCredentialAwarded ltu:qualification-{PROGRAM} ;
-    et:hasSpecialisation {", ".join(f"ltu:program-{PROGRAM}-{s[0]}" for s in SPECIALISATIONS.values())} .
-
-ltu:qualification-{PROGRAM} a et:Qualification ;
-    schema:name "Degree of Master of Science in Engineering, Engineering Physics and Electrical Engineering"@en,
-                "Civilingenjörsexamen, teknisk fysik och elektroteknik"@sv ;
+    prov:wasDerivedFrom <{source}> ;
+    schema:educationalCredentialAwarded ltu:qualification-{code}"""
+         + ("".join([" ;\n    et:hasSpecialisation " + ", ".join(f"{prog}-{specs[s][0]}" for s in plan["specialisations"])])
+            if plan["specialisations"] else "") + " .\n",
+         f"""ltu:qualification-{code} a et:Qualification ;
+    schema:name {lit(cfg['degree_en'], 'en')},
+                {lit(plan['degree_sv'], 'sv')} ;
     et:eqfLevel 7 .
 """]
-    for sv_name, (slug, en_name) in SPECIALISATIONS.items():
+    for sv_name in plan["specialisations"]:
+        slug, en_name = specs[sv_name]
         free = plan["free"].get(sv_name)
-        o.append(f"ltu:program-{PROGRAM}-{slug} a et:Specialisation ;\n"
+        o.append(f"{prog}-{slug} a et:Specialisation ;\n"
                  f"    schema:name {lit(en_name, 'en')}, {lit(sv_name, 'sv')}"
                  + (f" ;\n    et:freeElectiveCredits {dec(free)} ." if free else " ."))
 
     groups = {(r["spec"], r["code"]): r for r in plan["requirements"]}
     o.append(f"\n# Placements from the study plan's reading order (Läsordning), intake {INTAKE}.")
-    o.append(f"ltu:program-{PROGRAM} et:includesCourse")
+    o.append(f"{prog} et:includesCourse")
     placements = []
     for r in plan["order"]:
         if r["code"] not in courses_by_code:
-            warn(f"study plan lists {r['code']} but no syllabus was parsed")
+            warn(f"{code}: study plan lists {r['code']} but no syllabus was parsed")
             continue
         req = groups.get((r["spec"], r["code"])) or groups.get((None, r["code"]))
         if not req:
-            warn(f"{r['code']} is in the reading order but not in the course lists")
+            warn(f"{code}: {r['code']} is in the reading order but not in the course lists")
         p = [f"et:course c:{r['code']}", f"et:studyYear {r['year']}", f"et:studyPeriod {r['p1']}"]
         if r["p2"] != r["p1"]:
             p.append(f"et:studyPeriodEnd {r['p2']}")
         if r["spec"]:
-            p.append(f"et:inSpecialisation ltu:program-{PROGRAM}-{SPECIALISATIONS[r['spec']][0]}")
+            p.append(f"et:inSpecialisation {prog}-{specs[r['spec']][0]}")
         p.append("et:status et:" + ("elective" if r["elective"] or (req and req["elective"]) else "mandatory"))
         if req and req["group"]:
             p.append(f"et:courseGroup {lit(req['group'], 'sv')}")
         placements.append("    [ a et:ProgramCourse ; " + " ; ".join(p) + " ]")
-    o.append(" ,\n".join(placements) + " .")
-    # Core courses must appear in the reading order somewhere.
-    ordered = {r["code"] for r in plan["order"]}
+    # Courses in the study plan's course lists that the reading order does not schedule
+    # (e.g. electives offered on demand): included, without a year or period.
+    ordered = {(r["spec"], r["code"]) for r in plan["order"]}
     for r in plan["requirements"]:
-        if r["code"] not in ordered:
-            warn(f"{r['code']} ({r['group']}, {r['spec'] or 'core'}) has no placement in the reading order")
-    (OUT / "tctea-program.ttl").write_text("\n".join(o) + "\n")
+        if (r["spec"], r["code"]) in ordered or (r["spec"] is None and any(c == r["code"] for _, c in ordered)):
+            continue
+        if r["code"] not in courses_by_code:
+            continue
+        warn(f"{code}: {r['code']} ({r['group']}, {r['spec'] or 'core'}) is not in the reading order; "
+             "included without year and period")
+        p = [f"et:course c:{r['code']}"]
+        if r["spec"]:
+            p.append(f"et:inSpecialisation {prog}-{specs[r['spec']][0]}")
+        p.append("et:status et:" + ("elective" if r["elective"] else "mandatory"))
+        if r["group"]:
+            p.append(f"et:courseGroup {lit(r['group'], 'sv')}")
+        placements.append("    [ a et:ProgramCourse ; " + " ; ".join(p) + " ]")
+    o.append(" ,\n".join(placements) + " .")
+    (OUT / f"{code.lower()}-program.ttl").write_text("\n".join(o) + "\n")
 
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     ap.add_argument("--refresh", action="store_true", help="download all documents again")
+    ap.add_argument("programs", nargs="*", default=list(PROGRAMS), help="programme codes (default: all)")
     args = ap.parse_args()
     warnings = []
     warn = warnings.append
 
-    _, plan_text = cached(CACHE / f"{PROGRAM}-{INTAKE}.sv.txt", lambda: STUDY_PLAN_URL, args.refresh)
-    plan = parse_study_plan(plan_text)
-    codes = sorted({r["code"] for r in plan["requirements"] + plan["order"]})
+    plans = {}
+    for code in args.programs:
+        if code not in PROGRAMS:
+            sys.exit(f"unknown programme {code}; add it to PROGRAMS")
+        source, text = cached(CACHE / f"{code}-{INTAKE}.sv.txt", lambda: study_plan_url(code), args.refresh)
+        plans[code] = (parse_study_plan(text), source)
+
+    codes = sorted({r["code"] for plan, _ in plans.values() for r in plan["requirements"] + plan["order"]})
     courses = []
-    for code in codes:
-        src_en, en = cached(CACHE / "syllabi" / f"{code}.en.txt", lambda: syllabus_url(code, "en"), args.refresh)
-        src_sv, sv = cached(CACHE / "syllabi" / f"{code}.sv.txt", lambda: syllabus_url(code, "sv"), args.refresh)
-        c = parse_syllabus(code, en, sv)
+    for cc in codes:
+        src_en, en = cached(CACHE / "syllabi" / f"{cc}.en.txt", lambda: syllabus_url(cc, "en"), args.refresh)
+        src_sv, sv = cached(CACHE / "syllabi" / f"{cc}.sv.txt", lambda: syllabus_url(cc, "sv"), args.refresh)
+        c = parse_syllabus(cc, en, sv)
         c["source_en"], c["source_sv"] = src_en, src_sv
         courses.append(c)
     OUT.mkdir(parents=True, exist_ok=True)
+    write_institution()
     write_courses(courses, warn)
-    write_program(plan, {c["code"]: c for c in courses}, warn)
+    by_code = {c["code"]: c for c in courses}
+    for code, (plan, source) in plans.items():
+        write_program(code, PROGRAMS[code], plan, source, by_code, warn)
+        print(f"{code}: {len({r['code'] for r in plan['order']})} courses, {len(plan['order'])} placements, "
+              f"{len(plan['specialisations'])} specialisations")
 
+    sets = [{r["code"] for r in plan["order"]} for plan, _ in plans.values()]
+    shared = set.intersection(*sets) if len(sets) > 1 else set()
     n_out = sum(len(c["outcomes_en"]) for c in courses)
-    print(f"{len(courses)} courses, {n_out} outcomes, {len(plan['order'])} placements -> {OUT.relative_to(ROOT)}")
+    print(f"{len(courses)} distinct courses ({len(shared)} shared by all programmes), {n_out} outcomes "
+          f"-> {OUT.relative_to(ROOT)}")
     for w in warnings:
         print("warning:", w, file=sys.stderr)
 

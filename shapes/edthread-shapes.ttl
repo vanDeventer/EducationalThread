@@ -85,7 +85,8 @@ ets:ProgramShape a sh:NodeShape ;
 ets:ProgramCourseShape a sh:NodeShape ;
     sh:targetClass et:ProgramCourse ;
     sh:property [ sh:path et:course ; sh:class et:Course ; sh:minCount 1 ; sh:maxCount 1 ] ;
-    sh:property [ sh:path et:studyYear ; sh:datatype xsd:integer ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    # Year and period are absent for courses a study plan lists but does not schedule.
+    sh:property [ sh:path et:studyYear ; sh:datatype xsd:integer ; sh:maxCount 1 ] ;
     sh:property [ sh:path et:studyPeriod ; sh:datatype xsd:integer ; sh:maxCount 1 ] ;
     sh:property [ sh:path et:studyPeriodEnd ; sh:datatype xsd:integer ; sh:maxCount 1 ] ;
     sh:property [ sh:path et:inSpecialisation ; sh:class et:Specialisation ; sh:maxCount 1 ] ;

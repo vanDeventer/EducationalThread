@@ -1,0 +1,33 @@
+# title: Which courses carry over between two programmes?
+# role: advisor
+# about: Courses two programmes share, with where each programme schedules them (year and study period; elective or mandatory). Useful when a student switches programme or compares options.
+# param: from program
+# param: to program
+PREFIX et:     <https://w3id.org/edthread#>
+PREFIX schema: <https://schema.org/>
+PREFIX ltu:    <https://w3id.org/edthread/ltu/>
+
+SELECT ?course ?credits
+       (GROUP_CONCAT(DISTINCT ?where1; separator=", ") AS ?inFirstProgramme)
+       (GROUP_CONCAT(DISTINCT ?where2; separator=", ") AS ?inSecondProgramme)
+WHERE {
+  VALUES ?from { ltu:program-TCTEA }
+  VALUES ?to { ltu:program-TCDAA }
+  FILTER (?from != ?to)
+  ?from et:includesCourse ?p1 . ?p1 et:course ?c .
+  ?to   et:includesCourse ?p2 . ?p2 et:course ?c .
+  ?c schema:courseCode ?code ; schema:name ?name ; et:credits ?credits .
+  FILTER (lang(?name) IN ("", "en"))
+  BIND (CONCAT(?code, " ", STR(?name)) AS ?course)
+
+  OPTIONAL { ?p1 et:studyYear ?y1 ; et:studyPeriod ?q1 . }
+  OPTIONAL { ?p1 et:status ?s1 . }
+  BIND (CONCAT(IF(BOUND(?y1), CONCAT("year ", STR(?y1), " period ", STR(?q1)), "not scheduled"),
+               IF(BOUND(?s1) && ?s1 = et:elective, " (elective)", "")) AS ?where1)
+  OPTIONAL { ?p2 et:studyYear ?y2 ; et:studyPeriod ?q2 . }
+  OPTIONAL { ?p2 et:status ?s2 . }
+  BIND (CONCAT(IF(BOUND(?y2), CONCAT("year ", STR(?y2), " period ", STR(?q2)), "not scheduled"),
+               IF(BOUND(?s2) && ?s2 = et:elective, " (elective)", "")) AS ?where2)
+}
+GROUP BY ?course ?credits
+ORDER BY ?course

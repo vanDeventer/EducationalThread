@@ -6,7 +6,7 @@
 <table>
   <thead><tr>{{range .Vars}}<th>{{heading .}}</th>{{end}}</tr></thead>
   <tbody>
-    {{range .Rows}}<tr>{{range .}}<td>{{if eq . "NOT MET"}}<span class="bad">{{.}}</span>{{else if eq . "met"}}<span class="good">{{.}}</span>{{else}}{{.}}{{end}}</td>{{end}}</tr>{{end}}
+    {{range .Rows}}<tr>{{range .}}<td>{{if eq . "NOT MET"}}<span class="bad">{{.}}</span>{{else if or (eq . "met") (eq . "passed")}}<span class="good">{{.}}</span>{{else if or (eq . "partly covered") (eq . "covered by equivalent outcomes")}}<span class="partly">{{.}}</span>{{else}}{{.}}{{end}}</td>{{end}}</tr>{{end}}
   </tbody>
 </table>
 </div>

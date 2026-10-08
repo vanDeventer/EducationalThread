@@ -101,6 +101,8 @@ func TestPublicQueries(t *testing.T) {
 		"/q/7-employer-topic-profile":  "3",
 		"/q/8-employer-skills":         "4",
 		"/q/9-teacher-syllabus-check":  "3",
+		"/q/10-advisor-shared-courses": "18",
+		"/q/12-teacher-same-outcomes":  "1",
 	}
 	for path, want := range cases {
 		code, html := get(t, s, path)
@@ -250,5 +252,48 @@ func TestRealProgrammeSyllabusCheck(t *testing.T) {
 	_, html := get(t, s, "/q/9-teacher-syllabus-check?course="+url.QueryEscape(ltu+"course/R0004E"))
 	if !strings.Contains(html, "S0004E") {
 		t.Error("R0004E's entry requirements name S0004E, which is not in the programme")
+	}
+}
+
+func TestTwoProgrammesShareCourses(t *testing.T) {
+	s := newTestServer(t)
+	// R0004E names S0004E Signals and Systems in its entry requirements: not part of
+	// TCTEA, but a course in TCDAA, so it is now known by name rather than "retired code?".
+	_, html := get(t, s, "/q/9-teacher-syllabus-check?course="+url.QueryEscape(ltu+"course/R0004E"))
+	if !strings.Contains(html, "S0004E Signals and systems") {
+		t.Error("S0004E should be resolved through the TCDAA programme")
+	}
+	_, html = get(t, s, "/q/7-employer-topic-profile?pathway="+url.QueryEscape(ltu+"program-TCDAA-industrial-computer-systems"))
+	if !strings.Contains(html, "Computer Engineering") {
+		t.Error("TCDAA specialisation profile should include Computer Engineering")
+	}
+}
+
+func TestProgrammeSwitch(t *testing.T) {
+	s := newTestServer(t)
+	var body bytes.Buffer
+	mw := multipart.NewWriter(&body)
+	mw.WriteField("wallet", "ltu-student-third-year.json")
+	mw.WriteField("pathway", ltu+"program-TCDAA-industrial-computer-systems")
+	mw.Close()
+	req := httptest.NewRequest(http.MethodPost, "/q/11-advisor-programme-switch", &body)
+	req.Header.Set("Content-Type", mw.FormDataContentType())
+	rec := httptest.NewRecorder()
+	s.ServeHTTP(rec, req)
+	html := rec.Body.String()
+	// Consent is to LTU's study advising, found through the specialisation's programme.
+	if rec.Code != http.StatusOK || !strings.Contains(html, "Study and career guidance, LTU") {
+		t.Fatalf("status %d", rec.Code)
+	}
+	// A TCTEA student halfway through year 3: 7 TCDAA courses passed, Signals and
+	// systems covered through the proposed equivalence with Signal analysis, 15 to take.
+	if got := strings.Count(html, ">passed<"); got != 7 {
+		t.Errorf("passed = %d, want 7", got)
+	}
+	if !strings.Contains(html, "covered by equivalent outcomes</span></td><td>S0004E") {
+		t.Error("S0004E should be covered by equivalent outcomes")
+	}
+	if got := strings.Count(html, "<td>to take</td>"); got != 15 {
+		t.Errorf("to take = %d, want 15", got)
 	}
 }

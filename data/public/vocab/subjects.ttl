@@ -55,3 +55,12 @@ subj:computer-science a skos:Concept ; skos:inScheme subj:scheme ;
 
 subj:industrial-economics a skos:Concept ; skos:inScheme subj:scheme ;
     skos:prefLabel "Industrial Economics"@en, "Industriell ekonomi"@sv .
+
+subj:computer-communication a skos:Concept ; skos:inScheme subj:scheme ;
+    skos:prefLabel "Computer Communication"@en, "Datorkommunikation"@sv .
+
+subj:mobile-systems a skos:Concept ; skos:inScheme subj:scheme ;
+    skos:prefLabel "Mobile Systems"@en, "Mobila system"@sv .
+
+subj:media-technology a skos:Concept ; skos:inScheme subj:scheme ;
+    skos:prefLabel "Media Technology"@en, "Medieteknik"@sv .

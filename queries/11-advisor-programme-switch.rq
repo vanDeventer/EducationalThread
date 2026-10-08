@@ -1,0 +1,68 @@
+# title: What would switching programme mean for this student?
+# role: advisor
+# about: For a student thinking of switching into another programme and specialisation from year 4: each mandatory course of years 1–3 there is passed, covered by equivalent outcomes, partly covered, or still to take, judged from the outcomes in the student's credentials and recorded equivalences. Needs the student's consent, given to the study advisors of the target programme's university.
+# param: pathway pathway
+# wallet: data/learners/ltu-student-third-year.json
+# requester-function: https://w3id.org/edthread#studyAdvising
+# requester-of: pathway
+# purpose: academic advising
+PREFIX et:     <https://w3id.org/edthread#>
+PREFIX schema: <https://schema.org/>
+PREFIX skos:   <http://www.w3.org/2004/02/skos/core#>
+PREFIX ltu:    <https://w3id.org/edthread/ltu/>
+
+SELECT ?status ?course ?credits ?year ?period ?outcomesDemonstrated
+WHERE {
+  {
+    SELECT ?course ?credits ?year ?period
+           (SUM(?hasOutcome) AS ?total) (SUM(?direct) AS ?got) (SUM(?covered) AS ?equiv)
+    WHERE {
+      {
+        # One row per outcome of each course: demonstrated directly, or through an
+        # equivalent outcome (skos:exactMatch / closeMatch), or not at all.
+        SELECT ?course ?credits ?year ?period ?o (MAX(?isDirect) AS ?direct) (MAX(?isCovered) AS ?covered)
+        WHERE {
+          VALUES ?pathway { ltu:program-TCDAA-industrial-computer-systems }
+          VALUES ?entryYear { 4 }
+
+          # Mandatory placements of the pathway (a specialisation and its common core) before the entry year.
+          {
+            ?program et:hasSpecialisation ?pathway ; et:includesCourse ?pc .
+            FILTER NOT EXISTS { ?pc et:inSpecialisation ?other . FILTER (?other != ?pathway) }
+          } UNION {
+            ?pathway a et:Program ; et:includesCourse ?pc .
+          }
+          ?pc et:course ?c ; et:studyYear ?year ; et:studyPeriod ?period .
+          FILTER (?year < ?entryYear)
+          FILTER NOT EXISTS { ?pc et:status et:elective }
+
+          ?c schema:courseCode ?code ; schema:name ?name ; et:credits ?credits .
+          FILTER (lang(?name) IN ("", "en"))
+          BIND (CONCAT(?code, " ", STR(?name)) AS ?course)
+
+          OPTIONAL {
+            ?c et:hasUnit?/et:hasOutcome ?o .
+            OPTIONAL {
+              ?o (skos:exactMatch|skos:closeMatch|^skos:exactMatch|^skos:closeMatch)? ?covering .
+              # Filled in by the runner with the outcomes in the consented credentials.
+              VALUES ?demonstrated { }
+              FILTER (?demonstrated = ?covering)
+            }
+          }
+          BIND (IF(BOUND(?demonstrated) && ?covering = ?o, 1, 0) AS ?isDirect)
+          BIND (IF(BOUND(?demonstrated), 1, 0) AS ?isCovered)
+        }
+        GROUP BY ?course ?credits ?year ?period ?o
+      }
+      # Counted as 0/1 so that courses without outcomes still appear.
+      BIND (IF(BOUND(?o), 1, 0) AS ?hasOutcome)
+    }
+    GROUP BY ?course ?credits ?year ?period
+  }
+  BIND (IF(?total = 0, "no outcomes in data",
+        IF(?got = ?total, "passed",
+        IF(?equiv = ?total, "covered by equivalent outcomes",
+        IF(?equiv > 0, "partly covered", "to take")))) AS ?status)
+  BIND (CONCAT(STR(?got), " of ", STR(?total), IF(?equiv > ?got, CONCAT(" (+", STR(?equiv - ?got), " equivalent)"), "")) AS ?outcomesDemonstrated)
+}
+ORDER BY DESC(?status) ?year ?period ?course

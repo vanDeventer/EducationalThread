@@ -1,0 +1,34 @@
+# title: Which other courses state the same outcomes as mine?
+# role: teacher
+# about: Courses, in any programme, whose syllabi state some of the same learning outcomes word for word: candidates for recording equivalent outcomes. Identical wording is a hint, not a decision — degree projects, for example, share template outcomes.
+# param: course course
+PREFIX et:     <https://w3id.org/edthread#>
+PREFIX schema: <https://schema.org/>
+PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX ltuc:   <https://w3id.org/edthread/ltu/course/>
+
+SELECT ?otherCourse ?identicalOutcomes ?ofItsOutcomes ?example
+WHERE {
+  {
+    SELECT ?other (COUNT(DISTINCT ?o2) AS ?identicalOutcomes) (SAMPLE(?l1) AS ?example)
+    WHERE {
+      VALUES ?course { ltuc:S0001E }
+      ?course et:hasUnit?/et:hasOutcome ?o1 .
+      ?o1 rdfs:label ?l1 . FILTER (lang(?l1) IN ("", "en"))
+      ?other a et:Course ; et:hasUnit?/et:hasOutcome ?o2 .
+      FILTER (?other != ?course)
+      ?o2 rdfs:label ?l2 . FILTER (lang(?l2) IN ("", "en"))
+      FILTER (LCASE(STR(?l2)) = LCASE(STR(?l1)))
+    }
+    GROUP BY ?other
+  }
+  {
+    SELECT ?other (COUNT(DISTINCT ?o3) AS ?ofItsOutcomes)
+    WHERE { ?other a et:Course ; et:hasUnit?/et:hasOutcome ?o3 . }
+    GROUP BY ?other
+  }
+  ?other schema:courseCode ?code ; schema:name ?name .
+  FILTER (lang(?name) IN ("", "en"))
+  BIND (CONCAT(?code, " ", STR(?name)) AS ?otherCourse)
+}
+ORDER BY DESC(?identicalOutcomes) ?otherCourse

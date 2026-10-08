@@ -10,8 +10,8 @@ func TestLoadDirParsesRepositoryQueries(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if len(qs) != 9 {
-		t.Fatalf("got %d queries, want 9", len(qs))
+	if len(qs) != 12 {
+		t.Fatalf("got %d queries, want 12", len(qs))
 	}
 	byName := map[string]*Query{}
 	for _, q := range qs {

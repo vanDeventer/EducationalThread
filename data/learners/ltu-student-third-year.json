@@ -1,0 +1,5139 @@
+{
+  "@context": [
+    "https://www.w3.org/ns/credentials/v2",
+    "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+  ],
+  "type": [
+    "VerifiablePresentation"
+  ],
+  "holder": "did:example:ltu-student-third-year-5e08",
+  "termsOfUse": [
+    {
+      "type": "HolderPolicy",
+      "id": "urn:example:policy:ltu-student-third-year-advising",
+      "permission": [
+        {
+          "assigner": "did:example:ltu-student-third-year-5e08",
+          "assignee": "https://w3id.org/edthread/ltu/org-ltu-study-advising",
+          "action": [
+            "read"
+          ],
+          "constraint": [
+            {
+              "leftOperand": "purpose",
+              "operator": "eq",
+              "rightOperand": "academic advising"
+            },
+            {
+              "leftOperand": "dateTime",
+              "operator": "lteq",
+              "rightOperand": "2027-12-31"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "verifiableCredential": [
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:1",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2024-10-30T00:00:00Z",
+      "name": "Have insight into the field of engineering physics with regard to ecological and environmental sustainability and how it relates to other engineering disciplines and engineering science in general.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0051T-1",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Have insight into the field of engineering physics with regard to ecological and environmental sustainability and how it relates to other engineering disciplines and engineering science in general."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:2",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2024-10-30T00:00:00Z",
+      "name": "Understand how to organize, plan and carry out their own studies in both the short and long term for a successful career in the subject area of engineering physics. 2. Skill and ability",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0051T-2",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Understand how to organize, plan and carry out their own studies in both the short and long term for a successful career in the subject area of engineering physics. 2. Skill and ability"
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:3",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2024-10-30T00:00:00Z",
+      "name": "Be able to solve simpler technical problems with typical engineering tools.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0051T-3",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Be able to solve simpler technical problems with typical engineering tools."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:4",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2024-10-30T00:00:00Z",
+      "name": "Be able to write technical reports according to given instructions.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0051T-4",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Be able to write technical reports according to given instructions."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:5",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2024-10-30T00:00:00Z",
+      "name": "Be able to plan, implement and present end results in simpler technology projects.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0051T-5",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Be able to plan, implement and present end results in simpler technology projects."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:6",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2024-10-30T00:00:00Z",
+      "name": "Know current research areas and research issues at the Department of Engineering Science and Mathematics (TVM) and the Department of Systems and Space Engineering (SRT).",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0051T-6",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Know current research areas and research issues at the Department of Engineering Science and Mathematics (TVM) and the Department of Systems and Space Engineering (SRT)."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:7",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2024-10-30T00:00:00Z",
+      "name": "Have trained their ability in engineering thinking.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0051T-7",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Have trained their ability in engineering thinking."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:8",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2024-10-30T00:00:00Z",
+      "name": "Have insight into the simplifications and assumptions that can be made in analyzes and modeling of simpler physical problems through programming.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0051T-8",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Have insight into the simplifications and assumptions that can be made in analyzes and modeling of simpler physical problems through programming."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:9",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2024-10-30T00:00:00Z",
+      "name": "describe and explain fundamental principles of differential calculus.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/M0065M-1",
+          "type": [
+            "Achievement"
+          ],
+          "name": "describe and explain fundamental principles of differential calculus."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:10",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2024-10-30T00:00:00Z",
+      "name": "Explain and use mathematical reasoning and writing.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/M0065M-2",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Explain and use mathematical reasoning and writing."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:11",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2024-10-30T00:00:00Z",
+      "name": "Use sets and logic in mathematical proofs.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/M0065M-3",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Use sets and logic in mathematical proofs."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:12",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2024-10-30T00:00:00Z",
+      "name": "Use and prove fundamental properties of elementary functions and their inverses.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/M0065M-4",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Use and prove fundamental properties of elementary functions and their inverses."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:13",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2024-10-30T00:00:00Z",
+      "name": "Use central concepts and methods within single variable differential calculus on extreme value problems, graph sketching, limit calculations, analysis of functions and expressions as well as other applied problems.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/M0065M-5",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Use central concepts and methods within single variable differential calculus on extreme value problems, graph sketching, limit calculations, analysis of functions and expressions as well as other applied problems."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:14",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2024-10-30T00:00:00Z",
+      "name": "select an appropriate method of solution for given problems within the scope of the course.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/M0065M-6",
+          "type": [
+            "Achievement"
+          ],
+          "name": "select an appropriate method of solution for given problems within the scope of the course."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:15",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-01-15T00:00:00Z",
+      "name": "define fundamental concepts and relationships in mechanics and thermodynamics and explain their relationships.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0004T-1",
+          "type": [
+            "Achievement"
+          ],
+          "name": "define fundamental concepts and relationships in mechanics and thermodynamics and explain their relationships."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:16",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-01-15T00:00:00Z",
+      "name": "make free-body diagrams, analyze and calculate forces and torques of two-dimensional rigid bodies at rest, equilibrium.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0004T-2",
+          "type": [
+            "Achievement"
+          ],
+          "name": "make free-body diagrams, analyze and calculate forces and torques of two-dimensional rigid bodies at rest, equilibrium."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:17",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-01-15T00:00:00Z",
+      "name": "To formulate and solve mechanical problems involving particle motion in two dimensions, i.e. kinematics and kinetics.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0004T-3",
+          "type": [
+            "Achievement"
+          ],
+          "name": "To formulate and solve mechanical problems involving particle motion in two dimensions, i.e. kinematics and kinetics."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:18",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-01-15T00:00:00Z",
+      "name": "perform calorimetric calculations in solid, liquid and gas phase.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0004T-4",
+          "type": [
+            "Achievement"
+          ],
+          "name": "perform calorimetric calculations in solid, liquid and gas phase."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:19",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-01-15T00:00:00Z",
+      "name": "understand and apply the first and second laws of thermodynamics for calculations with ideal gases in closed systems and idealized processes; calculate the thermal efficiency of simple cycles; knowledge of a few technical applications and relate them to the concept of sustainable development.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0004T-5",
+          "type": [
+            "Achievement"
+          ],
+          "name": "understand and apply the first and second laws of thermodynamics for calculations with ideal gases in closed systems and idealized processes; calculate the thermal efficiency of simple cycles; knowledge of a few technical applications and relate them to the concept of sustainable development."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:20",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-01-15T00:00:00Z",
+      "name": "understand the physical principles for heat transfer by conduction, radiation and convection, and solve simple problems.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0004T-6",
+          "type": [
+            "Achievement"
+          ],
+          "name": "understand the physical principles for heat transfer by conduction, radiation and convection, and solve simple problems."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:21",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-01-15T00:00:00Z",
+      "name": "plan, implement and evaluate physics experiments and present the results in a written report.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0004T-7",
+          "type": [
+            "Achievement"
+          ],
+          "name": "plan, implement and evaluate physics experiments and present the results in a written report."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:22",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-01-15T00:00:00Z",
+      "name": "describe and explain fundamental concepts, theories, and methods within integral calculus, complex numbers, and differential equations.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/M0066M-1",
+          "type": [
+            "Achievement"
+          ],
+          "name": "describe and explain fundamental concepts, theories, and methods within integral calculus, complex numbers, and differential equations."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:23",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-01-15T00:00:00Z",
+      "name": "calculate arithmetic and geometric sums",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/M0066M-2",
+          "type": [
+            "Achievement"
+          ],
+          "name": "calculate arithmetic and geometric sums"
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:24",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-01-15T00:00:00Z",
+      "name": "prove a given statement within the scope of the course using mathematical induction",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/M0066M-3",
+          "type": [
+            "Achievement"
+          ],
+          "name": "prove a given statement within the scope of the course using mathematical induction"
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:25",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-01-15T00:00:00Z",
+      "name": "compute definite and indefinite integrals using primitive functions and standard methods such as integration by parts, partial fractions and substitution",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/M0066M-4",
+          "type": [
+            "Achievement"
+          ],
+          "name": "compute definite and indefinite integrals using primitive functions and standard methods such as integration by parts, partial fractions and substitution"
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:26",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-01-15T00:00:00Z",
+      "name": "use integrals for common immediate applications like calculating curve lengths, areas between curves, surfaces of revolution, and volumes of revolution",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/M0066M-5",
+          "type": [
+            "Achievement"
+          ],
+          "name": "use integrals for common immediate applications like calculating curve lengths, areas between curves, surfaces of revolution, and volumes of revolution"
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:27",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-01-15T00:00:00Z",
+      "name": "apply central concepts, computational rules, and methods for complex numbers, algebraic equations, and the complex exponential function",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/M0066M-6",
+          "type": [
+            "Achievement"
+          ],
+          "name": "apply central concepts, computational rules, and methods for complex numbers, algebraic equations, and the complex exponential function"
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:28",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-01-15T00:00:00Z",
+      "name": "solve simple differential equations such as first-order separable and linear equations, as well as higher-order linear differential equations",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/M0066M-7",
+          "type": [
+            "Achievement"
+          ],
+          "name": "solve simple differential equations such as first-order separable and linear equations, as well as higher-order linear differential equations"
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:29",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-01-15T00:00:00Z",
+      "name": "present your calculations in a comprehensible manner",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/M0066M-8",
+          "type": [
+            "Achievement"
+          ],
+          "name": "present your calculations in a comprehensible manner"
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:30",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-01-15T00:00:00Z",
+      "name": "select appropriate solution methods for given problems within the scope of the course.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/M0066M-9",
+          "type": [
+            "Achievement"
+          ],
+          "name": "select appropriate solution methods for given problems within the scope of the course."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:31",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-03-20T00:00:00Z",
+      "name": "Demonstrate knowledge of proven experience in design and construction of imperative programs and capacity to plan and carry out advanced tasks in the form of implementation of imperative programs designed to solve specific technical problems.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/D0009E-1",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Demonstrate knowledge of proven experience in design and construction of imperative programs and capacity to plan and carry out advanced tasks in the form of implementation of imperative programs designed to solve specific technical problems."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:32",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-03-20T00:00:00Z",
+      "name": "Demonstrate the ability to model problems and to identify and formulate solutions in a modern imperative language.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/D0009E-2",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Demonstrate the ability to model problems and to identify and formulate solutions in a modern imperative language."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:33",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-03-20T00:00:00Z",
+      "name": "Demonstrate the ability to critically analyze and evaluate technical solutions in the form of existing programs in imperative languages , as well as predict and evaluate sequences of events in these.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/D0009E-3",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Demonstrate the ability to critically analyze and evaluate technical solutions in the form of existing programs in imperative languages , as well as predict and evaluate sequences of events in these."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:34",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-03-20T00:00:00Z",
+      "name": "describe and explain fundamental principles of linear algebra.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/M0067M-1",
+          "type": [
+            "Achievement"
+          ],
+          "name": "describe and explain fundamental principles of linear algebra."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:35",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-03-20T00:00:00Z",
+      "name": "solve linear systems of equations.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/M0067M-2",
+          "type": [
+            "Achievement"
+          ],
+          "name": "solve linear systems of equations."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:36",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-03-20T00:00:00Z",
+      "name": "work with matrices and determinants.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/M0067M-3",
+          "type": [
+            "Achievement"
+          ],
+          "name": "work with matrices and determinants."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:37",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-03-20T00:00:00Z",
+      "name": "describe linear transformations using matrices.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/M0067M-4",
+          "type": [
+            "Achievement"
+          ],
+          "name": "describe linear transformations using matrices."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:38",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-03-20T00:00:00Z",
+      "name": "set up equations for lines and planes in space and determine distances, via orthogonal projection, between points, lines, and planes.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/M0067M-5",
+          "type": [
+            "Achievement"
+          ],
+          "name": "set up equations for lines and planes in space and determine distances, via orthogonal projection, between points, lines, and planes."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:39",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-03-20T00:00:00Z",
+      "name": "deal with the concepts of basis and dimension and determine bases in a few typical cases.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/M0067M-6",
+          "type": [
+            "Achievement"
+          ],
+          "name": "deal with the concepts of basis and dimension and determine bases in a few typical cases."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:40",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-03-20T00:00:00Z",
+      "name": "perform the Gram-Schmidt orthogonalization process.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/M0067M-7",
+          "type": [
+            "Achievement"
+          ],
+          "name": "perform the Gram-Schmidt orthogonalization process."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:41",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-03-20T00:00:00Z",
+      "name": "use the least squares method to fit a model to data points.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/M0067M-8",
+          "type": [
+            "Achievement"
+          ],
+          "name": "use the least squares method to fit a model to data points."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:42",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-03-20T00:00:00Z",
+      "name": "select an appropriate method of solution for given problems within the scope of the course.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/M0067M-9",
+          "type": [
+            "Achievement"
+          ],
+          "name": "select an appropriate method of solution for given problems within the scope of the course."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:43",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-06-05T00:00:00Z",
+      "name": "After completing the course, you can",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0006T-1",
+          "type": [
+            "Achievement"
+          ],
+          "name": "After completing the course, you can"
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:44",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-06-05T00:00:00Z",
+      "name": "explain and illustrate, for simple, two-dimensional, rotating bodies, the concepts: work, energy, momentum, angular momentum, moment of inertia and center of mass and the corresponding; dynamics",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0006T-2",
+          "type": [
+            "Achievement"
+          ],
+          "name": "explain and illustrate, for simple, two-dimensional, rotating bodies, the concepts: work, energy, momentum, angular momentum, moment of inertia and center of mass and the corresponding; dynamics"
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:45",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-06-05T00:00:00Z",
+      "name": "explain and illustrate the concepts: time dilation, length contraction, relativistic Doppler shift, radioactive radiation and nuclear decay.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0006T-3",
+          "type": [
+            "Achievement"
+          ],
+          "name": "explain and illustrate the concepts: time dilation, length contraction, relativistic Doppler shift, radioactive radiation and nuclear decay."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:46",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-06-05T00:00:00Z",
+      "name": "make free-body diagrams and solve 2D dynamical problems for particles and simple rigid bodies in",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0006T-4",
+          "type": [
+            "Achievement"
+          ],
+          "name": "make free-body diagrams and solve 2D dynamical problems for particles and simple rigid bodies in"
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:47",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-06-05T00:00:00Z",
+      "name": "simple rotation,1. physical pendulum motion,2. satellite movement,3. and non-constant acceleration4. calculate the position of the center of mass for arbitrary 2D bodies",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0006T-5",
+          "type": [
+            "Achievement"
+          ],
+          "name": "simple rotation,1. physical pendulum motion,2. satellite movement,3. and non-constant acceleration4. calculate the position of the center of mass for arbitrary 2D bodies"
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:48",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-06-05T00:00:00Z",
+      "name": "apply the law of conservation of mechanical energy on systems with rotating parts",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0006T-6",
+          "type": [
+            "Achievement"
+          ],
+          "name": "apply the law of conservation of mechanical energy on systems with rotating parts"
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:49",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-06-05T00:00:00Z",
+      "name": "solve simple problems in special relativity",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0006T-7",
+          "type": [
+            "Achievement"
+          ],
+          "name": "solve simple problems in special relativity"
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:50",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-06-05T00:00:00Z",
+      "name": "calculate the energies in radioactive decay and nuclear reactions",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0006T-8",
+          "type": [
+            "Achievement"
+          ],
+          "name": "calculate the energies in radioactive decay and nuclear reactions"
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:51",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-06-05T00:00:00Z",
+      "name": "present scientific results in a structured way",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0006T-9",
+          "type": [
+            "Achievement"
+          ],
+          "name": "present scientific results in a structured way"
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:52",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-06-05T00:00:00Z",
+      "name": "present your solutions in a comprehensible way",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0006T-10",
+          "type": [
+            "Achievement"
+          ],
+          "name": "present your solutions in a comprehensible way"
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:53",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-06-05T00:00:00Z",
+      "name": "make simple group work in a group with different composition",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0006T-11",
+          "type": [
+            "Achievement"
+          ],
+          "name": "make simple group work in a group with different composition"
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:54",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-06-05T00:00:00Z",
+      "name": "discuss the nuclear question with regards to the technology, sustainability and environment",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0006T-12",
+          "type": [
+            "Achievement"
+          ],
+          "name": "discuss the nuclear question with regards to the technology, sustainability and environment"
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:55",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-06-05T00:00:00Z",
+      "name": "superficially discuss and illustrate gender equality",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0006T-13",
+          "type": [
+            "Achievement"
+          ],
+          "name": "superficially discuss and illustrate gender equality"
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:56",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-06-05T00:00:00Z",
+      "name": "After completing the course, students are expected to:",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/M0068M-1",
+          "type": [
+            "Achievement"
+          ],
+          "name": "After completing the course, students are expected to:"
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:57",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-06-05T00:00:00Z",
+      "name": "Describe and explain fundamental concepts and principles of multivariable calculus.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/M0068M-2",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Describe and explain fundamental concepts and principles of multivariable calculus."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:58",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-06-05T00:00:00Z",
+      "name": "Apply concepts, theorems, and methods described in the course to solve problems in multivariable calculus.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/M0068M-3",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Apply concepts, theorems, and methods described in the course to solve problems in multivariable calculus."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:59",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-06-05T00:00:00Z",
+      "name": "Conduct mathematical reasoning in a structured and logically coherent manner.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/M0068M-4",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Conduct mathematical reasoning in a structured and logically coherent manner."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:60",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-06-05T00:00:00Z",
+      "name": "Independently select methods in multivariable calculus for problem-solving.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/M0068M-5",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Independently select methods in multivariable calculus for problem-solving."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:61",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-10-30T00:00:00Z",
+      "name": "Give an account of wave properties,",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0005T-1",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Give an account of wave properties,"
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:62",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-10-30T00:00:00Z",
+      "name": "Give an account for propagating waves,",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0005T-2",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Give an account for propagating waves,"
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:63",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-10-30T00:00:00Z",
+      "name": "Give an account for standing waves on a string and in pipes,",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0005T-3",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Give an account for standing waves on a string and in pipes,"
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:64",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-10-30T00:00:00Z",
+      "name": "Give an account for the treatment of waves as vectors in the complex plane,",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0005T-4",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Give an account for the treatment of waves as vectors in the complex plane,"
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:65",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-10-30T00:00:00Z",
+      "name": "Give an account for phenomena as beats and the doppler effect,",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0005T-5",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Give an account for phenomena as beats and the doppler effect,"
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:66",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-10-30T00:00:00Z",
+      "name": "Give an account polarization of waves,",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0005T-6",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Give an account polarization of waves,"
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:67",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-10-30T00:00:00Z",
+      "name": "Give an account for interference and diffraction,",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0005T-7",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Give an account for interference and diffraction,"
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:68",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-10-30T00:00:00Z",
+      "name": "Give an account for Bohr’s hydrogen model,",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0005T-8",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Give an account for Bohr’s hydrogen model,"
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:69",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-10-30T00:00:00Z",
+      "name": "Give an account for the origin of line spectra and continuous spectra,",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0005T-9",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Give an account for the origin of line spectra and continuous spectra,"
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:70",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-10-30T00:00:00Z",
+      "name": "Give an account for photoelectric effect, the origin of x-ray radiation and to explain the physical principles behind the properties of the x-ray spectra,",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0005T-10",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Give an account for photoelectric effect, the origin of x-ray radiation and to explain the physical principles behind the properties of the x-ray spectra,"
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:71",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-10-30T00:00:00Z",
+      "name": "Explain the background of the Schrödinger equation,",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0005T-11",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Explain the background of the Schrödinger equation,"
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:72",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-10-30T00:00:00Z",
+      "name": "Give an account for the quantum numbers of the electron and relate those to the electron configurations of the atoms,",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0005T-12",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Give an account for the quantum numbers of the electron and relate those to the electron configurations of the atoms,"
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:73",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-10-30T00:00:00Z",
+      "name": "Give an account for atom-atom interactions, molecule – molecule interactions and crystal structures and calculate material properties from information on the crystal structure,",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0005T-13",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Give an account for atom-atom interactions, molecule – molecule interactions and crystal structures and calculate material properties from information on the crystal structure,"
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:74",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-10-30T00:00:00Z",
+      "name": "Perform calculations on basic properties of propagating and standing waves,",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0005T-14",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Perform calculations on basic properties of propagating and standing waves,"
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:75",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-10-30T00:00:00Z",
+      "name": "Perform calculations on superposition in the complex plane,",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0005T-15",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Perform calculations on superposition in the complex plane,"
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:76",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-10-30T00:00:00Z",
+      "name": "Perform calculations on beats and the doppler effect,",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0005T-16",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Perform calculations on beats and the doppler effect,"
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:77",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-10-30T00:00:00Z",
+      "name": "Perform calculations on polarization and apply Fresnels equation for reflection of waves,",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0005T-17",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Perform calculations on polarization and apply Fresnels equation for reflection of waves,"
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:78",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-10-30T00:00:00Z",
+      "name": "Perform calculations on interference and diffraction,",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0005T-18",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Perform calculations on interference and diffraction,"
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:79",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-10-30T00:00:00Z",
+      "name": "Perform calculations on Bohr’s hydrogen model and apply it on similar systems,",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0005T-19",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Perform calculations on Bohr’s hydrogen model and apply it on similar systems,"
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:80",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-10-30T00:00:00Z",
+      "name": "Perform calculations on blackbody radiation and x-ray radiation,",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0005T-20",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Perform calculations on blackbody radiation and x-ray radiation,"
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:81",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-10-30T00:00:00Z",
+      "name": "Perform calculations on crystal structures,",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0005T-21",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Perform calculations on crystal structures,"
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:82",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-10-30T00:00:00Z",
+      "name": "Apply the Schrödinger equation on basic potentials, solve it and relate the resulting wavefunction to physical quantities,",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0005T-22",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Apply the Schrödinger equation on basic potentials, solve it and relate the resulting wavefunction to physical quantities,"
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:83",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-10-30T00:00:00Z",
+      "name": "Plan, perform, analyse, and evaluate experiments from an open problem description,",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0005T-23",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Plan, perform, analyse, and evaluate experiments from an open problem description,"
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:84",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-10-30T00:00:00Z",
+      "name": "Prepare and perform an oral presentation of performed experiments, acquired results, and drawn conclusions,",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0005T-24",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Prepare and perform an oral presentation of performed experiments, acquired results, and drawn conclusions,"
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:85",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-10-30T00:00:00Z",
+      "name": "Justify his/her calculations and argue for the reasonableness of the acquired results.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0005T-25",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Justify his/her calculations and argue for the reasonableness of the acquired results."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:86",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-10-30T00:00:00Z",
+      "name": "Define descriptive statistics for distributions and data, such as measures of location and dispersion",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/S0008M-1",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Define descriptive statistics for distributions and data, such as measures of location and dispersion"
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:87",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-10-30T00:00:00Z",
+      "name": "Be familiar with basic concepts from probability and statistical theory as well as understand the concept of a statistical model",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/S0008M-2",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Be familiar with basic concepts from probability and statistical theory as well as understand the concept of a statistical model"
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:88",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-10-30T00:00:00Z",
+      "name": "Be able to use statistical software for processing and analyzing data",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/S0008M-3",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Be able to use statistical software for processing and analyzing data"
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:89",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-10-30T00:00:00Z",
+      "name": "Be able to formulate and use some often used statistical models",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/S0008M-4",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Be able to formulate and use some often used statistical models"
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:90",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-10-30T00:00:00Z",
+      "name": "Be able to apply the statistical methods for analysis that the course treats",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/S0008M-5",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Be able to apply the statistical methods for analysis that the course treats"
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:91",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-10-30T00:00:00Z",
+      "name": "Be able to assess when statistical methods are useful",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/S0008M-6",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Be able to assess when statistical methods are useful"
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:92",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2025-10-30T00:00:00Z",
+      "name": "Be able to estimate how uncertainty affects conclusions and quantify risks in terms of error probabilities.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/S0008M-7",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Be able to estimate how uncertainty affects conclusions and quantify risks in terms of error probabilities."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:93",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2026-01-15T00:00:00Z",
+      "name": "After the course, the student will be able to analyse analog linear circuits. This includes the basic knowledge of components and their constitutive relations, as well as different methods for the analysis of DC and AC circuits. After the course the student should possess knowledge of constitutive relations for basic electrical components and, based on that knowledge, be able to apply knowledge of mathematics to analytically solve electric circuit problems..",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/E0003E-1",
+          "type": [
+            "Achievement"
+          ],
+          "name": "After the course, the student will be able to analyse analog linear circuits. This includes the basic knowledge of components and their constitutive relations, as well as different methods for the analysis of DC and AC circuits. After the course the student should possess knowledge of constitutive relations for basic electrical components and, based on that knowledge, be able to apply knowledge of mathematics to analytically solve electric circuit problems.."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:94",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2026-01-15T00:00:00Z",
+      "name": "The student should independently be able to analyse and evaluate analog linear circuits. This is demonstrated by laboratory experiments, simulation exercises, and through homework assignments and a written exam.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/E0003E-2",
+          "type": [
+            "Achievement"
+          ],
+          "name": "The student should independently be able to analyse and evaluate analog linear circuits. This is demonstrated by laboratory experiments, simulation exercises, and through homework assignments and a written exam."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:95",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2026-01-15T00:00:00Z",
+      "name": "The student should independently be able to analyse and minimise transmission losses, in particular in linear AC circuits with inductive loads, and to be able to describe the link to environmentally sound electrical power distribution and sustainable development.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/E0003E-3",
+          "type": [
+            "Achievement"
+          ],
+          "name": "The student should independently be able to analyse and minimise transmission losses, in particular in linear AC circuits with inductive loads, and to be able to describe the link to environmentally sound electrical power distribution and sustainable development."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:96",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2026-01-15T00:00:00Z",
+      "name": "Explain, exemplify, and illustrate the concepts of: Convergent and divergent series; Power series; Fourier series; Series solutions of differential equations; Generalised functions (distributions); Integral transforms; The fundamental matrix and exponentials of matrices",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/M0018M-1",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Explain, exemplify, and illustrate the concepts of: Convergent and divergent series; Power series; Fourier series; Series solutions of differential equations; Generalised functions (distributions); Integral transforms; The fundamental matrix and exponentials of matrices"
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:97",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2026-01-15T00:00:00Z",
+      "name": "Determine formulas for common integral transforms",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/M0018M-2",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Determine formulas for common integral transforms"
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:98",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2026-01-15T00:00:00Z",
+      "name": "Assess which tools are most suitable for solving a given system of ordinary differential equations",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/M0018M-3",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Assess which tools are most suitable for solving a given system of ordinary differential equations"
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:99",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2026-01-15T00:00:00Z",
+      "name": "Compute, for a variety of elementary functions: Power series and Fourier series; Fourier transforms; Laplace transforms",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/M0018M-4",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Compute, for a variety of elementary functions: Power series and Fourier series; Fourier transforms; Laplace transforms"
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:100",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2026-01-15T00:00:00Z",
+      "name": "Apply formulas to calculate integral transform of combinations of functions",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/M0018M-5",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Apply formulas to calculate integral transform of combinations of functions"
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:101",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2026-01-15T00:00:00Z",
+      "name": "Work with distributions",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/M0018M-6",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Work with distributions"
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:102",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2026-01-15T00:00:00Z",
+      "name": "Solve ordinary differential equations using a variety of tools, including: integral transforms; series; the eigenvalue/eigenvector method; variation of parameters",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/M0018M-7",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Solve ordinary differential equations using a variety of tools, including: integral transforms; series; the eigenvalue/eigenvector method; variation of parameters"
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:103",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2026-03-20T00:00:00Z",
+      "name": "To be able to design basic electronic circuits based on operational amplifiers, transistors, diodes, and passive components. Be able to measure on and describe the properties of these circuits. Be able to plan and conduct practical laboratory work on electronics. Learn to handle measurement equipment. The student will after the course: Have some knowledge about the developments in electronics that has occurred over the past 50 years, and thus the scientific foundation upon which the field rests.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/E0007E-1",
+          "type": [
+            "Achievement"
+          ],
+          "name": "To be able to design basic electronic circuits based on operational amplifiers, transistors, diodes, and passive components. Be able to measure on and describe the properties of these circuits. Be able to plan and conduct practical laboratory work on electronics. Learn to handle measurement equipment. The student will after the course: Have some knowledge about the developments in electronics that has occurred over the past 50 years, and thus the scientific foundation upon which the field rests."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:104",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2026-03-20T00:00:00Z",
+      "name": "The student will also, through knowledge from exercises and tasks for design and calculation: based on proven experience in the field be able to construct simple electronic circuits based on operational; amplifiers, transistors, diodes and passive components",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/E0007E-2",
+          "type": [
+            "Achievement"
+          ],
+          "name": "The student will also, through knowledge from exercises and tasks for design and calculation: based on proven experience in the field be able to construct simple electronic circuits based on operational; amplifiers, transistors, diodes and passive components"
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:105",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2026-03-20T00:00:00Z",
+      "name": "based on broad knowledge in the field be able to analyze the electronic circuits with mathematical analysis as well as based on an understanding of the science / physical laws that govern the operation of individual components,",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/E0007E-3",
+          "type": [
+            "Achievement"
+          ],
+          "name": "based on broad knowledge in the field be able to analyze the electronic circuits with mathematical analysis as well as based on an understanding of the science / physical laws that govern the operation of individual components,"
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:106",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2026-03-20T00:00:00Z",
+      "name": "through deeper knowledge be able to describe the limitations electronic components such as operational amplifiers have in practical applications.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/E0007E-4",
+          "type": [
+            "Achievement"
+          ],
+          "name": "through deeper knowledge be able to describe the limitations electronic components such as operational amplifiers have in practical applications."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:107",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2026-03-20T00:00:00Z",
+      "name": "independently and with a holistic approach be able to perform experiments, where the task includes theoretical analysis, preparation of the experiments, as well as performing experiments,",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/E0007E-5",
+          "type": [
+            "Achievement"
+          ],
+          "name": "independently and with a holistic approach be able to perform experiments, where the task includes theoretical analysis, preparation of the experiments, as well as performing experiments,"
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:108",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2026-03-20T00:00:00Z",
+      "name": "in practical laboratory exercises create, analyze and evaluate solutions to a problem within certain limits,",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/E0007E-6",
+          "type": [
+            "Achievement"
+          ],
+          "name": "in practical laboratory exercises create, analyze and evaluate solutions to a problem within certain limits,"
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:109",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2026-03-20T00:00:00Z",
+      "name": "plan and carry out laboratory tasks within specified parameters, and integrate knowledge of simulation tools with knowledge of circuits and component limitations,",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/E0007E-7",
+          "type": [
+            "Achievement"
+          ],
+          "name": "plan and carry out laboratory tasks within specified parameters, and integrate knowledge of simulation tools with knowledge of circuits and component limitations,"
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:110",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2026-03-20T00:00:00Z",
+      "name": "simulate and evaluate the behavior of electronic circuits using own knowledge, and using simulation tools for electronic design and have good knowledge of the approximations and assumptions that must often be made in the design of electronic circuits,",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/E0007E-8",
+          "type": [
+            "Achievement"
+          ],
+          "name": "simulate and evaluate the behavior of electronic circuits using own knowledge, and using simulation tools for electronic design and have good knowledge of the approximations and assumptions that must often be made in the design of electronic circuits,"
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:111",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2026-03-20T00:00:00Z",
+      "name": "interact in groups of two or three people in connection with the duties of experimental nature understand the need for additional knowledge in an area, and take responsibility to acquire that knowledge through such means as for example data sheets for components used in design and laboratory work.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/E0007E-9",
+          "type": [
+            "Achievement"
+          ],
+          "name": "interact in groups of two or three people in connection with the duties of experimental nature understand the need for additional knowledge in an area, and take responsibility to acquire that knowledge through such means as for example data sheets for components used in design and laboratory work."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:112",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2026-03-20T00:00:00Z",
+      "name": "be able to formulate partial differential equations, boundary- and initial conditions, starting with problems from physics and also be able to solve partial differential equations with different methods, for example by expansion in different orthogonal systems or by transform methods and also be able to give a physical intepretation of the solution.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/M0014M-1",
+          "type": [
+            "Achievement"
+          ],
+          "name": "be able to formulate partial differential equations, boundary- and initial conditions, starting with problems from physics and also be able to solve partial differential equations with different methods, for example by expansion in different orthogonal systems or by transform methods and also be able to give a physical intepretation of the solution."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:113",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2026-03-20T00:00:00Z",
+      "name": "acquire basic knowledge about the theory of Hilbert spaces including symmetric operators, specially Sturm- Liouville operators.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/M0014M-2",
+          "type": [
+            "Achievement"
+          ],
+          "name": "acquire basic knowledge about the theory of Hilbert spaces including symmetric operators, specially Sturm- Liouville operators."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:114",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2026-03-20T00:00:00Z",
+      "name": "acquire basic knowledge of some special functions as orthogonal polynomials and Bessel functions.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/M0014M-3",
+          "type": [
+            "Achievement"
+          ],
+          "name": "acquire basic knowledge of some special functions as orthogonal polynomials and Bessel functions."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:115",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2026-03-20T00:00:00Z",
+      "name": "acquire basic knowledge of the theory of distributions and be able to use distributions as the Delta function to describe various physical situations.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/M0014M-4",
+          "type": [
+            "Achievement"
+          ],
+          "name": "acquire basic knowledge of the theory of distributions and be able to use distributions as the Delta function to describe various physical situations."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:116",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2026-06-05T00:00:00Z",
+      "name": "Describe the definition, role, and history of AI",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/D0042E-1",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Describe the definition, role, and history of AI"
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:117",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2026-06-05T00:00:00Z",
+      "name": "Efficiently and effectively use AI methods in engineering studies",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/D0042E-2",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Efficiently and effectively use AI methods in engineering studies"
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:118",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2026-06-05T00:00:00Z",
+      "name": "Describe standard machine learning and data analytics theories and methods used in engineering applications.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/D0042E-3",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Describe standard machine learning and data analytics theories and methods used in engineering applications."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:119",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2026-06-05T00:00:00Z",
+      "name": "Implement and apply variations of the basic data analytics, machine learning and AI concepts introduced in the course material and assess the validity of the results",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/D0042E-4",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Implement and apply variations of the basic data analytics, machine learning and AI concepts introduced in the course material and assess the validity of the results"
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:120",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2026-06-05T00:00:00Z",
+      "name": "Present project work orally and in written form and give constructive feedback on other presentations.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/D0042E-5",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Present project work orally and in written form and give constructive feedback on other presentations."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:121",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2026-06-05T00:00:00Z",
+      "name": "Assessment of the possibilities and limitations of AI, its role in society and people's responsibility for how it is used, including social and economic aspects as well as environmental, work environment and gender equality aspects.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/D0042E-6",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Assessment of the possibilities and limitations of AI, its role in society and people's responsibility for how it is used, including social and economic aspects as well as environmental, work environment and gender equality aspects."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:122",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2026-06-05T00:00:00Z",
+      "name": "The content of the course is a continuation of the basic courses in mechanics and aims for students to further broaden and deepen their knowledge of classical mechanics, which also becomes a base for further studies in physics. It also includes alternative methods within classical mechanics. After passing this course the student can:",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0008T-1",
+          "type": [
+            "Achievement"
+          ],
+          "name": "The content of the course is a continuation of the basic courses in mechanics and aims for students to further broaden and deepen their knowledge of classical mechanics, which also becomes a base for further studies in physics. It also includes alternative methods within classical mechanics. After passing this course the student can:"
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:123",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2026-06-05T00:00:00Z",
+      "name": "describe and express the conditions for body equilibrium in three dimensions.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0008T-2",
+          "type": [
+            "Achievement"
+          ],
+          "name": "describe and express the conditions for body equilibrium in three dimensions."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:124",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2026-06-05T00:00:00Z",
+      "name": "account for concepts and explain basic concepts and laws within three-dimensional classical particle and rigid dynamics.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0008T-3",
+          "type": [
+            "Achievement"
+          ],
+          "name": "account for concepts and explain basic concepts and laws within three-dimensional classical particle and rigid dynamics."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:125",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2026-06-05T00:00:00Z",
+      "name": "explain inertial forces and describe when they occur.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0008T-4",
+          "type": [
+            "Achievement"
+          ],
+          "name": "explain inertial forces and describe when they occur."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:126",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2026-06-05T00:00:00Z",
+      "name": "account for systems undergoing damped and forced vibrations, explain resonance and exemplify its consequences.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0008T-5",
+          "type": [
+            "Achievement"
+          ],
+          "name": "account for systems undergoing damped and forced vibrations, explain resonance and exemplify its consequences."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:127",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2026-06-05T00:00:00Z",
+      "name": "describe analytical mechanics as an alternative method to Newton's laws, can elucidate basic concepts and account for Lagrange's and Hamilton's equations.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0008T-6",
+          "type": [
+            "Achievement"
+          ],
+          "name": "describe analytical mechanics as an alternative method to Newton's laws, can elucidate basic concepts and account for Lagrange's and Hamilton's equations."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:128",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2026-06-05T00:00:00Z",
+      "name": "determine the conditions for force equilibrium of bodies in three dimensions.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0008T-7",
+          "type": [
+            "Achievement"
+          ],
+          "name": "determine the conditions for force equilibrium of bodies in three dimensions."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:129",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2026-06-05T00:00:00Z",
+      "name": "solve problems with movement of bodies in three dimensions i.e. make calculations based on translating, accelerating and rotating coordinate systems, use Newton's laws, central-force motion, energy methods, momentum, inertial matrix, Euler's equations for gyroscopic motion and analyze damped, forced and coupled oscillations.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0008T-8",
+          "type": [
+            "Achievement"
+          ],
+          "name": "solve problems with movement of bodies in three dimensions i.e. make calculations based on translating, accelerating and rotating coordinate systems, use Newton's laws, central-force motion, energy methods, momentum, inertial matrix, Euler's equations for gyroscopic motion and analyze damped, forced and coupled oscillations."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:130",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2026-06-05T00:00:00Z",
+      "name": "calculate dynamic forces in rotating mechanical systems due to dynamic imbalance and determine how these can be reduced by balancing.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0008T-9",
+          "type": [
+            "Achievement"
+          ],
+          "name": "calculate dynamic forces in rotating mechanical systems due to dynamic imbalance and determine how these can be reduced by balancing."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:131",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2026-06-05T00:00:00Z",
+      "name": "solve dynamic problems for particles and rigid bodies using analytical mechanics:",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0008T-10",
+          "type": [
+            "Achievement"
+          ],
+          "name": "solve dynamic problems for particles and rigid bodies using analytical mechanics:"
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:132",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2026-06-05T00:00:00Z",
+      "name": "a) formulate Lagrange and Hamilton's functions for different physical situations; b) formulate theoretical models with the Lagrange function and the Hamilton function; c) derive the equations of motion and solve Euler-Lagrange's equations for mechanical systems with one or more generalized coordinates. solve somewhat more complicated technical dynamics problems, analytically and numerically.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0008T-11",
+          "type": [
+            "Achievement"
+          ],
+          "name": "a) formulate Lagrange and Hamilton's functions for different physical situations; b) formulate theoretical models with the Lagrange function and the Hamilton function; c) derive the equations of motion and solve Euler-Lagrange's equations for mechanical systems with one or more generalized coordinates. solve somewhat more complicated technical dynamics problems, analytically and numerically."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:133",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2026-06-05T00:00:00Z",
+      "name": "summarize, present and communicate calculations and conclusions in writing and/or orally in a clear and easily understandable manner.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0008T-12",
+          "type": [
+            "Achievement"
+          ],
+          "name": "summarize, present and communicate calculations and conclusions in writing and/or orally in a clear and easily understandable manner."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:134",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2026-06-05T00:00:00Z",
+      "name": "clarify restraints in analytical models of real mechanical systems and decide when numerical methods need to be used.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0008T-13",
+          "type": [
+            "Achievement"
+          ],
+          "name": "clarify restraints in analytical models of real mechanical systems and decide when numerical methods need to be used."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:135",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2026-06-05T00:00:00Z",
+      "name": "critically review calculations and simulations of dynamics problems, interpret results, draw conclusions on plausibility and compare methods.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0008T-14",
+          "type": [
+            "Achievement"
+          ],
+          "name": "critically review calculations and simulations of dynamics problems, interpret results, draw conclusions on plausibility and compare methods."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:136",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2026-06-05T00:00:00Z",
+      "name": "use a scientific approach to argue on calculations and results, relate to engineering applications as well.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0008T-15",
+          "type": [
+            "Achievement"
+          ],
+          "name": "use a scientific approach to argue on calculations and results, relate to engineering applications as well."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:137",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2026-10-29T00:00:00Z",
+      "name": "After the course, the student should be able to understand and apply: The motivation for quantum mechanics in modern physics.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0047T-1",
+          "type": [
+            "Achievement"
+          ],
+          "name": "After the course, the student should be able to understand and apply: The motivation for quantum mechanics in modern physics."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:138",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2026-10-29T00:00:00Z",
+      "name": "The foundations of quantum mechanics.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0047T-2",
+          "type": [
+            "Achievement"
+          ],
+          "name": "The foundations of quantum mechanics."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:139",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2026-10-29T00:00:00Z",
+      "name": "Wave-particle dualism, wave packet, probability interpretation, Heisenberg uncertanty relations.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0047T-3",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Wave-particle dualism, wave packet, probability interpretation, Heisenberg uncertanty relations."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:140",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2026-10-29T00:00:00Z",
+      "name": "Operators, eigenvalues and expectationvalues.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0047T-4",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Operators, eigenvalues and expectationvalues."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:141",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2026-10-29T00:00:00Z",
+      "name": "Understand and calculate properties of quantum mechanical systems and processes.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0047T-5",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Understand and calculate properties of quantum mechanical systems and processes."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:142",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2026-10-29T00:00:00Z",
+      "name": "Angular momentum and central motion.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0047T-6",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Angular momentum and central motion."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:143",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2026-10-29T00:00:00Z",
+      "name": "Hydrogen atom and spin.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0047T-7",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Hydrogen atom and spin."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:144",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2026-10-29T00:00:00Z",
+      "name": "Perturbation calculations.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0047T-8",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Perturbation calculations."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:145",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2026-10-29T00:00:00Z",
+      "name": "Spectra of atoms and molecules.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/F0047T-9",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Spectra of atoms and molecules."
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:146",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2026-10-29T00:00:00Z",
+      "name": "Derive and describe the frequency content of a signal",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/S0001E-1",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Derive and describe the frequency content of a signal"
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:147",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2026-10-29T00:00:00Z",
+      "name": "Derive and describe how a linear and time-invariant (LTI) system affects input signal both in time and frequency",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/S0001E-2",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Derive and describe how a linear and time-invariant (LTI) system affects input signal both in time and frequency"
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:148",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2026-10-29T00:00:00Z",
+      "name": "Implement and simulate LTI systems",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/S0001E-3",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Implement and simulate LTI systems"
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:149",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2026-10-29T00:00:00Z",
+      "name": "Derive, describe, and simulate how the placement of poles and zeros affect the properties of a system both in time and frequency",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/S0001E-4",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Derive, describe, and simulate how the placement of poles and zeros affect the properties of a system both in time and frequency"
+        }
+      }
+    },
+    {
+      "@context": [
+        "https://www.w3.org/ns/credentials/v2",
+        "https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json"
+      ],
+      "id": "urn:example:achievement:ltu-student-third-year:150",
+      "type": [
+        "VerifiableCredential",
+        "OpenBadgeCredential"
+      ],
+      "issuer": {
+        "id": "https://w3id.org/edthread/ltu/org-ltu",
+        "type": [
+          "Profile"
+        ],
+        "name": "Luleå University of Technology"
+      },
+      "validFrom": "2026-10-29T00:00:00Z",
+      "name": "Determine if a certain continuous-time signal can be sampled without loss of information.",
+      "description": "FICTITIOUS SAMPLE for testing Educational Thread; not a credential issued by LTU.",
+      "credentialSubject": {
+        "id": "did:example:ltu-student-third-year-5e08",
+        "type": [
+          "AchievementSubject"
+        ],
+        "achievement": {
+          "id": "https://w3id.org/edthread/ltu/outcome/S0001E-5",
+          "type": [
+            "Achievement"
+          ],
+          "name": "Determine if a certain continuous-time signal can be sampled without loss of information."
+        }
+      }
+    }
+  ]
+}

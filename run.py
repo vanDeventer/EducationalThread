@@ -195,7 +195,7 @@ def resolve_requester(g, text, h):
     q = f"""{prefixes}
 SELECT ?office WHERE {{
   VALUES ?x {{ {m.group(1).strip()} }}
-  ?x <https://schema.org/provider> ?org .
+  ?x (^<https://w3id.org/edthread#hasSpecialisation>)?/<https://schema.org/provider> ?org .
   ?office <https://schema.org/parentOrganization> ?org ;
           <https://w3id.org/edthread#servesFunction> <{h['requester-function']}> .
 }} LIMIT 1"""

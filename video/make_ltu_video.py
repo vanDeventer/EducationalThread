@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-"""Render the LTU walkthrough video: how to use Educational Thread with the
-real programme TCTEA, shown on screenshots of the running web server.
+"""Render the LTU walkthrough video: how to use Educational Thread with two real
+programmes, TCTEA and TCDAA, shown on screenshots of the running web server.
 
     go run ./cmd/edthread serve -addr 127.0.0.1:8088 &
     python3 video/capture_ltu_screens.py      # screenshots -> video/out/screens/
@@ -80,11 +80,11 @@ def chrome(c, scene_no, total):
 # ---------------------------------------------------------------------------
 
 def s_title(c, step):
-    c.text(W / 2, 330, "Educational Thread at LTU", 96, "bold", INK, "mm")
-    c.text(W / 2, 430, "A walkthrough with a real programme", 42, "medium", MUTED, "mm")
-    c.text(W / 2, 510, "Civilingenjör teknisk fysik och elektroteknik (TCTEA)", 34, "demi", INK, "mm")
+    c.text(W / 2, 320, "Educational Thread at LTU", 96, "bold", INK, "mm")
+    c.text(W / 2, 420, "A walkthrough with two real programmes", 42, "medium", MUTED, "mm")
+    c.text(W / 2, 500, "Teknisk fysik och elektroteknik (TCTEA)  ·  Datateknik (TCDAA)", 34, "demi", INK, "mm")
     mv.thread_decoration(c, 700)
-    note = "Prototype · built from LTU’s public study plan and syllabi · not an LTU service"
+    note = "Prototype · built from LTU’s public study plans and syllabi · not an LTU service"
     w = c.tw(note, 22, "medium") + 40
     c.box((W - w) / 2, 880, w, 46, fill=CARD, outline=LINE, r=23)
     c.text(W / 2, 903, note, 22, "medium", MUTED, "mm")
@@ -102,27 +102,28 @@ def doc_icon(c, x, y, w, h, title, sub, color):
 def s_pipeline(c, step):
     c.text(100, 90, "Where the data comes from", 54, "bold")
     col = ROLE["teacher"]
-    doc_icon(c, 100, 230, 440, 210, "Study plan", "utbildningsplan TCTEA, intake H26", col)
-    doc_icon(c, 100, 470, 440, 210, "65 course syllabi", "kursplaner, Swedish and English", col)
+    doc_icon(c, 100, 230, 440, 210, "2 study plans", "utbildningsplaner TCTEA, TCDAA", col)
+    doc_icon(c, 100, 470, 440, 210, "103 course syllabi", "kursplaner, Swedish and English", col)
     if step >= 1:
         arrow(c, 548, 656, 455)
         c.box(660, 395, 330, 120, fill=INK, outline=None, r=16)
         c.text(825, 438, "importer", 30, "bold", "#FFFFFF", "mm")
-        c.text(825, 476, "tools/ltu/import_tctea.py", 18, "medium", tint(INK, 0.5), "mm")
+        c.text(825, 476, "tools/ltu/import_ltu.py", 18, "medium", tint(INK, 0.5), "mm")
         arrow(c, 998, 1096, 455)
         c.box(1100, 230, 720, 450, fill=CARD, outline=INK, r=20, width=3)
-        c.text(1136, 270, "Knowledge graph", 30, "bold", INK, "lm")
-        stats = [("300", "credits"), ("3", "specialisations"), ("65", "courses"), ("470", "learning outcomes")]
+        c.text(1136, 270, "One knowledge graph", 30, "bold", INK, "lm")
+        stats = [("2", "programmes, 6 specialisations"), ("103", "courses"),
+                 ("18", "courses in both programmes"), ("715", "learning outcomes")]
         for i, (n, label) in enumerate(stats):
             x, y = 1136 + (i % 2) * 340, 330 + (i // 2) * 140
             c.text(x, y + 30, n, 64, "bold", ROLE["student"], "lm")
-            c.text(x, y + 90, label, 24, "demi", INK, "lm")
-        c.text(1136, 640, "every item linked to the document it came from", 22, "medium", MUTED, "lm")
+            c.text(x, y + 90, label, 22, "demi", INK, "lm")
+        c.text(1136, 640, "shared courses stored once · each linked to its source", 22, "medium", MUTED, "lm")
     if step >= 2:
         c.box(1100, 740, 720, 200, fill=tint(col, 0.88), outline=col, r=20, width=3)
         c.pill(1136, 764, "PROPOSED · DRAFT", col, size=18)
-        c.text(1136, 838, "~30 outcome links along calculus, linear analysis,", 26, "demi", INK, "lm")
-        c.text(1136, 876, "circuits, signals, modelling and control", 26, "demi", INK, "lm")
+        c.text(1136, 838, "outcome links and course equivalences", 26, "demi", INK, "lm")
+        c.text(1136, 876, "drafted from the syllabus texts", 26, "demi", INK, "lm")
         c.text(1136, 916, "kept apart, for the teachers to review", 22, "medium", MUTED, "lm")
         c.line([(1460, 740), (1460, 680)], col, 4, dash=(10, 8))
         c.head((1460, 682), (1460, 700), col, 16)
@@ -134,8 +135,8 @@ def s_start(c, step):
         c.box(260, 260, 1400, 420, fill="#1B1F27", outline=None, r=20)
         for i, col in enumerate(("#E0605A", "#E5B84B", "#5CB860")):
             c.circle(300 + i * 24, 296, 8, col)
-        lines = [("# 1  read LTU's study plan and syllabi", "#7F8796"),
-                 ("python3 tools/ltu/import_tctea.py", "#E8E6E1"),
+        lines = [("# 1  read LTU's study plans and syllabi", "#7F8796"),
+                 ("python3 tools/ltu/import_ltu.py", "#E8E6E1"),
                  ("# 2  load everything into GraphDB (validated)", "#7F8796"),
                  ("go run ./cmd/edthread setup", "#E8E6E1"),
                  ("# 3  start the web pages", "#7F8796"),
@@ -164,46 +165,110 @@ def s_advisor(c, step):
 
 def s_teacher(c, step):
     caption(c, "teacher", "Do my syllabus’s entry requirements fit the programme?")
-    screen(c, "teacher", 130, "127.0.0.1:8080/q/9-teacher-syllabus-check")
+    if step == 0:
+        screen(c, "teacher-cross", 130, "127.0.0.1:8080/q/9-teacher-syllabus-check")
+    else:
+        screen(c, "teacher", 130, "127.0.0.1:8080/q/9-teacher-syllabus-check")
+
+
+def s_shared(c, step):
+    caption(c, "advisor", "Which courses do the two programmes share?")
+    screen(c, "shared", 760 if step == 0 else 1350, "127.0.0.1:8080/q/10-advisor-shared-courses")
+
+
+def s_switch(c, step):
+    if step == 0:
+        c.text(100, 90, "A third-year student thinks of switching", 54, "bold")
+        col = ROLE["advisor"]
+        cards = [
+            ("TODAY", "Engineering Physics and Electrical Engineering",
+             "specialisation Electronic Systems and Automatic Control", ROLE["student"]),
+            ("CONSIDERING", "Computer Science and Engineering",
+             "specialisation Industrial Computer Systems, from year 4", ROLE["teacher"]),
+        ]
+        for i, (k, t, sub, cc) in enumerate(cards):
+            x = 100 + i * 880
+            c.box(x, 230, 840, 330, fill=CARD, outline=cc, r=22, width=3)
+            c.pill(x + 36, 260, k, cc, size=20)
+            c.para(x + 36, 330, t, 40, "bold", INK, maxw=770)
+            c.para(x + 36, 450, sub, 28, "medium", MUTED, maxw=770)
+        arrow(c, 948, 972, 395, INK)
+        c.box(100, 620, 1720, 260, fill=tint(col, 0.88), outline=col, r=22, width=3)
+        c.text(140, 680, "Halfway through year 3: 18 courses passed", 36, "bold", INK, "lm")
+        c.text(140, 740, "What carries over? What is missing? How much would it cost?", 30, "medium", INK, "lm")
+        c.text(140, 810, "The student shares their record with LTU’s study guidance, for advising only.", 26,
+               "medium", MUTED, "lm")
+        return
+    caption(c, "advisor", "What would switching programme mean for this student?")
+    top = {1: 400, 2: 1430, 3: 2470}[step]
+    screen(c, "switch", top, "127.0.0.1:8080/q/11-advisor-programme-switch")
+
+
+def s_equivalent(c, step):
+    if step == 0:
+        c.text(100, 90, "Same outcomes, different course codes", 54, "bold")
+        # Verbatim from both syllabi (English versions).
+        outcomes = ["Derive and describe the frequency content of a signal",
+                    "Derive and describe how a linear and time-invariant (LTI) system affects input signal both in "
+                    "time and frequency",
+                    "Implement and simulate LTI systems",
+                    "Derive, describe, and simulate how the placement of poles and zeros affect the properties of a "
+                    "system both in time and frequency",
+                    "Determine if a certain continuous-time signal can be sampled without loss of information."]
+        for i, (code, name, prog, cc) in enumerate([("S0001E", "Signal analysis", "TCTEA, year 3", ROLE["student"]),
+                                                     ("S0004E", "Signals and systems", "TCDAA, year 2", ROLE["teacher"])]):
+            x = 100 + i * 880
+            c.box(x, 200, 840, 690, fill=CARD, outline=cc, r=22, width=3)
+            c.text(x + 36, 250, f"{code} {name}", 36, "bold", INK, "lm")
+            c.text(x + 36, 294, prog, 24, "medium", MUTED, "lm")
+            for j, o in enumerate(outcomes):
+                y = 336 + j * 108
+                c.check(x + 56, y + 16, 14, GOOD)
+                c.para(x + 90, y, o, 23, "medium", INK, maxw=720)
+        c.text(W / 2, 930, "Five learning outcomes, word for word the same in both syllabi.", 30, "bold", INK, "mm")
+        return
+    caption(c, "teacher", "Which other courses state the same outcomes as mine?")
+    screen(c, "same-outcomes", 130, "127.0.0.1:8080/q/12-teacher-same-outcomes")
 
 
 def s_employer(c, step):
-    caption(c, "employer", "What does this specialisation really cover?")
-    screen(c, "employer" if step == 0 else "skills", 300,
-           "127.0.0.1:8080/q/" + ("7-employer-topic-profile" if step == 0 else "8-employer-skills"))
+    caption(c, "employer", "What does each specialisation really cover?")
+    screen(c, "employer" if step == 0 else "employer-tcdaa", 300, "127.0.0.1:8080/q/7-employer-topic-profile")
 
 
 def s_contribute(c, step):
     c.text(100, 90, "Teachers make the thread better", 54, "bold")
-    c.box(160, 210, 1600, 330, fill="#1B1F27", outline=None, r=20)
-    c.d.text((200 * S, 240 * S), "data/public/ltu/proposed-threads.ttl", font=mono(22), fill="#7F8796")
-    code = [("# R0004E entry requirements: \"Basic knowledge about the Laplace", "#7F8796"),
-            ("# transform, for example as acquired in M0018M Linear Analysis\"", "#7F8796"),
-            ("lo:R0004E-4  et:requires  lo:M0018M-4 .", "#E8E6E1"),
-            ("lo:R0004E-3  et:requires  lo:M0066M-7 ;  et:uses  lo:F0004T-3 .", "#E8E6E1")]
+    c.box(160, 200, 1600, 400, fill="#1B1F27", outline=None, r=20)
+    c.d.text((200 * S, 228 * S), "data/public/ltu/proposed-threads.ttl", font=mono(22), fill="#7F8796")
+    code = [("# R0004E entry requirements: knowledge of the Laplace transform (M0018M)", "#7F8796"),
+            ("lo:R0004E-4  et:requires    lo:M0018M-4 .", "#E8E6E1"),
+            ("", "#E8E6E1"),
+            ("# S0004E and S0001E state the same outcomes, word for word", "#7F8796"),
+            ("lo:S0004E-3  skos:closeMatch  lo:S0001E-1 .", "#E8E6E1"),
+            ("lo:S0004E-2  skos:closeMatch  lo:S0001E-3 .   # ...", "#E8E6E1")]
     for i, (t, col) in enumerate(code):
-        c.d.text((200 * S, (300 + i * 52) * S), t, font=mono(28), fill=col)
+        c.d.text((200 * S, (290 + i * 48) * S), t, font=mono(27), fill=col)
     if step >= 1:
         steps = [("confirm, correct or add", ROLE["teacher"]), ("edthread setup", INK),
                  ("validated (SHACL)", GOOD), ("live in every page", ROLE["student"])]
         x = 160
         for i, (t, col) in enumerate(steps):
             w = 340
-            c.box(x, 640, w, 120, fill=tint(col, 0.86), outline=col, r=18, width=3)
-            c.para_mid(x + w / 2, 700, t, 28, "bold", INK, maxw=w - 40)
+            c.box(x, 680, w, 120, fill=tint(col, 0.86), outline=col, r=18, width=3)
+            c.para_mid(x + w / 2, 740, t, 28, "bold", INK, maxw=w - 40)
             if i < len(steps) - 1:
-                arrow(c, x + w + 12, x + w + 74, 700)
+                arrow(c, x + w + 12, x + w + 74, 740)
             x += w + 86
-        c.text(W / 2, 850, "Every link keeps its reason, and answers that rely on a draft link can be traced back to it.",
+        c.text(W / 2, 880, "Every link keeps its reason, and answers that rely on a draft can be traced back to it.",
                26, "medium", MUTED, "mm")
 
 
 def s_next(c, step):
     c.text(100, 90, "Next steps at LTU", 54, "bold")
-    items = [("Review the proposed links", "with the programme’s teachers, then extend them", ROLE["teacher"]),
-             ("Map exam modules to outcomes", "which module assesses what", ROLE["advisor"]),
-             ("Swedish pages", "the Swedish texts are already in the data", ROLE["student"]),
-             ("Log-in for advisors and admissions", "so the office asking for consent is known", ROLE["employer"])]
+    items = [("Review the proposed links", "with the programmes’ teachers, then extend them", ROLE["teacher"]),
+             ("Record equivalent outcomes", "between similar courses, for fair switches and transfers", ROLE["advisor"]),
+             ("Map exam modules to outcomes", "which module assesses what", ROLE["student"]),
+             ("Swedish pages and log-in", "for students, advisors and admissions", ROLE["employer"])]
     for i, (t, sub, col) in enumerate(items):
         x, y = 100 + (i % 2) * 870, 230 + (i // 2) * 330
         c.box(x, y, 830, 280, fill=CARD, outline=LINE, r=20)
@@ -220,49 +285,75 @@ def s_close(c, step):
 
 
 SCENES = [
-    (s_title, ["This is a short walkthrough of Educational Thread at LTU, using a real programme: "
-               "Engineering Physics and Electrical Engineering."]),
+    (s_title, ["This is a walkthrough of Educational Thread at LTU, using two real programmes: Engineering Physics "
+               "and Electrical Engineering, and Computer Science and Engineering."]),
     (s_pipeline, [
-        "Everything starts from LTU's own public documents: the study plan, and the sixty-five course "
+        "Everything starts from LTU's own public documents: the two study plans, and one hundred and three course "
         "syllabi, in Swedish and English.",
-        "An importer turns them into a knowledge graph. Three hundred credits, three specialisations, and "
-        "four hundred and seventy learning outcomes, each one linked to the document it came from.",
-        "The syllabi do not say which outcome builds on which. Those links are drafted separately, clearly "
-        "marked as a proposal, for the teachers to review.",
+        "An importer turns them into one knowledge graph. Eighteen courses belong to both programmes, so they are "
+        "stored once, and every learning outcome is linked to the document it came from.",
+        "What the syllabi do not say is which outcome builds on which, or which courses are equivalent. Those are "
+        "drafted separately, clearly marked as a proposal, for the teachers to review.",
     ]),
     (s_start, [
-        "Getting started takes three commands: import the documents, load them into GraphDB, and start the "
-        "web pages.",
+        "Getting started takes three commands: import the documents, load them into GraphDB, and start the web pages.",
         "The start page offers questions by role: student, study advisor, teacher, admissions, and employer.",
     ]),
     (s_student, [
         "A student in Single Variable Calculus 2 picks the course and asks where it is used later.",
-        "Differential equations come back in Linear Analysis, Circuit Theory, Modelling and Control, and "
-        "Dynamic Systems. A good reason to keep going.",
+        "Differential equations come back in Linear Analysis, Circuit Theory, Modelling and Control, and Dynamic "
+        "Systems. A good reason to keep going.",
     ]),
     (s_advisor, [
-        "A study advisor checks whether a student is ready for Modelling and Control. The student presents "
-        "their credentials, with consent for LTU's study guidance, for advising only.",
-        "Every prerequisite is listed, including indirect ones. One is missing: the transforms from Linear "
-        "Analysis. Exactly what the course syllabus asks for.",
+        "A study advisor checks whether a student is ready for Modelling and Control. The student presents their "
+        "credentials, with consent for LTU's study guidance, for advising only.",
+        "Every prerequisite is listed, including indirect ones. One is missing: the transforms from Linear Analysis. "
+        "Exactly what the course syllabus asks for.",
         "A record whose consent was given to another university is refused. The student stays in control.",
     ]),
     (s_teacher, [
-        "A teacher checks a syllabus against the programme. Linear Analysis still names three course codes "
-        "that are no longer part of it. Easy to miss by hand, easy to fix once seen.",
+        "A teacher checks a syllabus against the programmes. Modelling and Control is taught in both, and asks for "
+        "Linear Analysis, or Signals and systems. Each programme has only one of the two.",
+        "Linear Analysis itself still names three course codes that no longer exist. Easy to miss by hand, easy to "
+        "fix once seen.",
+    ]),
+    (s_shared, [
+        "Now, common courses. A study advisor compares the two programmes. Eighteen courses are shared: mathematics, "
+        "physics, programming, and control.",
+        "But they are scheduled differently. Calculus comes first in Engineering Physics, while programming comes "
+        "first in Computer Science and Engineering.",
+    ]),
+    (s_switch, [
+        "Here is why that matters. A third-year student in Engineering Physics, halfway through the year, wonders "
+        "whether to switch to Computer Science and Engineering, specialisation Industrial Computer Systems, from "
+        "year four.",
+        "With the student's consent, the advisor asks what the switch would mean. Every mandatory course of the first "
+        "three years is checked against the outcomes in the student's credentials.",
+        "Fifteen courses, one hundred and twenty credits, are still to take, mostly computing. Two of them come later "
+        "in the student's own year three anyway.",
+        "Seven courses carry over completely: mathematics, physics, statistics and programming. And Signals and "
+        "systems is covered by equivalent outcomes, which the student already showed in Signal analysis.",
+    ]),
+    (s_equivalent, [
+        "Why equivalent? Signal analysis and Signals and systems state the same five learning outcomes, word for "
+        "word. Only the course codes differ.",
+        "Teachers can find such pairs with one question. Identical wording is a hint, not a decision: the teachers "
+        "confirm it, and the advisor sees that the answer rests on a proposal.",
     ]),
     (s_employer, [
-        "An employer picks a specialisation, Electronic Systems and Automatic Control, and sees where the "
-        "credits really go, subject by subject.",
-        "And which skills it builds toward, through which courses, and for which occupations.",
+        "An employer compares the specialisations, and sees where the credits really go. Electronic Systems and "
+        "Automatic Control, rich in electrical engineering, mathematics and physics.",
+        "Industrial Computer Systems: mostly computer engineering and computer science, on the same mathematical "
+        "foundation.",
     ]),
     (s_contribute, [
-        "Teachers make the thread better. Each proposed link is one line, with its reason from the syllabus.",
+        "Teachers make the thread better. Each proposed link is one line, with its reason from the syllabus, and the "
+        "same goes for equivalent outcomes.",
         "Confirm it, correct it, or add your own, then reload. The data is validated before it goes live.",
     ]),
     (s_next, [
-        "Next steps at LTU: review the links with the programme's teachers, map exam modules to outcomes, "
-        "add Swedish pages, and a log-in for advisors and admissions.",
+        "Next steps at LTU: review the links with the programmes' teachers, record equivalent outcomes between "
+        "similar courses, map exam modules to outcomes, and add Swedish pages and a log-in.",
     ]),
     (s_close, ["Educational Thread. One thread, from the first course to working life."]),
 ]

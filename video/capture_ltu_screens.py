@@ -25,26 +25,38 @@ CHROME = os.environ.get("CHROME", "/Applications/Google Chrome.app/Contents/MacO
 LTU = "https://w3id.org/edthread/ltu/"
 
 HIGHLIGHT_CSS = """<style>
+:root { --bg: #f6f4ef !important; --ink: #1e2430 !important; --muted: #6b7280 !important;
+        --card: #ffffff !important; --line: #d8d4ca !important; }  /* light theme regardless of the OS */
 tr.hl td { background: #fff1c2 !important; }
 tr.hl td:first-child { box-shadow: inset 5px 0 0 #d97a1e; }
 details.sparql { display: none; }
 </style>"""
 
 # name, path, form fields (POST) or None (GET), rows to highlight (regex), window height
+def q(path, **params):
+    return path + "?" + urllib.parse.urlencode(params) if params else path
+
+
 PAGES = [
     ("home", "/", None, None, 1180),
-    ("student", "/q/1-student-where-used?course=" + urllib.parse.quote(LTU + "course/M0066M", safe=""),
+    ("student", q("/q/1-student-where-used", course=LTU + "course/M0066M"),
      None, r"Modelling and Control|Dynamic Systems", 1500),
     ("advisor", "/q/3-advisor-readiness",
      {"target": LTU + "course/R0004E", "wallet": "ltu-student-k.json"}, r"NOT MET", 1320),
     ("advisor-refused", "/q/3-advisor-readiness",
      {"target": LTU + "course/R0004E", "wallet": "student-s.json"}, None, 900),
-    ("teacher", "/q/9-teacher-syllabus-check?course=" + urllib.parse.quote(LTU + "course/M0018M", safe=""),
-     None, r"not in programme", 900),
-    ("employer", "/q/7-employer-topic-profile?pathway="
-     + urllib.parse.quote(LTU + "program-TCTEA-electronic-systems-control", safe=""), None, r"Automatic Control", 1180),
-    ("skills", "/q/8-employer-skills?pathway="
-     + urllib.parse.quote(LTU + "program-TCTEA-electronic-systems-control", safe=""), None, None, 900),
+    ("teacher-cross", q("/q/9-teacher-syllabus-check", course=LTU + "course/R0004E"), None, r"S0004E", 1000),
+    ("teacher", q("/q/9-teacher-syllabus-check", course=LTU + "course/M0018M"), None, r"not in programme", 900),
+    ("shared", q("/q/10-advisor-shared-courses", **{"from": LTU + "program-TCTEA", "to": LTU + "program-TCDAA"}),
+     None, r"Calculus 1|Introduction to Programming", 1750),
+    ("switch", "/q/11-advisor-programme-switch",
+     {"pathway": LTU + "program-TCDAA-industrial-computer-systems", "wallet": "ltu-student-third-year.json"},
+     r"covered by equivalent", 2350),
+    ("same-outcomes", q("/q/12-teacher-same-outcomes", course=LTU + "course/S0001E"), None, r"S0004E", 900),
+    ("employer", q("/q/7-employer-topic-profile", pathway=LTU + "program-TCTEA-electronic-systems-control"),
+     None, r"Automatic Control", 1180),
+    ("employer-tcdaa", q("/q/7-employer-topic-profile", pathway=LTU + "program-TCDAA-industrial-computer-systems"),
+     None, r"Computer Engineering|Computer Science", 1180),
 ]
 
 
