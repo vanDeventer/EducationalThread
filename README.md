@@ -66,6 +66,7 @@ python3 video/make_ltu_video.py             # walkthrough with the LTU programme
 
 ```
 ontology/edthread.ttl          thin application profile (classes, relations, Bloom levels)
+docs/ontology.md               what the ontology's concepts mean and how they map to standards
 shapes/edthread-shapes.ttl     SHACL publishing contract, enforced by GraphDB on every write
 shapes/edthread-advisories.ttl SHACL warnings with curriculum-design advice (checked by run.py)
 shapes/checks/*.rq             graph-wide integrity checks GraphDB's SHACL cannot express (cycles, ...)
@@ -90,6 +91,8 @@ video/                         narrated videos: make_video.py (introduction), ma
 ```
 
 ## The model
+
+The concepts, the learning unit, and the mapping to standards are explained in [docs/ontology.md](docs/ontology.md).
 
 ```
 Program ──hasSpecialisation──▶ Specialisation

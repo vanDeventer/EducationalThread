@@ -44,7 +44,7 @@ et:Course a owl:Class ;
 
 et:LearningUnit a owl:Class ;
     rdfs:label "Learning unit"@en ;
-    rdfs:comment "A block of a course about one topic, with intended learning outcomes, learning activities and assessments (Biggs' constructive alignment). Called 'knowledge unit' in the ACM/IEEE curricula."@en ;
+    rdfs:comment "A block of a course about one topic, with intended learning outcomes, learning activities and assessments (Biggs' constructive alignment). Optional: a teacher's breakdown of a course."@en ;
     skos:closeMatch elm:LearningAchievementSpecification .
 
 et:LearningOutcome a owl:Class ;
